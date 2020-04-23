@@ -1,31 +1,102 @@
-(function($) {
 
-	"use strict";
-
-	var fullHeight = function() {
-
-		$('.js-fullheight').css('height', $(window).height());
-		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
-		});
-
-	};
-	fullHeight();
-
-	$('#sidebarCollapse').on('click', function () {
-      $('#sidebar').toggleClass('active');
+$("#Visualizebtn").off().on("click", function() {
+	$("#visualize").toggle();
   });
+  $(document).click(function(e) {
+	if ($(e.target).closest('#visualize, #Visualizebtn').length === 0) {
+	  $("#visualize").hide();
+	}
+  })
+  $("#Interrogatebtn").off().on("click", function() {
+	$("#interrogate").toggle();
+  });
+  $(document).click(function(e) {
+	if ($(e.target).closest('#interrogate, #Interrogatebtn').length === 0) {
+	  $("#interrogate").hide();
+	}
+  })
 
-})(jQuery);
 
-var body = document.getElementsByTagName('body')[0],
-    sidebar = document.getElementById('sidebar');
 
-// sidebar overflow hide
-sidebar.onmouseover = function() { 
-    body.style.overflow = 'hidden';
-}
+// Creating a slider
+var slidervar = document.getElementById('slider')
+noUiSlider.create(slider, {
+  start: [0, 100],
+  connect: true,
+  step: 5,
+  range: {
+	'min': 0,
+	'max': 100
+  },
+  tooltips: true
+});
 
-sidebar.onmouseout = function() { 
-    body.style.overflow = 'auto';
-}
+
+var slidervar2 = document.getElementById('slider2')
+noUiSlider.create(slider2, {
+  start: [0, 100],
+  connect: true,
+  range: {
+	'min': 0,
+	'max': 100
+  },
+  tooltips: true
+});
+
+var slidervar3 = document.getElementById('slider3')
+noUiSlider.create(slider3, {
+  start: [0, 100],
+  connect: true,
+  step: 5,
+  range: {
+	'min': 0,
+	'max': 100
+  },
+  tooltips: true
+});
+
+var slidervar4 = document.getElementById('slider4')
+noUiSlider.create(slider4, {
+  start: [0, 100],
+  connect: true,
+  step: 5,
+  range: {
+	'min': 0,
+	'max': 100
+  },
+  tooltips: true
+});
+
+
+var slidervar5 = document.getElementById('slider5')
+noUiSlider.create(slider5, {
+  start: [0, 100],
+  connect: true,
+  step: 5,
+  range: {
+	'min': 0,
+	'max': 100
+  },
+  tooltips: true
+});
+
+var slidervar6 = document.getElementById('slider6')
+noUiSlider.create(slider6, {
+  start: [0, 100],
+  connect: true,
+  step: 5,
+  range: {
+	'min': 0,
+	'max': 100
+  },
+  tooltips: true
+});
+
+
+
+
+
+
+
+
+

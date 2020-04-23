@@ -8243,13 +8243,12 @@ h1, h2, h3, h4, h5,
       display: block;
       color: rgba(255, 255, 255, 0.8);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-      #tops ul li a:focus{
+      #tops ul li button{
         background-color: #4e4e4e;
-        box-shadow: 0 3px #fff;
         color: #f8b739;
-        padding: 8px;
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;      }
+        padding: 10px;
+        border-radius: 22px 22px 22px 22px;
+          }
         #sidebar ul li a:hover {
         color: #f8b739; }
     #sidebar ul li.active > a {
@@ -8334,3 +8333,47 @@ a[data-toggle="collapse"] {
   left: 50;
   transform: translate(50%,);
 }
+
+.noUi-tooltip {
+  display: none;
+}
+.noUi-active .noUi-tooltip {
+  display: block;
+}
+
+.dataSource button {
+  background-color: #4e4e4e;
+  color: #f8b739;
+  padding: 10px 25px;
+  margin-right: 5px;
+  border-radius: 22px 22px 22px 22px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 300;
+  margin-top: 65px;
+  left: 21.5em;
+  z-index: 1000;
+  position: absolute;
+  top: 21px;
+}
+
+
+
+
+
+
+
+
+
+/**** Custom styles for noUiSlider 
+.noUi-connect {
+	background: purple;
+}
+.noUi-horizontal .noUi-handle, .noUi-vertical .noUi-handle {
+	background: purple;
+}
+.noUi-target.noUi-horizontal .noUi-tooltip {
+	background-color: purple;
+} 
+****/
