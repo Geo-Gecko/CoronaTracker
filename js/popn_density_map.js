@@ -1,13 +1,20 @@
 function getColordensity(d) {
-  return d > 730 ? '#993404' :
-    d > 190 ? '#d95f0e' :
-    d > 80 ? '#fe9929' :
-    d > 50 ? '#fed98e' :
-    d > 20 ? '#ffffd4' :
-    d > 0 ? '#fef0d9' :
-    '#ffffff00';
+  return  d > 750 ? '#993404' :
+    d > 749 ? '#993404' :
+    d > 500 ? '#c4500a' :
+    d > 499 ? '#c4500a' :
+    d > 400 ? '#e67217' :
+    d > 399 ? '#e67217' :
+    d > 300 ? '#fe9929' :
+    d > 299 ? '#fe9929' :
+    d > 200 ? '#fec46c' :
+    d > 199 ? '#fec46c' :
+    d > 100 ? '#ffe6a5' :
+    d > 99 ? '#ffe6a5' :
+    d > 1 ? '#ffffd4' :
+    d > 0.1 ? '#ffffd4' :
+    '#808080';
 }
-
 
 let popn_density_layer = () => {
   if (african_data._map) {
@@ -52,13 +59,5 @@ let popn_density_layer = () => {
       fillOpacity: 1
     };
   }
-
-  let legend_parent = document.getElementsByClassName("legend")[0]
-  if (legend_parent.childNodes.length > 1) {
-    legend_parent.removeChild(legend_parent.childNodes[1])
-  }
-  let legend_child = document.createElement("IMG")
-  legend_child.setAttribute("src", "images/density_legend.png");
-  legend_child.setAttribute("class", "density")
-  legend_parent.appendChild(legend_child);
+  addLegend([1, 100, 200, 300, 400, 500, 750], getColordensity, "Population Density <br> (people per sq km)");
 }

@@ -3,7 +3,7 @@ let second_google_sheet_data;
 function getColorfiscal(d) {
   return d > 1 ? '#15841b' :
     d > 0 ? '#15841b' :
-    '#808080';
+    '#adadad';
 }
 
 let govt_intervention_layer = (element) => {
@@ -28,11 +28,35 @@ let govt_intervention_layer = (element) => {
           map.removeLayer(african_data)
         }
 
-        african_data = L.geoJson(africa_data, {
+        var highlight = {
+                  weight: 2,
+                  opacity: 2,
+                  color: '#000000b8',
+                  fillOpacity: 10,
+                  fillColor: 'yellow'
+        };
+
+        var african_data1 = L.geoJSON(null, {
+          onEachFeature: forEachFeature2,
           style: stylefiscal
         }).addTo(map);
 
-        african_data.eachLayer(function(layer) {
+        african_data1.addData(africa_data);
+
+        african_data1.on("click", onFeatureGroupClick);
+
+        function onFeatureGroupClick(e) {
+        	var group = e.target,
+          		layer = e.layer;
+
+          group.setStyle(stylefiscal);
+          layer.setStyle(highlight);
+        }
+
+        function forEachFeature2(feature, layer) {
+        }
+
+        african_data1.eachLayer(function(layer) {
           let country_ = layer.feature.properties.COUNTRY;
           layer.on('click', function(e) {
             document.getElementById("info").innerHTML = '<strong>Country: </strong>' + country_ + '<br>' + '<strong>Population: </strong>' + govt_intervention_obj[country_][0] + '<br>' + '<strong>Introduction: </strong>' + govt_intervention_obj[country_][1] + '<br>' + '<strong>Fiscal Policy: </strong>' + govt_intervention_obj[country_][2];
@@ -49,14 +73,7 @@ let govt_intervention_layer = (element) => {
             fillOpacity: 1
           };
         }
-        let legend_parent = document.getElementsByClassName("legend")[0]
-        if (legend_parent.childNodes.length > 1) {
-          legend_parent.removeChild(legend_parent.childNodes[1])
-        }
-        let legend_child = document.createElement("IMG")
-        legend_child.setAttribute("src", "images/fiscal_legend.png");
-        legend_child.setAttribute("class", "fiscal")
-        legend_parent.appendChild(legend_child);
+        addLegend2([0, 1], getColorfiscal);
       } else if (element.id === "monetary") {
         let govt_intervention_obj = {}
         second_google_sheet_data.forEach(object_ => {
@@ -72,11 +89,35 @@ let govt_intervention_layer = (element) => {
           map.removeLayer(african_data)
         }
 
-        african_data = L.geoJson(africa_data, {
+        var highlight = {
+                  weight: 2,
+                  opacity: 2,
+                  color: '#000000b8',
+                  fillOpacity: 10,
+                  fillColor: 'yellow'
+        };
+
+        var african_data1 = L.geoJSON(null, {
+          onEachFeature: forEachFeature2,
           style: stylefiscal
         }).addTo(map);
 
-        african_data.eachLayer(function(layer) {
+        african_data1.addData(africa_data);
+
+        african_data1.on("click", onFeatureGroupClick);
+
+        function onFeatureGroupClick(e) {
+        	var group = e.target,
+          		layer = e.layer;
+
+          group.setStyle(stylefiscal);
+          layer.setStyle(highlight);
+        }
+
+        function forEachFeature2(feature, layer) {
+        }
+
+        african_data1.eachLayer(function(layer) {
           let country_ = layer.feature.properties.COUNTRY;
           layer.on('click', function(e) {
             document.getElementById("info").innerHTML = '<strong>Country: </strong>' + country_ + '<br>' + '<strong>Population: </strong>' + govt_intervention_obj[country_][0] + '<br>' + '<strong>Introduction: </strong>' + govt_intervention_obj[country_][1] + '<br>' + '<strong>Monetary and Macro financial: </strong>' + govt_intervention_obj[country_][2];
@@ -93,14 +134,8 @@ let govt_intervention_layer = (element) => {
             fillOpacity: 1
           };
         }
-        let legend_parent = document.getElementsByClassName("legend")[0]
-        if (legend_parent.childNodes.length > 1) {
-          legend_parent.removeChild(legend_parent.childNodes[1])
-        }
-        let legend_child = document.createElement("IMG")
-        legend_child.setAttribute("src", "images/fiscal_legend.png");
-        legend_child.setAttribute("class", "fiscal")
-        legend_parent.appendChild(legend_child);
+        addLegend2([0, 1], getColorfiscal);
+
       } else if (element.id === "exchange") {
         let govt_intervention_obj = {}
         second_google_sheet_data.forEach(object_ => {
@@ -116,11 +151,35 @@ let govt_intervention_layer = (element) => {
           map.removeLayer(african_data)
         }
 
-        african_data = L.geoJson(africa_data, {
+        var highlight = {
+                  weight: 2,
+                  opacity: 2,
+                  color: '#000000b8',
+                  fillOpacity: 10,
+                  fillColor: 'yellow'
+        };
+
+        var african_data1 = L.geoJSON(null, {
+          onEachFeature: forEachFeature2,
           style: stylefiscal
         }).addTo(map);
 
-        african_data.eachLayer(function(layer) {
+        african_data1.addData(africa_data);
+
+        african_data1.on("click", onFeatureGroupClick);
+
+        function onFeatureGroupClick(e) {
+        	var group = e.target,
+          		layer = e.layer;
+
+          group.setStyle(stylefiscal);
+          layer.setStyle(highlight);
+        }
+
+        function forEachFeature2(feature, layer) {
+        }
+
+        african_data1.eachLayer(function(layer) {
           let country_ = layer.feature.properties.COUNTRY;
           layer.on('click', function(e) {
             document.getElementById("info").innerHTML = '<strong>Country: </strong>' + country_ + '<br>' + '<strong>Population: </strong>' + govt_intervention_obj[country_][0] + '<br>' + '<strong>Introduction: </strong>' + govt_intervention_obj[country_][1] + '<br>' + '<strong>Exchange rate and balance of payments: </strong>' + govt_intervention_obj[country_][2];
@@ -137,14 +196,7 @@ let govt_intervention_layer = (element) => {
             fillOpacity: 1
           };
         }
-        let legend_parent = document.getElementsByClassName("legend")[0]
-        if (legend_parent.childNodes.length > 1) {
-          legend_parent.removeChild(legend_parent.childNodes[1])
-        }
-        let legend_child = document.createElement("IMG")
-        legend_child.setAttribute("src", "images/fiscal_legend.png");
-        legend_child.setAttribute("class", "fiscal")
-        legend_parent.appendChild(legend_child);
+        addLegend2([0, 1], getColorfiscal);
       } else if (element.id === "country") {
         let country_intervention_obj = {}
         second_google_sheet_data.forEach(object_ => {
@@ -163,37 +215,43 @@ let govt_intervention_layer = (element) => {
           map.removeLayer(african_data)
         }
 
-        african_data = L.geoJson(africa_data, {
-          style: {
-            weight: 2,
-            opacity: 2,
-            color: '#989898',
-            fillOpacity: 2.5,
-            fillColor: '#b30000'
-          },
-          onEachFeature: function(feature, layer) {
-            layer.on('mouseover', function() {
-              this.setStyle({
-                weight: 2,
-                opacity: 2,
-                color: '#989898',
-                fillOpacity: 10,
-                fillColor: '#989898'
-              });
-            });
-            layer.on('mouseout', function() {
-              this.setStyle({
-                weight: 2,
-                opacity: 2,
-                color: '#989898',
-                fillOpacity: 2.5,
-                fillColor: '#b30000'
-              });
-            });
-          }
+        var style2 = {
+          weight: 2,
+          opacity: 2,
+          color: '#000000b8',
+          fillOpacity: 2.5,
+          fillColor: '#AAA583'
+        };
+
+        var highlight = {
+                  weight: 2,
+                  opacity: 2,
+                  color: '#000000b8',
+                  fillOpacity: 10,
+                  fillColor: 'yellow'
+        };
+
+        var african_data1 = L.geoJSON(null, {
+          onEachFeature: forEachFeature2,
+          style: style2
         }).addTo(map);
 
-        african_data.eachLayer(function(layer) {
+        african_data1.addData(africa_data);
+
+        african_data1.on("click", onFeatureGroupClick);
+
+        function onFeatureGroupClick(e) {
+        	var group = e.target,
+          		layer = e.layer;
+
+          group.setStyle(style2);
+          layer.setStyle(highlight);
+        }
+
+        function forEachFeature2(feature, layer) {
+        }
+
+        african_data1.eachLayer(function(layer) {
           let country_ = layer.feature.properties.COUNTRY;
           layer.on('click', function(e) {
             document.getElementById("info").innerHTML = '<strong>Country: </strong>' + country_ + '<br>' + '<strong>Population: </strong>' + country_intervention_obj[country_][0] + '<br>' + '<strong>Humanitarian Exemption: </strong>' + country_intervention_obj[country_][1] +
@@ -201,10 +259,7 @@ let govt_intervention_layer = (element) => {
              '<br>' + '<strong>Social and economic measures: </strong>' + country_intervention_obj[country_][5] + '<br>' + '<strong>Social distancing: </strong>' + country_intervention_obj[country_][6];
           });
         });
-        let legend_parent = document.getElementsByClassName("legend")[0]
-        if (legend_parent.childNodes.length > 1) {
-          legend_parent.removeChild(legend_parent.childNodes[1])
-        }
+        addLegend();
       }
     })
 }

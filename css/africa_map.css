@@ -3,7 +3,6 @@
     width: 76%;
     height: 99%;
     position: absolute;
-    /* top: 77px; */
   }
 }
 
@@ -12,7 +11,6 @@
     width: 83%;
     height: 99%;
     position: absolute;
-    /* top: 77px; */
   }
 }
 
@@ -113,19 +111,6 @@
 .logo2 {
   position: relative;
   top: -4.5em;
-}
-
-.source {
-  background-color: #4e4e4e;
-  padding: 8px;
-  z-index: 10000;
-  right: 10;
-  position: relative;
-  top: 1em;
-  width: 8%;
-  border-radius: 22px;
-  padding-left: 1.5%;
-  left: 90%;
 }
 
 div #container3 {
