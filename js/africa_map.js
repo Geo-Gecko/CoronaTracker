@@ -13,6 +13,8 @@ let highlight_button = (element) => {
   element.setAttribute("style", "color: #f8b739;");
 }
 
+let initial_data_obj = {}
+
 
 let axioses = [axios.get(url, { mode: 'no-cors' })]
 document.getElementById("map").setAttribute("style", `height: ${window.innerHeight}px`)
@@ -82,13 +84,14 @@ function getColorcases(d) {
 axios.all(axioses)
   .then(responseArrs => {
     google_sheet_data = $.csv.toObjects(responseArrs[0].data);
-    let initial_data_obj = {}
     google_sheet_data.forEach(object_ => {
       initial_data_obj[object_["COUNTRY"]] = [
         object_["POP"],
         object_["CASES"]
       ]
     })
+
+    console.log(africa_data)
 
     african_data = L.geoJson(africa_data, {
       style: stylecases
