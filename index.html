@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Africa Corona</title>
+  <title>Uganda Corona</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -43,7 +43,6 @@
     </div>
 
     <div class="sidebar-content">
-
       <div class="sidebar-pane" id="layers">
         <h1 class="full-text sidebar-header">
           <p style="font-size:5.6rem;text-align:center;padding-top:7%;">PACA</p>
@@ -68,84 +67,55 @@
         <div class="sidebar-list" style="max-height: 420px;">
             <a
             href="#homeSubmenu5" data-toggle="collapse" aria-expanded="false"
-            class="d-flex justify-content-left dropdown-toggle p-2 button_title_content"
-            >
-              COVID 19 cases
+            class="d-flex justify-content-left dropdown-toggle p-2 button_title_content">
+              Infrastructures
             </a>
             <ul class="collapse list-unstyled" id="homeSubmenu5">
               <li class="d-flex justify-content-left">
-                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="cases_layer(this);">Cases</a>
+                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="">Health Centers</a>
               </li>
               <li class="d-flex justify-content-left">
-                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="deaths_layer(this);">Deaths</a>
+                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="">Beds</a>
               </li>
               <li class="d-flex justify-content-left">
-                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="cases_concn_layer(this);">Cases per 100,000 people</a>
-              </li>
-              <li class="d-flex justify-content-left">
-                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="deaths_concn_layer(this);">Deaths per 100,000 people</a>
+                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="">Cases</a>
               </li>
             </ul>
 
             <a
             href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
-            class="d-flex justify-content-left dropdown-toggle p-2 button_title_content"
-            >
-              Health
+            class="d-flex justify-content-left dropdown-toggle p-2 button_title_content">
+              Hot spot
             </a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
               <li class="d-flex justify-content-left">
-                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="ventilators_layer(this);">Ventilators</a>
+                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="">Border points</a>
               </li>
               <li class="d-flex justify-content-left">
-                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="icus_layer(this);">ICU Beds</a>
+                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="">Market</a>
               </li>
             </ul>
 
             <a
             href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false"
-            class="d-flex justify-content-left dropdown-toggle p-2 button_title_content"
-            >
+            class="d-flex justify-content-left dropdown-toggle p-2 button_title_content">
               Population
             </a>
             <ul class="collapse list-unstyled" id="homeSubmenu2">
               <li class="d-flex justify-content-left">
-                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="popn_density_layer(this);">Population Density</a>
+                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="">Population Density</a>
               </li>
               <li class="d-flex justify-content-left">
-                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="hiv_stats_layer(this);">HIV/AIDS(%)</a>
+                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="">Poverty Rate</a>
               </li>
               <li class="d-flex justify-content-left">
-                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="tb_stats_layer(this);">TB(%)</a>
+                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="">Elderly(% Over 65 in age)</a>
               </li>
               <li class="d-flex justify-content-left">
-                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="elderly_stats_layer(this);">Elderly(% Over 65 in age)</a>
-              </li>
-            </ul>
-
-            <a
-            href="#homeSubmenu3" data-toggle="collapse" aria-expanded="false"
-            class="d-flex justify-content-left dropdown-toggle p-2 button_title_content"
-            >
-              Government Intervention
-            </a>
-            <ul class="collapse list-unstyled" id="homeSubmenu3">
-              <li class="d-flex justify-content-left">
-                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="govt_intervention_layer(this);" id="fiscal">Fiscal</a>
+                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="">Water Access</a>
               </li>
               <li class="d-flex justify-content-left">
-                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="govt_intervention_layer(this);" id="monetary">Monetary</a>
-              </li>
-              <li class="d-flex justify-content-left">
-                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="govt_intervention_layer(this);" id="exchange">Exchange</a>
-              </li>
-              <li class="d-flex justify-content-left">
-                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="govt_intervention_layer(this);" id="country">Other Measures Taken</a>
-              </li>
-              <li>
-                <p style="text-align:end; color:rgb(219, 216, 216);">
-                  Click on country to view data
-                </p>
+                <a href="#" class="d-flex justify-content-left p-2 button_inner_content" onclick="">Venerable Group</a>
               </li>
             </ul>
         </div>
@@ -202,7 +172,6 @@
         </div>
         <div class="sidebar-list" id="info" style="max-height: 449px;">
           <p style="text-align:center;">
-            Select a category in Government Intervention and click on country to view data
           </p>
         </div>
       </div>

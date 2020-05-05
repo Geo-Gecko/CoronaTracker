@@ -58,7 +58,7 @@ var sources_button = L.control({
 });
 sources_button.onAdd = function(map) {
   var div = L.DomUtil.create('div', 'sources');
-  div.innerHTML += '<a style="color: #f8b739;" type="button" target="_blank" href="https://docs.google.com/spreadsheets/d/1VR5mnOV3i6O8kXhh5SQb6tqMvevd02NXHldx3tOTZl4/edit#gid=0">Data Sources</a>'
+  div.innerHTML += '<a style="color: #f8b739;" type="button" target="_blank" href="#">Data Sources</a>'
   return div;
 };
 sources_button.addTo(map);
