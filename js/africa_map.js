@@ -134,6 +134,8 @@ axios.all(axioses)
       ]
     })
 
+    console.log(africa_data)
+
     african_data = L.geoJson(africa_data, {
       style: stylecases
     }).addTo(map);
