@@ -194,23 +194,45 @@ function stylegdp(feature) {
   };
 }
 
-// // //border districts
-function getColorborder(d) {
-  return d > 1 ? '#fd8d3c' :
-    d > 0 ? '#fd8d3c' :
-    '#ffffff';
+// // //gdp
+function getColorUgCases(d) {
+    return d > 78 ? '#bd0026' :
+        d > 72 ? '#bd0026' :
+            d > 63 ? '#f03b20' :
+                d > 54 ? '#f03b20' :
+                    d > 45 ? '#fd8d3c' :
+                        d > 36 ? '#fd8d3c' :
+                            d > 27 ? '#fecc5c' :
+                                d > 18 ? '#fecc5c' :
+                                    d > 9 ? '#ffffb2' :
+                                        d > -1 ? '#ffffb2' :
+                                            d > null ? '#808080' :
+                                                '#808080';
 }
 
-function styleborder(feature) {
-  return {
-    fillColor: getColorborder(parseFloat(feature.properties.districts1_border_district.split(",").join(""))),
-    weight: 1,
-    opacity: 1,
-    color: 'black',
-    dashArray: '0',
-    fillOpacity: 1
-  };
+function styleUgCases(feature) {
+    //cannotStyleHere because data is unavailable at this point, must do it on intializing layer below
+    // border_sheet_data.forEach(element => {
+    //     if (element.Cases != "" && element.DName2017 == feature.properties.DNama2017) {
+    //         return {
+    //             fillColor: getColorUgCases(element.Cases),
+    //             weight: 1,
+    //             opacity: 1,
+    //             color: 'black',
+    //             dashArray: '0',
+    //             fillOpacity: 1
+    //         };
+    //     }
+    // });
+    // console.log(border_sheet_data);
 }
+
+function getRadiusBorder(d) {
+    return d / 3
+}
+
+
+
 
 let overlayLayers = {
   "Border Points": [border_points, "#cccc09"],
@@ -219,57 +241,21 @@ let overlayLayers = {
 };
 
 let ugandaLayers = {
-  "Contacts": [
-    [
-      [], , "Hover over district <br> for contact information"
-    ], {
-      weight: 2,
-      opacity: 2,
-      color: '#000000b8',
-      fillOpacity: 2.5,
-      fillColor: '#AAA583'
-    }
-  ],
-  "Population Density": [
-    [
-      [7, 100, 500, 1000, 7500], getColorden, "Population Density (people per sq km)"
-    ], styleden
-  ],
-  "Poverty Percentage": [
-    [
-      [0.3, 2, 3, 5, 15], getColorpov, "Household Poverty Percentage"
-    ], stylepov
-  ],
-  "Elderly Percentage(Over 60 in age)": [
-    [
-      [1, 3, 5, 10, 15], getColorelderly, "Elderly Percentage(Over 60 in age)"
-    ], styleelderly
-  ],
-  "HIV/AIDS Percentage": [
-    [
-      [0, 3, 5, 10, 15], getColoraids, "HIV/AIDS Percentage (15+ years old)"
-    ], styleaids
-  ],
-  "Prisons Population": [
-    [
-      [15, 100, 1000, 3000, 6300], getColorprisons, "Total Prisoners"
-    ], styleprisons
-  ],
-  "Water Access Points": [
-    [
-      [0, 20, 40, 60, 80], getColorwater, "Water Access Points (%)"
-    ], stylewater
-  ],
-  "Border Districts": [
-    [
-      [], getColorborder, ""
-    ], styleborder
-  ],
-  "GDP": [
-    [
-      [34, 100, 200, 500, 3300], getColorgdp, "GDP Per Capita (USD)"
-    ], stylegdp
-  ]
+    "Population": [[[5000, 150000, 250000, 350000, 2000000], getColorpop, "Population"], stylepop],
+    "Contacts": [[[], , "Hover over district <br> for contact information"], {
+        weight: 2,
+        opacity: 2,
+        color: '#000000b8',
+        fillOpacity: 2.5,
+        fillColor: '#AAA583'
+    }],
+    "Population Density": [[[7, 100, 500, 1000, 7500], getColorden, "Population Density"], styleden],
+    "Poverty Rate": [[[0.3, 2, 3, 5, 15], getColorpov, "Household Poverty Rates"], stylepov],
+    "Elderly(Over 60 in age)": [[[950, 10000, 20000, 30000, 45000], getColorelderly, "Elderly Rates"], styleelderly],
+    "AIDS Rate": [[[440, 10000, 20000, 40000, 64000], getColoraids, "HIV Rates (15+ years old)"], styleaids],
+    "Prisons Population": [[[15, 100, 1000, 3000, 6300], getColorprisons, "Total Prisoners"], styleprisons],
+    "GDP": [[[34, 100, 200, 500, 3300], getColorgdp, "GDP Per Capita (USD)"], stylegdp],
+    "Cases": [[[16, 32, 48, 64, 78], getColorUgCases, "Cases per District"], styleUgCases]
 };
 
 
@@ -300,35 +286,40 @@ let layers = createOverLayers();
 
 function createCountryLayers() {
 
-  let layers = [];
+    let layers = [];
 
-  Object.keys(ugandaLayers).forEach(element => {
+    Object.keys(ugandaLayers).forEach(element => {
 
-    layers[element] = new L.geoJson(districts_data, { //ugandaLayers[element], {
+        layers[element] = new L.geoJson(districts_data, { //ugandaLayers[element], {
 
-      pane: 'choroplethPane',
-      style: ugandaLayers[element][1],
-      onEachFeature: function(feature, layer) {
-        layer.bindPopup(
-          '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
-          '<br>' + '<strong>Total Population:</strong> ' + layer.feature.properties.TotalPopn +
-          '<br>' + '<strong>Remanded:</strong> ' + layer.feature.properties.districts1_REMANDS +
-          '<br>' + '<strong>Convicted:</strong> ' + layer.feature.properties.districts1_CONVICTS +
-          '<br>' + '<strong>Debtors:</strong> ' + layer.feature.properties.districts1_DEBTORS +
-          '<br>' + '<strong>Total Prisoners:</strong> ' + layer.feature.properties.districts1_2017_TOTAL_PRISONERS
-        );
-        layer.on('mouseover', function(e) {
-          this.openPopup();
+            pane: 'choroplethPane',
+            style: ugandaLayers[element][1],
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(
+                    '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
+                    '<br>' + '<strong>Total Population:</strong> ' + layer.feature.properties.TotalPopn +
+                    '<br>' + '<strong>Remanded:</strong> ' + layer.feature.properties.districts1_REMANDS +
+                    '<br>' + '<strong>Convicted:</strong> ' + layer.feature.properties.districts1_CONVICTS +
+                    '<br>' + '<strong>Debtors:</strong> ' + layer.feature.properties.districts1_DEBTORS +
+                    '<br>' + '<strong>Total Prisoners:</strong> ' + layer.feature.properties.districts1_2017_TOTAL_PRISONERS, {
+                    autoPan: false
+                }
+                );
+                layer.on('mouseover', function (e) {
+                    this.openPopup();
+                });
+                layer.on('mouseout', function (e) {
+                    this.closePopup();
+                });
+            }
         });
         layer.on('mouseout', function(e) {
           this.closePopup();
         });
-      }
     });
-  });
 
-  return layers;
-}
+    return layers;
+  };
 
 let countrylayers = createCountryLayers();
 
@@ -356,19 +347,33 @@ function add_overlay(element) {
 }
 
 function add_ug_layer(element) {
-  let layer_ = element.text
-  addLegend(ugandaLayers[layer_][0][0], ugandaLayers[layer_][0][1], ugandaLayers[layer_][0][2]);
-  highlight_button(element)
-  Object.keys(countrylayers).forEach(element => {
-    if (map.hasLayer(countrylayers[element])) {
-      map.removeLayer(countrylayers[element]);
-    }
-  });
-  countrylayers[layer_].addTo(map)
-  Object.keys(countrylayers[layer_]._layers).forEach(element => {
-    let l = countrylayers[layer_]._layers[element];
-    OEF(l, layer_)
-  });
+    let layer_ = element.text
+    addLegend(ugandaLayers[layer_][0][0], ugandaLayers[layer_][0][1], ugandaLayers[layer_][0][2]);
+    highlight_button(element)
+    Object.keys(countrylayers).forEach(element => {
+        if (map.hasLayer(countrylayers[element])) {
+            map.removeLayer(countrylayers[element]);
+        }
+    });
+    countrylayers[layer_].addTo(map)
+    Object.keys(countrylayers[layer_]._layers).forEach(element => {
+        let l = countrylayers[layer_]._layers[element];
+        OEF(l, layer_)
+        if (layer_ == "Cases") {
+            border_sheet_data.forEach(element => {
+                if (element.Cases != "" && element.DNama2017 == l.feature.properties.DNama2017) {
+                    l.setStyle({
+                        fillColor: getColorUgCases(parseInt(element.Cases)),
+                        weight: 1,
+                        opacity: 1,
+                        color: 'black',
+                        dashArray: '0',
+                        fillOpacity: 1
+                    })
+                }
+            });
+        }
+    });
 }
 
 let overlays = $('#infrastructure');

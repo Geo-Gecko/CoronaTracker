@@ -15,9 +15,9 @@ let ugandan_sidepanel_text = {
     "Infrastructure": [
         "Border Points", "Health Referral Centers", "ICU Beds Per Health Center",
     ],
-    "Districts Data": [
-        "Border Districts", "Poverty Percentage", "Population Density", "Contacts",
-        "Elderly Percentage(Over 60 in age)", "HIV/AIDS Percentage", "Prisons Population", "Water Access Points", "GDP"
+    "District Data": [
+        "Poverty Rate", "Population Density", "Population", "Contacts",
+        "Elderly(Over 60 in age)", "AIDS Rate", "Prisons Population", "GDP", "Cases"
     ]
 }
 
@@ -48,7 +48,7 @@ function create_sidepanel (sidepanel_text) {
             )
             if (key === "Infrastructure") {
                 button_element.setAttribute("onclick", "add_overlay(this);")
-            } else if (key === "Districts Data") {
+            } else if (key === "District Data") {
                 button_element.setAttribute("onclick", "add_ug_layer(this);")
             } else if (key === "Government Intervention") {
                 if (text_ === "Other Measures Taken") {
