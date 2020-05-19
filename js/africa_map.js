@@ -9,6 +9,11 @@ let google_sheet_data;
 let second_google_sheet_data;
 let border_sheet_data;
 let prev_highlighted_button;
+let initial_data_obj = {}
+
+function setParent(el, newParent) {
+  newParent.appendChild(el);
+}
 
 // set the hightlighted button to show
 let highlight_button = (element) => {
@@ -135,8 +140,6 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png
 
 let african_data;
 
-
-
 axios.get(url)
   .then(responseArrs => {
     google_sheet_data = $.csv.toObjects(responseArrs.data);
@@ -144,6 +147,79 @@ axios.get(url)
     $("a").filter(function () {
       return $(this).text() === "Cases";
     }).click()
+
+    function getColorcases_points(d) {
+      return d > 4500 ? '#016c59' :
+        d > 4499 ? '#016c59' :
+        d > 3000 ? '#1d905d' :
+        d > 2999 ? '#1d905d' :
+        d > 2000 ? '#3fad76' :
+        d > 1999 ? '#3fad76' :
+        d > 1000 ? '#66c2a4' :
+        d > 999 ? '#66c2a4' :
+        d > 500 ? '#99d8ce' :
+        d > 499 ? '#99d8ce' :
+        d > 100 ? '#b6dae2' :
+        d > 99 ? '#b6dae2' :
+        d > 1 ? '#bdc9e1' :
+        d > 0.1 ? '#bdc9e1' :
+        '#808080';
+    }
+
+    axios.get(url)
+      .then(responseArrs => {
+        google_sheet_data = $.csv.toObjects(responseArrs.data);
+        let cases_points_obj = {}
+      google_sheet_data.forEach(object_ => {
+        cases_points_obj[object_["COUNTRY"]] = [
+          object_["POP"],
+          object_["CASES"]
+        ]
+      })
+
+      map.createPane('casespane');
+      map.getPane('casespane').style.zIndex = 650;
+      var cases = L.geoJson(cases_points, {
+        pointToLayer: function(feature, coordinates) {
+          return L.circleMarker(coordinates, {
+            pane: 'casespane',
+            radius: (parseFloat(cases_points_obj[feature.properties.COUNTRY][1].split(",").join(""))) / 400,
+            color: 'red',
+            fillOpacity: 0,
+            weight: 3,
+          });
+        }
+      });
+
+      var layMaps = {
+        "Cases points": cases
+      };
+
+      L.control.layers("", layMaps, {
+        collapsed: false
+      }).addTo(map);
+
+      cases.eachLayer(function(layer) {
+        let country_ = layer.feature.properties.COUNTRY;
+        layer.bindPopup(
+          '<strong>Country:</strong> ' + country_ +
+          '<br>' + '<strong>Population:</strong> ' + cases_points_obj[country_][0] +
+          '<br>' + '<strong>Cases:</strong> ' + cases_points_obj[country_][1], {
+            autoPan: false
+          }
+        );
+        layer.on('mouseover', function(e) {
+          this.openPopup();
+        });
+        layer.on('mouseout', function(e) {
+          this.closePopup();
+        });
+      });
+
+      var legendFrom = $('.leaflet-control-layers-expanded');
+      var legendTo = $('.case_points');
+      setParent(legendFrom[0], legendTo[0]);
+    })
 
     $("#homeSubmenu0").attr("class", "list-unstyled collapse show")
     $("a[onclick='add_layer(this);']")[0].setAttribute("style", "color: #f8b739;")
