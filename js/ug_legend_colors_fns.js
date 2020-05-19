@@ -193,6 +193,45 @@ function stylegdp(feature) {
     };
 }
 
+// // //gdp
+function getColorUgCases(d) {
+    return d > 78 ? '#bd0026' :
+        d > 72 ? '#bd0026' :
+            d > 63 ? '#f03b20' :
+                d > 54 ? '#f03b20' :
+                    d > 45 ? '#fd8d3c' :
+                        d > 36 ? '#fd8d3c' :
+                            d > 27 ? '#fecc5c' :
+                                d > 18 ? '#fecc5c' :
+                                    d > 9 ? '#ffffb2' :
+                                        d > -1 ? '#ffffb2' :
+                                            d > null ? '#808080' :
+                                                '#808080';
+}
+
+function styleUgCases(feature) {
+    //cannotStyleHere because data is unavailable at this point, must do it on intializing layer below
+    // border_sheet_data.forEach(element => {
+    //     if (element.Cases != "" && element.DName2017 == feature.properties.DNama2017) {
+    //         return {
+    //             fillColor: getColorUgCases(element.Cases),
+    //             weight: 1,
+    //             opacity: 1,
+    //             color: 'black',
+    //             dashArray: '0',
+    //             fillOpacity: 1
+    //         };
+    //     }
+    // });
+    // console.log(border_sheet_data);
+}
+
+function getRadiusBorder(d) {
+    return d / 3
+}
+
+
+
 
 let overlayLayers = {
     "Border Points": [border_points, "#cccc09"],
@@ -216,7 +255,8 @@ let ugandaLayers = {
     "Elderly(Over 60 in age)": [[[950, 10000, 20000, 30000, 45000], getColorelderly, "Elderly Rates"], styleelderly],
     "AIDS Rate": [[[440, 10000, 20000, 40000, 64000], getColoraids, "HIV Rates (15+ years old)"], styleaids],
     "Prisons Population": [[[15, 100, 1000, 3000, 6300], getColorprisons, "Total Prisoners"], styleprisons],
-    "GDP": [[[34, 100, 200, 500, 3300], getColorgdp, "GDP Per Capita (USD)"], stylegdp]
+    "GDP": [[[34, 100, 200, 500, 3300], getColorgdp, "GDP Per Capita (USD)"], stylegdp],
+    "Cases": [[[16, 32, 48, 64, 78], getColorUgCases, "Cases per District"], styleUgCases]
 };
 
 
@@ -262,7 +302,9 @@ function createCountryLayers() {
                     '<br>' + '<strong>Remanded:</strong> ' + layer.feature.properties.districts1_REMANDS +
                     '<br>' + '<strong>Convicted:</strong> ' + layer.feature.properties.districts1_CONVICTS +
                     '<br>' + '<strong>Debtors:</strong> ' + layer.feature.properties.districts1_DEBTORS +
-                    '<br>' + '<strong>Total Prisoners:</strong> ' + layer.feature.properties.districts1_2017_TOTAL_PRISONERS
+                    '<br>' + '<strong>Total Prisoners:</strong> ' + layer.feature.properties.districts1_2017_TOTAL_PRISONERS, {
+                    autoPan: false
+                }
                 );
                 layer.on('mouseover', function (e) {
                     this.openPopup();
@@ -281,6 +323,7 @@ let countrylayers = createCountryLayers();
 
 function add_overlay(element) {
     let layer_ = element.text
+    addPointLegend(layer_);
     highlight_button(element)
     Object.keys(overlayLayers).forEach(element => {
         map.removeLayer(layers[element]);
@@ -299,6 +342,15 @@ function add_overlay(element) {
                 })
             }
         });
+        if (layer_ == 'ICU Beds Per Health Center' && l.feature.properties.beds != undefined) {
+            l.setStyle({
+                radius: l.feature.properties.beds / 25,
+                color: "orange",
+                fillOpacity: 1,
+                weight: 3,
+            })
+
+        }
     });
 }
 
@@ -315,6 +367,20 @@ function add_ug_layer(element) {
     Object.keys(countrylayers[layer_]._layers).forEach(element => {
         let l = countrylayers[layer_]._layers[element];
         OEF(l, layer_)
+        if (layer_ == "Cases") {
+            border_sheet_data.forEach(element => {
+                if (element.Cases != "" && element.DNama2017 == l.feature.properties.DNama2017) {
+                    l.setStyle({
+                        fillColor: getColorUgCases(parseInt(element.Cases)),
+                        weight: 1,
+                        opacity: 1,
+                        color: 'black',
+                        dashArray: '0',
+                        fillOpacity: 1
+                    })
+                }
+            });
+        }
     });
 }
 
