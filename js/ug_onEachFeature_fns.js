@@ -32,7 +32,9 @@ function Population_OEF(layer) {
         '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
         '<br>' + '<strong>Total Population:</strong> ' + layer.feature.properties.TotalPopn +
         '<br>' + '<strong>Male:</strong> ' + layer.feature.properties.Male +
-        '<br>' + '<strong>Female:</strong> ' + layer.feature.properties.Female
+        '<br>' + '<strong>Female:</strong> ' + layer.feature.properties.Female, {
+        autoPan: false
+    }
     );
     layer.on('mouseover', function (e) {
         this.openPopup();
@@ -47,7 +49,9 @@ function Population_Density_OEF(layer) {
         '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
         '<br>' + '<strong>Total Population:</strong> ' + layer.feature.properties.TotalPopn +
         '<br>' + '<strong>Area:</strong> ' + layer.feature.properties.area +
-        '<br>' + '<strong>Population Density:</strong> ' + layer.feature.properties.districts1_density
+        '<br>' + '<strong>Population Density:</strong> ' + layer.feature.properties.districts1_density, {
+        autoPan: false
+    }
     );
     layer.on('mouseover', function (e) {
         this.openPopup();
@@ -61,7 +65,9 @@ function Poverty_Rate_OEF(layer) {
     layer.bindPopup(
         '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
         '<br>' + '<strong>Total Population:</strong> ' + layer.feature.properties.TotalPopn +
-        '<br>' + '<strong>Household Poverty Rates:</strong> ' + layer.feature.properties.districts1_HHPov16_17
+        '<br>' + '<strong>Household Poverty Rates:</strong> ' + layer.feature.properties.districts1_HHPov16_17, {
+        autoPan: false
+    }
     );
     layer.on('mouseover', function (e) {
         this.openPopup();
@@ -76,7 +82,9 @@ function elder_OEF(layer) {
         '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
         '<br>' + '<strong>Total Population:</strong> ' + layer.feature.properties.TotalPopn +
         '<br>' + '<strong>Elderly Rates:</strong> ' + layer.feature.properties.districts1_Eldery +
-        '<br>' + '<strong>Elderly Percentage:</strong> ' + layer.feature.properties.districts1_elderly_percentage
+        '<br>' + '<strong>Elderly Percentage:</strong> ' + layer.feature.properties.districts1_elderly_percentage, {
+        autoPan: false
+    }
     );
     layer.on('mouseover', function (e) {
         this.openPopup();
@@ -90,7 +98,9 @@ function aids_OEF(layer) {
     layer.bindPopup(
         '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
         '<br>' + '<strong>Total Population:</strong> ' + layer.feature.properties.TotalPopn +
-        '<br>' + '<strong>HIV rates (15+ years old):</strong> ' + layer.feature.properties["districts1_HIV_rates(15+yrs_old)"]
+        '<br>' + '<strong>HIV rates (15+ years old):</strong> ' + layer.feature.properties["districts1_HIV_rates(15+yrs_old)"], {
+        autoPan: false
+    }
     );
     layer.on('mouseover', function (e) {
         this.openPopup();
@@ -107,7 +117,9 @@ function prisons_OEF(layer) {
         '<br>' + '<strong>Remanded:</strong> ' + layer.feature.properties.districts1_REMANDS +
         '<br>' + '<strong>Convicted:</strong> ' + layer.feature.properties.districts1_CONVICTS +
         '<br>' + '<strong>Debtors:</strong> ' + layer.feature.properties.districts1_DEBTORS +
-        '<br>' + '<strong>Total Prisoners:</strong> ' + layer.feature.properties.districts1_2017_TOTAL_PRISONERS
+        '<br>' + '<strong>Total Prisoners:</strong> ' + layer.feature.properties.districts1_2017_TOTAL_PRISONERS, {
+        autoPan: false
+    }
     );
     layer.on('mouseover', function (e) {
         this.openPopup();
@@ -122,7 +134,9 @@ function gdp_OEF(layer) {
         '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
         '<br>' + '<strong>Rural GDP (Million USD):</strong> ' + layer.feature.properties["districts1_Rural_GDP(millionUSD)"] +
         '<br>' + '<strong>Urban GDP (Million USD):</strong> ' + layer.feature.properties["districts1_Urban_GDP(millionUSD)"] +
-        '<br>' + '<strong>GDP Per Capita(USD):</strong> ' + layer.feature.properties["districts1_GDP_Per_Capita(USD)"]
+        '<br>' + '<strong>GDP Per Capita(USD):</strong> ' + layer.feature.properties["districts1_GDP_Per_Capita(USD)"], {
+        autoPan: false
+    }
     );
     layer.on('mouseover', function (e) {
         this.openPopup();
@@ -144,7 +158,9 @@ function contacts_OEF(layer) {
         '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_DHO +
         '<br>' + '<br>' + '<strong>District Surveillance Focal Person(DSFP) Name:</strong> ' + layer.feature.properties.districts1_Name_DSFP +
         '<br>' + '<strong>Email:</strong> ' + layer.feature.properties.districts1_Email_DSFP +
-        '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_DSFP
+        '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_DSFP, {
+        autoPan: false
+    }
     );
     layer.on('mouseover', function (e) {
         this.openPopup();
@@ -162,7 +178,9 @@ function icu_OEF(layer) {
         layer.feature.properties.ownership + '<br>' + '<strong>Services:</strong> ' +
         layer.feature.properties.services + '<br>' + '<strong>Referral:</strong> ' +
         layer.feature.properties.referral + '<br>' + '<strong>ICU Beds:</strong> ' +
-        layer.feature.properties.beds);
+        layer.feature.properties.beds, {
+        autoPan: false
+    });
     layer.on('mouseover', function (e) {
         this.openPopup();
     });
@@ -180,7 +198,9 @@ function water_points_OEF(layer) {
         layer.feature.properties.operational_status + '<br>' + '<strong>Operator:</strong> ' +
         layer.feature.properties.operator + '<br>' + '<strong>Operator Type:</strong> ' +
         layer.feature.properties.operator_type + '<strong>Pump:</strong> ' +
-        layer.feature.properties.pump);
+        layer.feature.properties.pump, {
+        autoPan: false
+    });
     layer.on('mouseover', function (e) {
         this.openPopup();
     });
@@ -194,7 +214,9 @@ function markets_OEF(layer) {
         layer.feature.properties.addr_district + '<br>' + '<strong>SubCounty:</strong> ' +
         layer.feature.properties.addr_subcounty + '<br>' + '<strong>Parish:</strong> ' +
         layer.feature.properties.addr_parish + '<br>' + '<strong>Open Hours:</strong> ' +
-        layer.feature.properties.opening_hours);
+        layer.feature.properties.opening_hours, {
+        autoPan: false
+    });
     layer.on('mouseover', function (e) {
         this.openPopup();
     });
@@ -207,17 +229,21 @@ function border_points_OEF(layer) {
     let cases;
     border_sheet_data.forEach(element => {
         if (element.Border_cases != "" && element.Border == layer.feature.properties.Name) {
-        cases = element.Border_cases
+            cases = element.Border_cases
         }
     });
     if (cases) {
-    layer.bindPopup('<strong>District:</strong> ' + layer.feature.properties.District + '<br>' + '<strong>Name:</strong> ' +
-    layer.feature.properties.Name + '<br>' + '<strong>Path:</strong> ' +
-    layer.feature.properties.Path + '<br>' + '<strong>Number of Cases:</strong> ' + cases);
+        layer.bindPopup('<strong>District:</strong> ' + layer.feature.properties.District + '<br>' + '<strong>Name:</strong> ' +
+            layer.feature.properties.Name + '<br>' + '<strong>Path:</strong> ' +
+            layer.feature.properties.Path + '<br>' + '<strong>Number of Cases:</strong> ' + cases, {
+            autoPan: false
+        });
     } else {
-    layer.bindPopup('<strong>District:</strong> ' + layer.feature.properties.District + '<br>' + '<strong>Name:</strong> ' +
-        layer.feature.properties.Name + '<br>' + '<strong>Path:</strong> ' +
-        layer.feature.properties.Path);
+        layer.bindPopup('<strong>District:</strong> ' + layer.feature.properties.District + '<br>' + '<strong>Name:</strong> ' +
+            layer.feature.properties.Name + '<br>' + '<strong>Path:</strong> ' +
+            layer.feature.properties.Path, {
+            autoPan: false
+        });
     }
     layer.on('mouseover', function (e) {
         this.openPopup();
@@ -233,7 +259,9 @@ function health_centers_OEF(layer) {
         layer.feature.properties.Parish + '<br>' + '<strong>Name:</strong> ' +
         layer.feature.properties.Name + '<br>' + '<strong>Grade:</strong> ' +
         layer.feature.properties.Grade + '<br>' + '<strong>Ownership:</strong> ' +
-        layer.feature.properties.Ownership);
+        layer.feature.properties.Ownership, {
+        autoPan: false
+    });
     layer.on('mouseover', function (e) {
         this.openPopup();
     });
