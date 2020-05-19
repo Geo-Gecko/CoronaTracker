@@ -13,11 +13,11 @@ let african_sidepanel_text = {
 
 let ugandan_sidepanel_text = {
     "Infrastructure": [
-        "Border Points", "ICU Beds Per Health Center",
+        "Border Points", "Health Centers", "ICU Beds Per Health Center", "Market Places",
     ],
-    "UgandaMaps": [
+    "Districts Data": [
         "Poverty Rate", "Population Density", "Population", "Contacts",
-        "Elderly(Over 60 in age)", "AIDS Rate", "Prisons Population", "GDP"
+        "Elderly(Over 60 in age)", "AIDS Rate", "Prisons Population", "Water Access Points", "GDP"
     ]
 }
 
@@ -48,7 +48,7 @@ function create_sidepanel (sidepanel_text) {
             )
             if (key === "Infrastructure") {
                 button_element.setAttribute("onclick", "add_overlay(this);")
-            } else if (key === "UgandaMaps") {
+            } else if (key === "Districts Data") {
                 button_element.setAttribute("onclick", "add_ug_layer(this);")
             } else if (key === "Government Intervention") {
                 if (text_ === "Other Measures Taken") {
@@ -56,7 +56,7 @@ function create_sidepanel (sidepanel_text) {
                 } else {
                     button_element.setAttribute("id", text_.toLowerCase())
                 }
-                button_element.setAttribute("onclick", "govt_intervention_layer(this);") 
+                button_element.setAttribute("onclick", "govt_intervention_layer(this);")
             } else {
                 button_element.setAttribute("onclick", "add_layer(this);")
             }
