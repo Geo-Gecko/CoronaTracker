@@ -52,7 +52,7 @@ function addLegend(grades, ramp, title = null) {
 
 }
 
-function addPointLegend(grades, ramp, title = null) {
+function addPointLegend(grades, title) {
   if (pointLegend._map) {
     map.removeControl(pointLegend);
   }
@@ -60,14 +60,15 @@ function addPointLegend(grades, ramp, title = null) {
   pointLegend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info pointLegend');
-
-    grades = [1, 30, 55, 75],
-
     measure = [1, 41, 82, 163],
-      title = '<strong>Cases per border point</strong>'
+      label = '<strong>'+ title + '</strong>'
 
-    div.innerHTML += '<p><b>' + title + '</b></p><br>';
-    div.innerHTML += '<i class="circle" style="width:10px;height:10px;background-color:#cccc09;border-width:1px;border-color:black;"></i> No cases<br>';
+    div.innerHTML += '<p><b>' + label + '</b></p><br>';
+    if (grades.length == 0) {
+      div.innerHTML += '<i class="circle" style="width:10px;height:10px;background-color:orange;border-width:1px;border-color:black;"></i> Health Centre locations<br>';
+    } else if (title != "Cases per district") {
+      div.innerHTML += '<i class="circle" style="width:10px;height:10px;background-color:#cccc09;border-width:1px;border-color:black;"></i> No cases<br>';
+    }
     for (var i = 0; i < grades.length; i++) {
       for (var i = 0; i < grades.length; i++) {
         div.innerHTML += '<i class="circle" style="width: ' + getRadiusBorder (measure[i]) + 'px;height: '+ getRadiusBorder (measure[i]) +'px;"></i> ' +
