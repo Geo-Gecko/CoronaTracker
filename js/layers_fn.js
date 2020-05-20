@@ -108,6 +108,9 @@ function switch_map(map) {
           map.removeLayer(layers[element]);
       });
 
+      if (pointLegend._map) {
+        map.removeControl(pointLegend);
+      }
   
     map.options.minZoom = 3;
     map.options.maxZoom = 3;

@@ -23,8 +23,8 @@ function OEF(layer, type) {
         icu_OEF(layer)
     } else if (type == "Market Places") {
         markets_OEF(layer)
-    } else if (type == "Water Access Points") {
-        water_points_OEF(layer)
+    } else if (type == "District Cases Points") {
+        district_points_OEF(layer)
     }
 }
 function Population_OEF(layer) {
@@ -262,6 +262,27 @@ function health_centers_OEF(layer) {
         layer.feature.properties.Ownership, {
         autoPan: false
     });
+    layer.on('mouseover', function (e) {
+        this.openPopup();
+    });
+    layer.on('mouseout', function (e) {
+        this.closePopup();
+    });
+}
+
+function district_points_OEF(layer) {
+    let cases;
+    border_sheet_data.forEach(element => {
+        if (element.Cases != "" && element.DNama2017 == layer.feature.properties.DNama2017) {
+            cases = element.Cases
+        }
+    });
+    if (cases) {
+        layer.bindPopup('<strong>District:</strong> ' + layer.feature.properties.DNama2017 + '<br>' + '<strong>Population:</strong> ' +
+            layer.feature.properties.TotalPopn + '<br>' + '<strong>Number of Cases:</strong> ' + cases, {
+            autoPan: false
+        });
+    }
     layer.on('mouseover', function (e) {
         this.openPopup();
     });

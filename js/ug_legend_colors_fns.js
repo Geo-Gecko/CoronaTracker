@@ -210,7 +210,7 @@ function getColorUgCases(d) {
 }
 
 function styleUgCases(feature) {
-    //cannotStyleHere because data is unavailable at this point, must do it on intializing layer below
+    //cannot Style Here because border_sheet_data is unavailable at this point, must do it on intializing layer below
     // border_sheet_data.forEach(element => {
     //     if (element.Cases != "" && element.DName2017 == feature.properties.DNama2017) {
     //         return {
@@ -235,7 +235,7 @@ function getRadiusBorder(d) {
 
 let overlayLayers = {
     "Border Points": [border_points, "#cccc09"],
-    // "Health Centers": [health_centers, "red"],
+    "District Cases Points": [districts_data_points, "red"],
     "ICU Beds Per Health Center": [icu_beds, "orange"],
     // "Market Places": [markets, "green"],
     // "Water Access Points": [water_points, "blue"],
@@ -322,8 +322,7 @@ function createCountryLayers() {
 let countrylayers = createCountryLayers();
 
 function add_overlay(element) {
-    let layer_ = element.text
-    addPointLegend(layer_);
+    let layer_ = element.text;
     highlight_button(element)
     Object.keys(overlayLayers).forEach(element => {
         map.removeLayer(layers[element]);
@@ -332,24 +331,39 @@ function add_overlay(element) {
     Object.keys(layers[layer_]._layers).forEach(element => {
         let l = layers[layer_]._layers[element];
         OEF(l, layer_)
-        border_sheet_data.forEach(element => {
-            if (element.Border_cases != "" && element.Border == l.feature.properties.Name) {
-                l.setStyle({
-                    radius: element.Border_cases / 3,
-                    color: 'red',
-                    fillOpacity: 0,
-                    weight: 3,
-                })
-            }
-        });
+        if (layer_ == 'Border Points') {
+            addPointLegend([1, 30, 55, 75], "Cases per border point");
+            border_sheet_data.forEach(element => {
+                if (element.Border_cases != "" && element.Border == l.feature.properties.Name) {
+                    l.setStyle({
+                        radius: element.Border_cases / 3,
+                        color: 'red',
+                        fillOpacity: 0,
+                        weight: 3,
+                    })
+                }
+            });
+        }
         if (layer_ == 'ICU Beds Per Health Center' && l.feature.properties.beds != undefined) {
+            addPointLegend([], "Health Center");
+        }
+        if (layer_ == "District Cases Points") {
+            addPointLegend([1, 30, 55, 75], "Cases per district");
             l.setStyle({
-                radius: l.feature.properties.beds / 25,
-                color: "orange",
-                fillOpacity: 1,
-                weight: 3,
+                fillOpacity: 0,
+                opacity: 0,
             })
-
+            border_sheet_data.forEach(element => {
+                if (element.Cases != "" && element.Cases != "null" && element.DNama2017 == l.feature.properties.DNama2017) {
+                    l.setStyle({
+                        radius: element.Cases / 3,
+                        color: "red",
+                        fillOpacity: 0,
+                        weight: 3,
+                        opacity: 1,
+                    })
+                }
+            });
         }
     });
 }
