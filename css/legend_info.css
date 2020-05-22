@@ -29,20 +29,3 @@
     border-radius: 10px;
 
 }
-
-.leaflet-control-layers-expanded {
-    padding: 6px 10px 6px 6px;
-    color: #d3d0d0 !important;
-    background: none !important;
-    font-size: large;
-}
-
-.leaflet-control-layers {
-    box-shadow: none !important;
-    background: none !important;
-    border-radius: 5px;
-}
-
-.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar{
-  border: none !important;
-}
