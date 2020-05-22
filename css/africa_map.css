@@ -9,7 +9,7 @@
 }
 
 #sidebar a:hover {
-  color: #f8b739;
+  color: #f8b739; 
 }
 
 .button_title_content {
@@ -127,7 +127,7 @@ h6 {
     overflow-y: scroll;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
- 
+   
 }
 .sidebar-list::-webkit-scrollbar { /* WebKit */
     width: 0;
