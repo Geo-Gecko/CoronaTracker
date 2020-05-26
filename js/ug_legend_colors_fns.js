@@ -1,31 +1,5 @@
 // function produce_uganda() {
 
-function getColorpop(d) {
-  return d > 2000000 ? '#67000d' :
-    d > 1999999 ? '#67000d' :
-    d > 350000 ? '#d42020' :
-    d > 349999 ? '#d42020' :
-    d > 250000 ? '#fc7050' :
-    d > 249999 ? '#fc7050' :
-    d > 150000 ? '#fdbea5' :
-    d > 149999 ? '#fdbea5' :
-    d > 50000 ? '#fff5f0' :
-    d > 49999 ? '#fff5f0' :
-    d > 0 ? '#fff5f0' :
-    '#808080';
-}
-
-function stylepop(feature) {
-  return {
-    fillColor: getColorpop(feature.properties.TotalPopn),
-    weight: 1,
-    opacity: 1,
-    color: 'black',
-    dashArray: '0',
-    fillOpacity: 1
-  };
-}
-
 // //density
 function getColorden(d) {
   return d > 7500 ? '#993404' :
@@ -83,16 +57,16 @@ function stylepov(feature) {
 
 // //elderly
 function getColorelderly(d) {
-  return d > 45000 ? '#253494' :
-    d > 44999 ? '#253494' :
-    d > 30000 ? '#2c7fb8' :
-    d > 29999 ? '#2c7fb8' :
-    d > 20000 ? '#41b6c4' :
-    d > 19999 ? '#41b6c4' :
-    d > 10000 ? '#a1dab4' :
-    d > 9999 ? '#a1dab4' :
-    d > 950 ? '#ffffcc' :
-    d > 949 ? '#ffffcc' :
+  return d > 15 ? '#253494' :
+    d > 14.9 ? '#253494' :
+    d > 10 ? '#2c7fb8' :
+    d > 9.9 ? '#2c7fb8' :
+    d > 5 ? '#41b6c4' :
+    d > 4.9 ? '#41b6c4' :
+    d > 3 ? '#a1dab4' :
+    d > 2.9 ? '#a1dab4' :
+    d > 1 ? '#ffffcc' :
+    d > 0 ? '#ffffcc' :
     d > null ? '#808080' :
     '#808080';
 }
@@ -100,7 +74,7 @@ function getColorelderly(d) {
 
 function styleelderly(feature) {
   return {
-    fillColor: getColorelderly(parseFloat(feature.properties.districts1_Eldery.split(",").join(""))),
+    fillColor: getColorelderly(parseFloat(feature.properties.districts1_elderly_percentage.split(",").join(""))),
     weight: 1,
     opacity: 1,
     color: 'black',
@@ -111,24 +85,24 @@ function styleelderly(feature) {
 
 // //aids
 function getColoraids(d) {
-  return d > 64000 ? '#00441b' :
-    d > 63999 ? '#00441b' :
-    d > 40000 ? '#2a924a' :
-    d > 39999 ? '#2a924a' :
-    d > 20000 ? '#7bc87c' :
-    d > 19999 ? '#7bc87c' :
-    d > 10000 ? '#caeac3' :
-    d > 9999 ? '#caeac3' :
-    d > 440 ? '#f7fcf5' :
-    d > 339 ? '#f7fcf5' :
+  return d > 15 ? '#00441b' :
+    d > 14.9 ? '#00441b' :
+    d > 10 ? '#2a924a' :
+    d > 9.9 ? '#2a924a' :
+    d > 5 ? '#7bc87c' :
+    d > 4.9 ? '#7bc87c' :
+    d > 3 ? '#caeac3' :
+    d > 2.9 ? '#caeac3' :
     d > 0 ? '#f7fcf5' :
+    d > -1 ? '#f7fcf5' :
+    d > null ? '#f7fcf5' :
     '#808080';
 }
 
 
 function styleaids(feature) {
   return {
-    fillColor: getColoraids(feature.properties["districts1_HIV_rates(15+yrs_old)"]),
+    fillColor: getColoraids(feature.properties["districts1_HIV_percentage"]),
     weight: 1,
     opacity: 1,
     color: 'black',
@@ -167,16 +141,16 @@ function styleprisons(feature) {
 
 // //water
 function getColorwater(d) {
-  return d > 1500 ? '#08306b' :
-    d > 1499 ? '#08306b' :
-    d > 100 ? '#2879b9' :
-    d > 99 ? '#2879b9' :
-    d > 50 ? '#73b3d8' :
-    d > 49 ? '#73b3d8' :
-    d > 10 ? '#c8ddf0' :
-    d > 9 ? '#c8ddf0' :
-    d > 1 ? '#f7fbff' :
+  return d > 80 ? '#08306b' :
+    d > 79 ? '#08306b' :
+    d > 60 ? '#2879b9' :
+    d > 59 ? '#2879b9' :
+    d > 40 ? '#73b3d8' :
+    d > 39 ? '#73b3d8' :
+    d > 20 ? '#c8ddf0' :
+    d > 19 ? '#c8ddf0' :
     d > 0 ? '#f7fbff' :
+    d > -1 ? '#f7fbff' :
     d > null ? '#808080' :
     '#808080';
 }
@@ -184,7 +158,7 @@ function getColorwater(d) {
 
 function stylewater(feature) {
   return {
-    fillColor: getColorwater(feature.properties.water_points),
+    fillColor: getColorwater(parseFloat(feature.properties.water1_water_percentage.split(",").join(""))),
     weight: 1,
     opacity: 1,
     color: 'black',
@@ -220,6 +194,23 @@ function stylegdp(feature) {
   };
 }
 
+// // //border districts
+function getColorborder(d) {
+  return d > 1 ? '#fd8d3c' :
+    d > 0 ? '#fd8d3c' :
+    '#ffffff';
+}
+
+function styleborder(feature) {
+  return {
+    fillColor: getColorborder(parseFloat(feature.properties.districts1_border_district.split(",").join(""))),
+    weight: 1,
+    opacity: 1,
+    color: 'black',
+    dashArray: '0',
+    fillOpacity: 1
+  };
+}
 
 let overlayLayers = {
   "Border Points": [border_points, "#cccc09"],
@@ -229,11 +220,6 @@ let overlayLayers = {
 };
 
 let ugandaLayers = {
-  "Population": [
-    [
-      [5000, 150000, 250000, 350000, 2000000], getColorpop, "Population"
-    ], stylepop
-  ],
   "Contacts": [
     [
       [], , "Hover over district <br> for contact information"
@@ -247,22 +233,22 @@ let ugandaLayers = {
   ],
   "Population Density": [
     [
-      [7, 100, 500, 1000, 7500], getColorden, "Population Density"
+      [7, 100, 500, 1000, 7500], getColorden, "Population Density (people per sq km)"
     ], styleden
   ],
-  "Poverty Rate": [
+  "Poverty Percentage": [
     [
-      [0.3, 2, 3, 5, 15], getColorpov, "Household Poverty Rates"
+      [0.3, 2, 3, 5, 15], getColorpov, "Household Poverty Percentage"
     ], stylepov
   ],
-  "Elderly(Over 60 in age)": [
+  "Elderly Percentage(Over 60 in age)": [
     [
-      [950, 10000, 20000, 30000, 45000], getColorelderly, "Elderly Rates"
+      [1, 3, 5, 10, 15], getColorelderly, "Elderly Percentage(Over 60 in age)"
     ], styleelderly
   ],
-  "AIDS Rate": [
+  "HIV/AIDS Percentage": [
     [
-      [440, 10000, 20000, 40000, 64000], getColoraids, "HIV Rates (15+ years old)"
+      [0, 3, 5, 10, 15], getColoraids, "HIV/AIDS Percentage (15+ years old)"
     ], styleaids
   ],
   "Prisons Population": [
@@ -270,10 +256,15 @@ let ugandaLayers = {
       [15, 100, 1000, 3000, 6300], getColorprisons, "Total Prisoners"
     ], styleprisons
   ],
-  "Water Access Points": [
+  "Water Source Coverage": [
     [
-      [1, 10, 50, 100, 1500], getColorwater, "Water Access Points"
+      [0, 20, 40, 60, 80], getColorwater, "Water Source Coverage (%)"
     ], stylewater
+  ],
+  "Border Districts": [
+    [
+      [], getColorborder, ""
+    ], styleborder
   ],
   "GDP": [
     [
