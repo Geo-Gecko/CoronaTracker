@@ -1,4 +1,4 @@
-var africa_data = {
+let africa_data = {
 "type": "FeatureCollection",
 "name": "africa_data",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },

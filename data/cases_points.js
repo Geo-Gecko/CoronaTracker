@@ -1,4 +1,4 @@
-var cases_points = {
+let cases_points = {
 "type": "FeatureCollection",
 "name": "cases_points",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
