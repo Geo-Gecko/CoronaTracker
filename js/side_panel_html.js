@@ -17,7 +17,7 @@ let ugandan_sidepanel_text = {
     ],
     "UgandaMaps": [
         "Poverty Rate", "Population Density", "Population", "Contacts",
-        "Elderly(Over 60 in age)", "AIDS Rate", "Prisons Population", "GDP"
+        "Elderly(Over 60 in age)", "AIDS Rate", "Prisons Population", "GDP", "Risk Model"
     ]
 }
 

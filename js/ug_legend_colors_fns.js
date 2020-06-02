@@ -194,6 +194,33 @@ function stylegdp(feature) {
 }
 
 
+// // //risk model
+function getColormodel(d) {
+  return d > 190 ? '#bd0026' :
+    d > 189 ? '#bd0026' :
+    d > 100 ? '#ff4040' :
+    d > 99 ? '#ff4040' :
+    d > 60 ? '#ff8080' :
+    d > 59 ? '#ff8080' :
+    d > 30 ? '#ffbfbf' :
+    d > 29 ? '#ffbfbf' :
+    d > 0 ? '#ffffff' :
+    d > -1 ? '#ffffff' :
+    d > null ? '#808080' :
+    '#808080';
+}
+
+function stylemodel(feature) {
+  return {
+    fillColor: getColormodel(feature.properties["DN"]),
+    weight: 1,
+    opacity: 1,
+    color: 'black',
+    dashArray: '0',
+    fillOpacity: 1
+  };
+}
+
 let overlayLayers = {
     "Border Points": [border_points, "#cccc09"],
     // "Health Centers": [health_centers, "red"],
@@ -216,7 +243,8 @@ let ugandaLayers = {
     "Elderly(Over 60 in age)": [[[950, 10000, 20000, 30000, 45000], getColorelderly, "Elderly Rates"], styleelderly],
     "AIDS Rate": [[[440, 10000, 20000, 40000, 64000], getColoraids, "HIV Rates (15+ years old)"], styleaids],
     "Prisons Population": [[[15, 100, 1000, 3000, 6300], getColorprisons, "Total Prisoners"], styleprisons],
-    "GDP": [[[34, 100, 200, 500, 3300], getColorgdp, "GDP Per Capita (USD)"], stylegdp]
+    "GDP": [[[34, 100, 200, 500, 3300], getColorgdp, "GDP Per Capita (USD)"], stylegdp],
+    "Risk Model": [[[0, 30, 60, 100, 190], getColormodel, "Risk Areas"], stylemodel]
 };
 
 
