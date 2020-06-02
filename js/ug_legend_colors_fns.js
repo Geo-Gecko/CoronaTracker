@@ -212,6 +212,33 @@ function styleborder(feature) {
   };
 }
 
+// // //risk model
+function getColormodel(d) {
+  return d > 190 ? '#bd0026' :
+    d > 189 ? '#bd0026' :
+    d > 100 ? '#ff4040' :
+    d > 99 ? '#ff4040' :
+    d > 60 ? '#ff8080' :
+    d > 59 ? '#ff8080' :
+    d > 30 ? '#ffbfbf' :
+    d > 29 ? '#ffbfbf' :
+    d > 0 ? '#ffffff' :
+    d > -1 ? '#ffffff' :
+    d > null ? '#808080' :
+    '#808080';
+}
+
+function stylemodel(feature) {
+  return {
+    fillColor: getColormodel(feature.properties["DN"]),
+    weight: 1,
+    opacity: 1,
+    color: 'black',
+    dashArray: '0',
+    fillOpacity: 1
+  };
+}
+
 let overlayLayers = {
   "Border Points": [border_points, "#cccc09"],
   "Health Centers": [health_centers, "red"],
@@ -270,9 +297,13 @@ let ugandaLayers = {
     [
       [34, 100, 200, 500, 3300], getColorgdp, "GDP Per Capita (USD)"
     ], stylegdp
+  ],
+  "Risk Model": [
+    [
+      [0, 30, 60, 100, 190], getColormodel, "Risk Areas"
+    ], stylemodel
   ]
 };
-
 
 function createOverLayers() {
 

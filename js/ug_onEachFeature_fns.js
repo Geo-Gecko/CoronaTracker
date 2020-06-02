@@ -25,7 +25,7 @@ function OEF(layer, type) {
         water_points_OEF(layer)
     } else if (type == "Border Districts") {
         border_districts_OEF(layer)
-    }
+    } 
 }
 
 function Population_Density_OEF(layer) {

@@ -17,7 +17,7 @@ let ugandan_sidepanel_text = {
     ],
     "Districts Data": [
         "Border Districts", "Poverty Percentage", "Population Density", "Contacts",
-        "Elderly Percentage(Over 60 in age)", "HIV/AIDS Percentage", "Prisons Population", "Water Source Coverage", "GDP"
+        "Elderly Percentage(Over 60 in age)", "HIV/AIDS Percentage", "Prisons Population", "Water Source Coverage", "GDP", "Risk Model"
     ]
 }
 

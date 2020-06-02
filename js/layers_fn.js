@@ -4,7 +4,7 @@ function add_layer(element) {
       map.removeLayer(african_data)
     }
     highlight_button(element)
-  
+
     let layer_text = element.text
     let initial_data_obj = {}
 
@@ -18,11 +18,11 @@ function add_layer(element) {
             ...layer_gsheet_keys
         ]
     })
-  
+
     african_data = L.geoJson(africa_data, {
       style: style_fn
     }).addTo(map);
-  
+
     african_data.eachLayer(function(layer) {
       let country_ = layer.feature.properties.COUNTRY;
       let popup_info = []
@@ -43,7 +43,7 @@ function add_layer(element) {
         this.closePopup();
       });
     });
-  
+
     function style_fn(feature) {
         let length_ = initial_data_obj[feature.properties.COUNTRY].length
         return {
@@ -78,18 +78,18 @@ function switch_map(map) {
       // open sidebar and add layer after 1 second
       $("#sidebar").attr("class", "sidebar sidebar-left leaflet-touch")
       $("a").filter(function() {
-        return $(this).text() === "Poverty Rate";
+        return $(this).text() === "Poverty Percentage";
       }).click()
       $("a").filter(function() {
         return $(this).text() === "Border Points";
       }).click()
     }, 1000)
-    
+
     setTimeout(function(){
       // replace text just before reopening sidepanel
       $("#create-sidebar-list").empty()
       create_sidepanel(ugandan_sidepanel_text)
-      
+
       $("#homeSubmenu0").attr("class", "list-unstyled collapse show")
       $("#homeSubmenu1").attr("class", "list-unstyled collapse show")
       $("a[onclick='add_ug_layer(this);']")[0].setAttribute("style", "color: #f8b739;")
@@ -97,10 +97,10 @@ function switch_map(map) {
 
 
     $("a[onclick='switch_map(map);']").text('AFRICA')
-  
+
   } else if (map.options.minZoom === 7) {
     // zoom out to Africa
-  
+
       Object.keys(countrylayers).forEach(element => {
           map.removeLayer(countrylayers[element]);
       });
@@ -108,7 +108,7 @@ function switch_map(map) {
           map.removeLayer(layers[element]);
       });
 
-  
+
     map.options.minZoom = 3;
     map.options.maxZoom = 3;
     map.flyTo([2.8, 15.24], 2, {
@@ -123,12 +123,12 @@ function switch_map(map) {
         return $(this).text() === "Cases";
       }).click()
     }, 1000)
-    
+
     setTimeout(function(){
       // replace text just before reopening sidepanel
       $("#create-sidebar-list").empty()
       create_sidepanel(african_sidepanel_text)
-      
+
       $("#homeSubmenu0").attr("class", "list-unstyled collapse show")
       $("a[onclick='add_layer(this);']")[0].setAttribute("style", "color: #f8b739;")
     }, 500)
