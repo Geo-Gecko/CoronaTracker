@@ -172,15 +172,11 @@ function icu_OEF(layer) {
 }
 
 function water_points_OEF(layer) {
-    layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.name + '<br>' + '<strong>County:</strong> ' +
-        layer.feature.properties.addr_county + '<br>' + '<strong>Village:</strong> ' +
-        layer.feature.properties.addr_village + '<br>' + '<strong>Type:</strong> ' +
-        layer.feature.properties.waterway + '<br>' + '<strong>Amenity:</strong> ' +
-        layer.feature.properties.amenity + '<br>' + '<strong>Status:</strong> ' +
-        layer.feature.properties.operational_status + '<br>' + '<strong>Operator:</strong> ' +
-        layer.feature.properties.operator + '<br>' + '<strong>Operator Type:</strong> ' +
-        layer.feature.properties.operator_type + '<strong>Pump:</strong> ' +
-        layer.feature.properties.pump);
+  layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.name + '<br>' + '<strong>District:</strong> ' +
+      layer.feature.properties.addr_district + '<br>' + '<strong>SubCounty:</strong> ' +
+      layer.feature.properties.addr_subcounty + '<br>' + '<strong>Parish:</strong> ' +
+      layer.feature.properties.addr_parish + '<br>' + '<strong>Number of water access points:</strong> ' +
+      layer.feature.properties.water_points);
     layer.on('mouseover', function (e) {
         this.openPopup();
     });
@@ -228,12 +224,10 @@ function border_points_OEF(layer) {
 }
 
 function health_centers_OEF(layer) {
-    layer.bindPopup('<strong>District:</strong> ' + layer.feature.properties.District + '<br>' + '<strong>SubCounty:</strong> ' +
-        layer.feature.properties.Subcounty + '<br>' + '<strong>Parish:</strong> ' +
-        layer.feature.properties.Parish + '<br>' + '<strong>Name:</strong> ' +
-        layer.feature.properties.Name + '<br>' + '<strong>Grade:</strong> ' +
-        layer.feature.properties.Grade + '<br>' + '<strong>Ownership:</strong> ' +
-        layer.feature.properties.Ownership);
+    layer.bindPopup('<strong>District:</strong> ' + layer.feature.properties.District + '<br>' + '<strong>Region:</strong> ' +
+        layer.feature.properties.Region + '<br>' + '<strong>Division:</strong> ' +
+        layer.feature.properties.Division + '<br>' + '<strong>Name:</strong> ' +
+        layer.feature.properties.Name);
     layer.on('mouseover', function (e) {
         this.openPopup();
     });
