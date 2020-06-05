@@ -1,13 +1,11 @@
 function OEF(layer, type) {
-    if (type == "Population") {
-        Population_OEF(layer)
-    } else if (type == "Population Density") {
+     if (type == "Population Density") {
         Population_Density_OEF(layer)
-    } else if (type == "Poverty Rate") {
+    } else if (type == "Poverty Percentage") {
         Poverty_Rate_OEF(layer)
-    } else if (type == "Elderly(Over 60 in age)") {
+    } else if (type == "Elderly Percentage(Over 60 in age)") {
         elder_OEF(layer)
-    } else if (type == "AIDS Rate") {
+    } else if (type == "HIV/AIDS Percentage") {
         aids_OEF(layer)
     } else if (type == "Prisons Population") {
         prisons_OEF(layer)
@@ -23,23 +21,11 @@ function OEF(layer, type) {
         icu_OEF(layer)
     } else if (type == "Market Places") {
         markets_OEF(layer)
-    } else if (type == "Water Access Points") {
+    } else if (type == "Water Source Coverage") {
         water_points_OEF(layer)
+    } else if (type == "Border Districts") {
+        border_districts_OEF(layer)
     }
-}
-function Population_OEF(layer) {
-    layer.bindPopup(
-        '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
-        '<br>' + '<strong>Total Population:</strong> ' + layer.feature.properties.TotalPopn +
-        '<br>' + '<strong>Male:</strong> ' + layer.feature.properties.Male +
-        '<br>' + '<strong>Female:</strong> ' + layer.feature.properties.Female
-    );
-    layer.on('mouseover', function (e) {
-        this.openPopup();
-    });
-    layer.on('mouseout', function (e) {
-        this.closePopup();
-    });
 }
 
 function Population_Density_OEF(layer) {
@@ -61,7 +47,7 @@ function Poverty_Rate_OEF(layer) {
     layer.bindPopup(
         '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
         '<br>' + '<strong>Total Population:</strong> ' + layer.feature.properties.TotalPopn +
-        '<br>' + '<strong>Household Poverty Rates:</strong> ' + layer.feature.properties.districts1_HHPov16_17
+        '<br>' + '<strong>Household Poverty Percentage:</strong> ' + layer.feature.properties.districts1_HHPov16_17
     );
     layer.on('mouseover', function (e) {
         this.openPopup();
@@ -90,7 +76,20 @@ function aids_OEF(layer) {
     layer.bindPopup(
         '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
         '<br>' + '<strong>Total Population:</strong> ' + layer.feature.properties.TotalPopn +
-        '<br>' + '<strong>HIV rates (15+ years old):</strong> ' + layer.feature.properties["districts1_HIV_rates(15+yrs_old)"]
+        '<br>' + '<strong>HIV/AIDS Percentage(15+ years old):</strong> ' + layer.feature.properties["districts1_HIV_percentage"]
+    );
+    layer.on('mouseover', function (e) {
+        this.openPopup();
+    });
+    layer.on('mouseout', function (e) {
+        this.closePopup();
+    });
+}
+
+function border_districts_OEF(layer) {
+    layer.bindPopup(
+        '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
+        '<br>' + '<strong>Total Population:</strong> ' + layer.feature.properties.TotalPopn
     );
     layer.on('mouseover', function (e) {
         this.openPopup();
@@ -175,8 +174,8 @@ function water_points_OEF(layer) {
   layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.name + '<br>' + '<strong>District:</strong> ' +
       layer.feature.properties.addr_district + '<br>' + '<strong>SubCounty:</strong> ' +
       layer.feature.properties.addr_subcounty + '<br>' + '<strong>Parish:</strong> ' +
-      layer.feature.properties.addr_parish + '<br>' + '<strong>Number of water access points:</strong> ' +
-      layer.feature.properties.water_points);
+      layer.feature.properties.addr_parish + '<br>' + '<strong>Water Source Coverage (%):</strong> ' +
+      layer.feature.properties.water1_water_percentage);
     layer.on('mouseover', function (e) {
         this.openPopup();
     });
