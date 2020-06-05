@@ -169,10 +169,9 @@ function icu_OEF(layer) {
 }
 
 function water_points_OEF(layer) {
-  layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.name + '<br>' + '<strong>District:</strong> ' +
-      layer.feature.properties.addr_district + '<br>' + '<strong>SubCounty:</strong> ' +
-      layer.feature.properties.addr_subcounty + '<br>' + '<strong>Parish:</strong> ' +
-      layer.feature.properties.addr_parish + '<br>' + '<strong>Water Source Coverage (%):</strong> ' +
+  layer.bindPopup('<strong>District:</strong> ' +
+      layer.feature.properties.districts1_DName2016 + '<br>' + '<strong>Total Population:</strong> ' +
+      layer.feature.properties.TotalPopn + '<br>' + '<strong>Water Access Points (%):</strong> ' +
       layer.feature.properties.water1_water_percentage);
     layer.on('mouseover', function (e) {
         this.openPopup();
