@@ -214,9 +214,8 @@ function styleborder(feature) {
 
 let overlayLayers = {
   "Border Points": [border_points, "#cccc09"],
-  "Health Centers": [health_centers, "red"],
+  "Health Referral Centers": [health_centers, "red"],
   "ICU Beds Per Health Center": [icu_beds, "orange"],
-  "Market Places": [markets, "green"],
 };
 
 let ugandaLayers = {

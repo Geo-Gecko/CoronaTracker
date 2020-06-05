@@ -15,13 +15,11 @@ function OEF(layer, type) {
         contacts_OEF(layer)
     } else if (type == "Border Points") {
         border_points_OEF(layer)
-    } else if (type == "Health Centers") {
+    } else if (type == "Health Referral Centers") {
         health_centers_OEF(layer)
     } else if (type == "ICU Beds Per Health Center") {
         icu_OEF(layer)
-    } else if (type == "Market Places") {
-        markets_OEF(layer)
-    } else if (type == "Water Source Coverage") {
+    } else if (type == "Water Access Points") {
         water_points_OEF(layer)
     } else if (type == "Border Districts") {
         border_districts_OEF(layer)
