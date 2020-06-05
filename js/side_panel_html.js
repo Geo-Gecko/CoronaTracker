@@ -17,7 +17,7 @@ let ugandan_sidepanel_text = {
     ],
     "Districts Data": [
         "Poverty Rate", "Population Density", "Population", "Contacts",
-        "Elderly(Over 60 in age)", "AIDS Rate", "Prisons Population", "Water Access Points", "GDP"
+        "Elderly(Over 60 in age)", "AIDS Rate", "Prisons Population", /*"Water Access Points",*/ "GDP"
     ]
 }
 
