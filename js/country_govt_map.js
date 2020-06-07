@@ -33,7 +33,7 @@ let govt_intervention_layer = (element) => {
       map.removeLayer(african_data)
     }
 
-    african_data = L.geoJSON(africa_data, {
+    african_data = L.geoJSON(african_object_data, {
       style: stylefiscal
     }).addTo(map);
 
@@ -93,7 +93,7 @@ let govt_intervention_layer = (element) => {
       map.removeLayer(african_data)
     }
 
-    african_data = L.geoJSON(africa_data, {
+    african_data = L.geoJSON(african_object_data, {
       style: stylefiscal
     }).addTo(map);
 
@@ -156,7 +156,7 @@ let govt_intervention_layer = (element) => {
 
 
 
-    african_data = L.geoJSON(africa_data, {
+    african_data = L.geoJSON(african_object_data, {
       style: stylefiscal
     }).addTo(map);
 
@@ -227,7 +227,7 @@ let govt_intervention_layer = (element) => {
       fillColor: '#AAA583'
     };
 
-    african_data = L.geoJSON(africa_data, {
+    african_data = L.geoJSON(african_object_data, {
       style: style2
     }).addTo(map);
 

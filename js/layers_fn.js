@@ -19,30 +19,42 @@ function add_layer(element) {
         ]
     })
   
-    african_data = L.geoJson(africa_data, {
-      style: style_fn
-    }).addTo(map);
-  
-    african_data.eachLayer(function(layer) {
-      let country_ = layer.feature.properties.COUNTRY;
-      let popup_info = []
-      layers_[layer_text]["popup_text"].forEach((text_, index) => {
-          popup_info.push(
-            `<br><strong>${text_}:</strong>${initial_data_obj[country_][index]}`
-          )
+    function create_layer() {
+      african_data = L.geoJson(african_object_data, {
+        style: style_fn
+      }).addTo(map);
+    
+      african_data.eachLayer(function(layer) {
+        let country_ = layer.feature.properties.COUNTRY;
+        let popup_info = []
+        layers_[layer_text]["popup_text"].forEach((text_, index) => {
+            popup_info.push(
+              `<br><strong>${text_}:</strong>${initial_data_obj[country_][index]}`
+            )
+        })
+        layer.bindPopup(
+          `<strong>Country:</strong>${country_ + popup_info.join("")}`, {
+            autoPan: false
+          }
+        );
+        layer.on('mouseover', function(e) {
+          this.openPopup();
+        });
+        layer.on('mouseout', function(e) {
+          this.closePopup();
+        });
+      });
+    }
+    if (!african_object_data) {
+      axios.get(
+        "https://storage.googleapis.com/database-data-1/africacorona_static_files/african_object_data.json"
+      ).then(response_ => {
+        african_object_data = response_.data
+        create_layer()
       })
-      layer.bindPopup(
-        `<strong>Country:</strong>${country_ + popup_info.join("")}`, {
-          autoPan: false
-        }
-      );
-      layer.on('mouseover', function(e) {
-        this.openPopup();
-      });
-      layer.on('mouseout', function(e) {
-        this.closePopup();
-      });
-    });
+    } else if (african_object_data) {
+      create_layer()
+    }
   
     function style_fn(feature) {
         let length_ = initial_data_obj[feature.properties.COUNTRY].length
