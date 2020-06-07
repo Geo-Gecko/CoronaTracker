@@ -133,7 +133,8 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png
   maxZoom: 19
 }).addTo(map);
 
-let african_data, african_object_data;
+let african_data, african_object_data,
+  districts_data_object;
 
 
 

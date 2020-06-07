@@ -303,31 +303,42 @@ function createCountryLayers() {
 
   let layers = [];
 
-  Object.keys(ugandaLayers).forEach(element => {
+  function create_ug_layer() {
+    Object.keys(ugandaLayers).forEach(element => {
+      layers[element] = new L.geoJson(districts_data_object, { //ugandaLayers[element], {
 
-    layers[element] = new L.geoJson(districts_data, { //ugandaLayers[element], {
-
-      pane: 'choroplethPane',
-      style: ugandaLayers[element][1],
-      onEachFeature: function(feature, layer) {
-        layer.bindPopup(
-          '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
-          '<br>' + '<strong>Total Population:</strong> ' + layer.feature.properties.TotalPopn +
-          '<br>' + '<strong>Remanded:</strong> ' + layer.feature.properties.districts1_REMANDS +
-          '<br>' + '<strong>Convicted:</strong> ' + layer.feature.properties.districts1_CONVICTS +
-          '<br>' + '<strong>Debtors:</strong> ' + layer.feature.properties.districts1_DEBTORS +
-          '<br>' + '<strong>Total Prisoners:</strong> ' + layer.feature.properties.districts1_2017_TOTAL_PRISONERS
-        );
-        layer.on('mouseover', function(e) {
-          this.openPopup();
-        });
-        layer.on('mouseout', function(e) {
-          this.closePopup();
-        });
-      }
+        pane: 'choroplethPane',
+        style: ugandaLayers[element][1],
+        onEachFeature: function(feature, layer) {
+          layer.bindPopup(
+            '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
+            '<br>' + '<strong>Total Population:</strong> ' + layer.feature.properties.TotalPopn +
+            '<br>' + '<strong>Remanded:</strong> ' + layer.feature.properties.districts1_REMANDS +
+            '<br>' + '<strong>Convicted:</strong> ' + layer.feature.properties.districts1_CONVICTS +
+            '<br>' + '<strong>Debtors:</strong> ' + layer.feature.properties.districts1_DEBTORS +
+            '<br>' + '<strong>Total Prisoners:</strong> ' + layer.feature.properties.districts1_2017_TOTAL_PRISONERS
+          );
+          layer.on('mouseover', function(e) {
+            this.openPopup();
+          });
+          layer.on('mouseout', function(e) {
+            this.closePopup();
+          });
+        }
+      });
     });
-  });
+  }
 
+  if (!districts_data_object){
+    axios.get(
+      "https://storage.googleapis.com/database-data-1/africacorona_static_files/districts_data_object.json"
+    ).then(response_ => {
+      districts_data_object = response_.data
+      create_ug_layer()
+    })
+  } else if (districts_data_object) {
+    create_ug_layer()
+  }
   return layers;
 }
 
