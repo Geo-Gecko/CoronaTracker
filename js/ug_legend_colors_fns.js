@@ -255,9 +255,9 @@ let ugandaLayers = {
       [15, 100, 1000, 3000, 6300], getColorprisons, "Total Prisoners"
     ], styleprisons
   ],
-  "Water Source Coverage": [
+  "Water Access Points": [
     [
-      [0, 20, 40, 60, 80], getColorwater, "Water Source Coverage (%)"
+      [0, 20, 40, 60, 80], getColorwater, "Water Access Points (%)"
     ], stylewater
   ],
   "Border Districts": [
