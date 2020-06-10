@@ -19,7 +19,7 @@ function OEF(layer, type) {
         health_centers_OEF(layer)
     } else if (type == "ICU Beds Per Health Center") {
         icu_OEF(layer)
-    } else if (type == "Water Access Points") {
+    } else if (type == "Water Coverage Percentage") {
         water_points_OEF(layer)
     } else if (type == "Border Districts") {
         border_districts_OEF(layer)
@@ -185,9 +185,9 @@ function icu_OEF(layer) {
 }
 
 function water_points_OEF(layer) {
-  layer.bindPopup('<strong>District: </strong> ' +
-      layer.feature.properties.districts1_DName2016 + '<br>' + '<strong>Total Population: </strong> ' +
-      thousep2(layer.feature.properties.TotalPopn) + '<br>' + '<strong>Water Access Points (%): </strong> ' +
+  layer.bindPopup('<strong>District:</strong> ' +
+      layer.feature.properties.districts1_DName2016 + '<br>' + '<strong>Total Population:</strong> ' +
+      thousep2(layer.feature.properties.TotalPopn) + '<br>' + '<strong>Water Coverage(%):</strong> ' +
       layer.feature.properties.water1_water_percentage);
     layer.on('mouseover', function (e) {
         this.openPopup();
