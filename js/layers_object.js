@@ -4,19 +4,19 @@ let layers_ = {
         gsheet_keys: ["CASES"],
         legend_fn: getColorcases,
         popup_text: ["Population", "Cases"],
-        legend_array: [0, 1, 100, 1000, 4000]
+        legend_array: [0, 100, 1000, 3000, 6000]
     },
     "Deaths": {
         gsheet_keys: ["DEATHS"],
         legend_fn: getColordeaths,
         popup_text: ["Population", "Deaths"],
-        legend_array: [0, 1, 100, 300, 400]
+        legend_array: [0, 50, 100, 300, 400]
     },
     "Cases per 100,000 people": {
         gsheet_keys: ["CASES", "CASES_PER_100,000"],
         legend_fn: getColorcasesratio,
         popup_text: ["Population", "Cases", "Cases per 100,000 people"],
-        legend_array: [0, 1, 10, 100, 140]
+        legend_array: [0, 1, 10, 50, 150]
     },
     "Deaths per 100,000 people": {
         gsheet_keys: ["DEATHS", "DEATHS_PER_100,000"],
@@ -39,7 +39,7 @@ let layers_ = {
     "Population Density": {
         gsheet_keys: ["DENSITY"],
         legend_fn: getColordensity,
-        popup_text: ["Population", "Population Density"],
+        popup_text: ["Population", "Population Density (people per sq km)"],
         legend_array: [3, 20, 100, 400, 700]
     },
     "HIV/AIDS(%)": {
