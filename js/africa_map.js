@@ -158,4 +158,6 @@ axios.get(govt_intervention_url)
 axios.get(border_data_url)
   .then(responseArrs => {
     border_sheet_data = $.csv.toObjects(responseArrs.data);
+
+    switch_map(map)
   })
