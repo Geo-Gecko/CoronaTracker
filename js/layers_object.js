@@ -39,7 +39,7 @@ let layers_ = {
     "Population Density": {
         gsheet_keys: ["DENSITY"],
         legend_fn: getColordensity,
-        popup_text: ["Population", "Population Density (people per sq km)"],
+        popup_text: ["Population", "Population Density <br> (people per sq km)"],
         legend_array: [3, 20, 100, 400, 700]
     },
     "HIV/AIDS(%)": {

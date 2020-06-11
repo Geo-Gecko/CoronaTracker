@@ -132,10 +132,10 @@ function prisons_OEF(layer) {
 
 function gdp_OEF(layer) {
     layer.bindPopup(
-        '<strong>District: </strong> ' + layer.feature.properties.DNama2017 +
-        '<br>' + '<strong>Rural GDP (Million USD): </strong> ' + layer.feature.properties["districts1_Rural_GDP(millionUSD)"] +
-        '<br>' + '<strong>Urban GDP (Million USD): </strong> ' + layer.feature.properties["districts1_Urban_GDP(millionUSD)"] +
-        '<br>' + '<strong>GDP Per Capita(USD): </strong> ' + layer.feature.properties["districts1_GDP_Per_Capita(USD)"]
+        '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
+        '<br>' + '<strong>Rural GDP (Million USD):</strong> ' + layer.feature.properties["districts1_Rural_GDP(millionUSD)"] +
+        '<br>' + '<strong>Urban GDP (Million USD):</strong> ' + layer.feature.properties["districts1_Urban_GDP(millionUSD)"] +
+        '<br>' + '<strong>GDP Per Capita(USD):</strong> ' + layer.feature.properties["districts1_GDP_Per_Capita(USD)"]
     );
     layer.on('mouseover', function (e) {
         this.openPopup();
@@ -147,17 +147,17 @@ function gdp_OEF(layer) {
 
 function contacts_OEF(layer) {
     layer.bindPopup(
-        '<strong>District: </strong> ' + layer.feature.properties.DNama2017 +
-        '<br>' + '<strong>Resident District Commissioner(RDC) Name: </strong> ' + layer.feature.properties.districts1_Name_RDC1 +
-        '<br>' + '<strong>Number: </strong> ' + layer.feature.properties.districts1_Number_RDC1 +
-        '<br>' + '<br>' + '<strong>Resident District Commissioner 2 (RDC) Name: </strong> ' + layer.feature.properties.districts1_Name_RDC2 +
-        '<br>' + '<strong>Number: </strong> ' + layer.feature.properties.districts1_Number_RDC2 +
-        '<br>' + '<br>' + '<strong>District Health Officer(DHO) Name: </strong> ' + layer.feature.properties.districts1_Name_DHO +
-        '<br>' + '<strong>Email: </strong> ' + layer.feature.properties.districts1_Email_DHO +
-        '<br>' + '<strong>Number: </strong> ' + layer.feature.properties.districts1_Number_DHO +
-        '<br>' + '<br>' + '<strong>District Surveillance Focal Person(DSFP) Name: </strong> ' + layer.feature.properties.districts1_Name_DSFP +
-        '<br>' + '<strong>Email: </strong> ' + layer.feature.properties.districts1_Email_DSFP +
-        '<br>' + '<strong>Number: </strong> ' + layer.feature.properties.districts1_Number_DSFP
+        '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
+        '<br>' + '<strong>Resident District Commissioner(RDC) Name:</strong> ' + layer.feature.properties.districts1_Name_RDC1 +
+        '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_RDC1 +
+        '<br>' + '<br>' + '<strong>Resident District Commissioner 2 (RDC) Name:</strong> ' + layer.feature.properties.districts1_Name_RDC2 +
+        '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_RDC2 +
+        '<br>' + '<br>' + '<strong>District Health Officer(DHO) Name:</strong> ' + layer.feature.properties.districts1_Name_DHO +
+        '<br>' + '<strong>Email:</strong> ' + layer.feature.properties.districts1_Email_DHO +
+        '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_DHO +
+        '<br>' + '<br>' + '<strong>District Surveillance Focal Person(DSFP) Name:</strong> ' + layer.feature.properties.districts1_Name_DSFP +
+        '<br>' + '<strong>Email:</strong> ' + layer.feature.properties.districts1_Email_DSFP +
+        '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_DSFP
     );
     layer.on('mouseover', function (e) {
         this.openPopup();
@@ -170,11 +170,11 @@ function contacts_OEF(layer) {
 //Points
 
 function icu_OEF(layer) {
-    layer.bindPopup('<strong>Name: </strong> ' + layer.feature.properties.Name + '<br>' + '<strong>Location: </strong> ' +
-        layer.feature.properties.location + '<br>' + '<strong>Ownership: </strong> ' +
-        layer.feature.properties.ownership + '<br>' + '<strong>Services: </strong> ' +
-        layer.feature.properties.services + '<br>' + '<strong>Referral: </strong> ' +
-        layer.feature.properties.referral + '<br>' + '<strong>ICU Beds: </strong> ' +
+    layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.Name + '<br>' + '<strong>Location:</strong> ' +
+        layer.feature.properties.location + '<br>' + '<strong>Ownership:</strong> ' +
+        layer.feature.properties.ownership + '<br>' + '<strong>Services:</strong> ' +
+        layer.feature.properties.services + '<br>' + '<strong>Referral:</strong> ' +
+        layer.feature.properties.referral + '<br>' + '<strong>ICU Beds:</strong> ' +
         layer.feature.properties.beds);
     layer.on('mouseover', function (e) {
         this.openPopup();
@@ -205,12 +205,12 @@ function border_points_OEF(layer) {
         }
     });
     if (cases) {
-    layer.bindPopup('<strong>District: </strong> ' + layer.feature.properties.District + '<br>' + '<strong>Name: </strong> ' +
-    layer.feature.properties.Name + '<br>' + '<strong>Path: </strong> ' +
-    layer.feature.properties.Path + '<br>' + '<strong>Number of Cases: </strong> ' + cases);
+    layer.bindPopup('<strong>District:</strong> ' + layer.feature.properties.District + '<br>' + '<strong>Name:</strong> ' +
+    layer.feature.properties.Name + '<br>' + '<strong>Path:</strong> ' +
+    layer.feature.properties.Path + '<br>' + '<strong>Number of Cases:</strong> ' + cases);
     } else {
-    layer.bindPopup('<strong>District: </strong> ' + layer.feature.properties.District + '<br>' + '<strong>Name: </strong> ' +
-        layer.feature.properties.Name + '<br>' + '<strong>Path: </strong> ' +
+    layer.bindPopup('<strong>District:</strong> ' + layer.feature.properties.District + '<br>' + '<strong>Name:</strong> ' +
+        layer.feature.properties.Name + '<br>' + '<strong>Path:</strong> ' +
         layer.feature.properties.Path);
     }
     layer.on('mouseover', function (e) {
@@ -222,9 +222,9 @@ function border_points_OEF(layer) {
 }
 
 function health_centers_OEF(layer) {
-    layer.bindPopup('<strong>District: </strong> ' + layer.feature.properties.District + '<br>' + '<strong>Region: </strong> ' +
-        layer.feature.properties.Region + '<br>' + '<strong>Division: </strong> ' +
-        layer.feature.properties.Division + '<br>' + '<strong>Name: </strong> ' +
+    layer.bindPopup('<strong>District:</strong> ' + layer.feature.properties.District + '<br>' + '<strong>Region:</strong> ' +
+        layer.feature.properties.Region + '<br>' + '<strong>Division:</strong> ' +
+        layer.feature.properties.Division + '<br>' + '<strong>Name:</strong> ' +
         layer.feature.properties.Name);
     layer.on('mouseover', function (e) {
         this.openPopup();
