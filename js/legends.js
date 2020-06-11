@@ -33,7 +33,7 @@ function addLegend(grades, ramp, title = null) {
         );
       }
     } else if (title) {
-      div.innerHTML += '<p><b>' + title + '</b></p><br>';
+      div.innerHTML += '<p><b>' + title + '</b></p>';
       div.innerHTML += '<i style="background:#808080"></i> No data<br>';
       // loop through our density intervals and generate a label with a colored square for each interval
       for (var i = 0; i < grades.length; i++) {

@@ -232,7 +232,7 @@ let ugandaLayers = {
   ],
   "Population Density": [
     [
-      [7, 100, 500, 1000, 7500], getColorden, "Population Density (people per sq km)"
+      [7, 100, 500, 1000, 7500], getColorden, "Population Density<br>(people per sq km)"
     ], styleden
   ],
   "Poverty Percentage": [
@@ -242,12 +242,12 @@ let ugandaLayers = {
   ],
   "Elderly Percentage(Over 60 in age)": [
     [
-      [1, 3, 5, 10, 15], getColorelderly, "Elderly Percentage(Over 60 in age)"
+      [1, 3, 5, 10, 15], getColorelderly, "Elderly Percentage<br>(Over 60 in age)"
     ], styleelderly
   ],
   "HIV/AIDS Percentage": [
     [
-      [0, 3, 5, 10, 15], getColoraids, "HIV/AIDS Percentage (15+ years old)"
+      [0, 3, 5, 10, 15], getColoraids, "HIV/AIDS Percentage<br>(15+ years old)"
     ], styleaids
   ],
   "Prisons Population": [

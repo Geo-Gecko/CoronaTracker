@@ -1,14 +1,14 @@
 
 
 function getColorcases(d) {
-    return  d > 4000 ? '#016c59' :
-        d > 3999 ? '#016c59' :
-        d > 1000 ? '#1c9099' :
-        d > 999 ? '#1c9099' :
-        d > 100 ? '#67a9cf' :
-        d > 99 ? '#67a9cf' :
-        d > 1 ? '#bdc9e1' :
-        d > 0.9 ? '#bdc9e1' :
+    return  d > 6000 ? '#016c59' :
+        d > 5999 ? '#016c59' :
+        d > 3000 ? '#1c9099' :
+        d > 2999 ? '#1c9099' :
+        d > 1000 ? '#67a9cf' :
+        d > 999 ? '#67a9cf' :
+        d > 100 ? '#bdc9e1' :
+        d > 99 ? '#bdc9e1' :
         d > 0 ? '#f6eff7' :
         d > -1 ? '#f6eff7' :
         d > null ? '#808080' :
@@ -22,8 +22,8 @@ function getColordeaths(d) {
         d > 299 ? '#31a354' :
         d > 100 ? '#78c679' :
         d > 99 ? '#78c679' :
-        d > 1 ? '#c2e699' :
-        d > 0.9 ? '#c2e699' :
+        d > 50 ? '#c2e699' :
+        d > 49 ? '#c2e699' :
         d > 0 ? '#ffffcc' :
         d > -1 ? '#ffffcc' :
         d > null ? '#808080' :
@@ -31,10 +31,10 @@ function getColordeaths(d) {
 }
 
 function getColorcasesratio(d) {
-    return d > 140 ? '#980043' :
-        d > 139 ? '#980043' :
-        d > 100 ? '#dd1c77' :
-        d > 99 ? '#dd1c77' :
+    return d > 150 ? '#980043' :
+        d > 149 ? '#980043' :
+        d > 50 ? '#dd1c77' :
+        d > 49 ? '#dd1c77' :
         d > 10 ? '#df65b0' :
         d > 9.9 ? '#df65b0' :
         d > 1 ? '#d7b5d8' :
