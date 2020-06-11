@@ -1,5 +1,10 @@
 function OEF(layer, type) {
-     if (type == "Population Density") {
+    if (info._map) {
+        map.removeControl(info)
+    }
+    if (type == "Population") {
+        Population_OEF(layer)
+    } else if (type == "Population Density") {
         Population_Density_OEF(layer)
     } else if (type == "Poverty Percentage") {
         Poverty_Rate_OEF(layer)
@@ -146,31 +151,19 @@ function gdp_OEF(layer) {
 }
 
 function contacts_OEF(layer) {
-    layer.bindPopup(
-        '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
-        '<br>' + '<strong>Resident District Commissioner(RDC) Name:</strong> ' + layer.feature.properties.districts1_Name_RDC1 +
-        '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_RDC1 +
-        '<br>' + '<br>' + '<strong>Resident District Commissioner 2 (RDC) Name:</strong> ' + layer.feature.properties.districts1_Name_RDC2 +
-        '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_RDC2 +
-        '<br>' + '<br>' + '<strong>District Health Officer(DHO) Name:</strong> ' + layer.feature.properties.districts1_Name_DHO +
-        '<br>' + '<strong>Email:</strong> ' + layer.feature.properties.districts1_Email_DHO +
-        '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_DHO +
-        '<br>' + '<br>' + '<strong>District Surveillance Focal Person(DSFP) Name:</strong> ' + layer.feature.properties.districts1_Name_DSFP +
-        '<br>' + '<strong>Email:</strong> ' + layer.feature.properties.districts1_Email_DSFP +
-        '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_DSFP, {
-        autoPan: false
-    }
-    );
+    info.addTo(map);
+    layer.bindPopup('<strong>District:</strong> ' + layer.feature.properties.DNama2017);
     layer.on('mouseover', function (e) {
         this.openPopup();
+        info.update(e.target.feature.properties);
     });
     layer.on('mouseout', function (e) {
         this.closePopup();
+        info.update();
     });
 }
 
 //Points
-
 function icu_OEF(layer) {
     layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.Name + '<br>' + '<strong>Location:</strong> ' +
         layer.feature.properties.location + '<br>' + '<strong>Ownership:</strong> ' +
