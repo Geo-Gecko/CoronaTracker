@@ -243,7 +243,6 @@ let overlayLayers = {
 };
 
 let ugandaLayers = {
-    "Population": [[[5000, 150000, 250000, 350000, 2000000], getColorpop, "Population"], stylepop],
     "Contacts": [[[], , "Hover over district <br> for contact information"], {
         weight: 2,
         opacity: 2,
@@ -314,9 +313,6 @@ function createCountryLayers() {
                     this.closePopup();
                 });
             }
-        });
-        layer.on('mouseout', function(e) {
-          this.closePopup();
         });
     });
 

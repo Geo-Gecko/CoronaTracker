@@ -78,7 +78,7 @@ function switch_map(map) {
       // open sidebar and add layer after 1 second
       $("#sidebar").attr("class", "sidebar sidebar-left leaflet-touch")
       $("a").filter(function() {
-        return $(this).text() === "Poverty Percentage";
+        return $(this).text() === "Poverty Rate";
       }).click()
       $("a").filter(function() {
         return $(this).text() === "Border Points";
