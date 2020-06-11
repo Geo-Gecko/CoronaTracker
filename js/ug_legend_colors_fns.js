@@ -231,6 +231,45 @@ function getRadiusBorder(d) {
     return d / 3
 }
 
+// // //gdp
+function getColorUgCases(d) {
+    return d > 78 ? '#bd0026' :
+        d > 72 ? '#bd0026' :
+            d > 63 ? '#f03b20' :
+                d > 54 ? '#f03b20' :
+                    d > 45 ? '#fd8d3c' :
+                        d > 36 ? '#fd8d3c' :
+                            d > 27 ? '#fecc5c' :
+                                d > 18 ? '#fecc5c' :
+                                    d > 9 ? '#ffffb2' :
+                                        d > -1 ? '#ffffb2' :
+                                            d > null ? '#808080' :
+                                                '#808080';
+}
+
+function styleUgCases(feature) {
+    //cannot Style Here because border_sheet_data is unavailable at this point, must do it on intializing layer below
+    // border_sheet_data.forEach(element => {
+    //     if (element.Cases != "" && element.DName2017 == feature.properties.DNama2017) {
+    //         return {
+    //             fillColor: getColorUgCases(element.Cases),
+    //             weight: 1,
+    //             opacity: 1,
+    //             color: 'black',
+    //             dashArray: '0',
+    //             fillOpacity: 1
+    //         };
+    //     }
+    // });
+    // console.log(border_sheet_data);
+}
+
+function getRadiusBorder(d) {
+    return d / 3
+}
+
+
+
 
 
 
