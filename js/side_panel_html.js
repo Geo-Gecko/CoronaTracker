@@ -81,4 +81,4 @@ function create_sidepanel (sidepanel_text) {
     })
 }
 
-create_sidepanel(african_sidepanel_text)
+create_sidepanel(ugandan_sidepanel_text);
