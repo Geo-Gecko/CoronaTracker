@@ -66,7 +66,9 @@ function add_layer(element) {
 function switch_map(map) {
 
   if (map.options.minZoom === 3) {
-    map.removeLayer(african_data)
+    if (african_data){
+      map.removeLayer(african_data)
+    }
     map.options.minZoom = 7;
     map.options.maxZoom = 7;
     map.flyTo([1.8, 29.24], 7, {
@@ -100,7 +102,6 @@ function switch_map(map) {
   
   } else if (map.options.minZoom === 7) {
     // zoom out to Africa
-  
       Object.keys(countrylayers).forEach(element => {
           map.removeLayer(countrylayers[element]);
       });

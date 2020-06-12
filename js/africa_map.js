@@ -140,19 +140,12 @@ let african_data;
 axios.get(url)
   .then(responseArrs => {
     google_sheet_data = $.csv.toObjects(responseArrs.data);
-
-    $("a").filter(function () {
-      return $(this).text() === "Cases";
-    }).click()
-
-    $("#homeSubmenu0").attr("class", "list-unstyled collapse show")
-    $("a[onclick='add_layer(this);']")[0].setAttribute("style", "color: #f8b739;")
-
   })
 
 axios.get(govt_intervention_url)
   .then(responseArrs => {
     second_google_sheet_data = $.csv.toObjects(responseArrs.data);
+    switch_map(map)
   })
 
 axios.get(border_data_url)
