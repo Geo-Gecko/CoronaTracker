@@ -49,3 +49,29 @@ function addLegend(grades, ramp, title = null) {
   legend.addTo(map);
 
 }
+
+function addLegend2(grades, ramp, title = null) {
+  if (legend._map) {
+    map.removeControl(legend);
+  }
+
+  legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend');
+
+    if (title === null) {
+      div.innerHTML += '<p><b>' + 'Risk Level' + '</b></p>';
+      for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+          '<i style="background:' + ramp(grades[i]) + '"></i> '  +
+          (grades[i + 1] ? '' + 'Low' + '<br>': 'High'
+        );
+      }
+    }
+
+    return div;
+  };
+
+  legend.addTo(map);
+
+}

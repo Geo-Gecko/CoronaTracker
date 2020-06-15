@@ -23,6 +23,8 @@ function OEF(layer, type) {
         water_points_OEF(layer)
     } else if (type == "Border Districts") {
         border_districts_OEF(layer)
+    } else if (type == "Risk Model") {
+        risk_model_OEF(layer)
     }
 }
 
@@ -55,6 +57,22 @@ function Population_Density_OEF(layer) {
     layer.on('mouseout', function (e) {
         this.closePopup();
     });
+}
+
+function risk_model_OEF(layer) {
+    layer.bindPopup(
+        '<strong>District: </strong> ' + layer.feature.properties.DNama2017 +
+        '<br>' + '<strong>Total Population: </strong> ' + thousep2(layer.feature.properties.TotalPopn) +
+        '<br>' + '<strong>Population Density: </strong> ' + layer.feature.properties.districts1_density + 
+        '<br>' + '<strong>Elderly Percentage: </strong> ' + layer.feature.properties.districts1_elderly_percentage
+    );
+    layer.on('mouseover', function (e) {
+        this.openPopup();
+    });
+    layer.on('mouseout', function (e) {
+        this.closePopup();
+    });
+    addLegend2([9, 1572], getColormodel);
 }
 
 function Poverty_Rate_OEF(layer) {
