@@ -463,6 +463,16 @@ pre {
   @media (min-width: 1200px) {
     .container {
       max-width: 1140px; } }
+      /* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+  /* Styles */
+  #align-logo {
+    align-content: center;
+    justify-content: center;
+    width: 50%;
+  }
+}
 
 .container-fluid {
   width: 100%;
