@@ -194,6 +194,43 @@ function stylegdp(feature) {
   };
 }
 
+// // //gdp
+function getColormodel(d) {
+  return d > 1572 ? '#e70000' :
+    d > 1571 ? '#e70000' :
+    d > 195 ? '#ff0000' :
+    d > 194 ? '#ff0000' :
+    d > 150 ? '#ff2020' :
+    d > 149 ? '#ff2020' :
+    d > 114 ? '#ff4040' :
+    d > 113 ? '#ff4040' :
+    d > 85 ? '#ff6060' :
+    d > 84 ? '#ff6060' :
+    d > 66 ? '#ff8080' :
+    d > 65 ? '#ff8080' :
+    d > 49 ? '#ff9f9f' :
+    d > 48 ? '#ff9f9f' :
+    d > 34 ? '#ffbfbf' :
+    d > 33 ? '#ffbfbf' :
+    d > 19 ? '#ffdfdf' :
+    d > 18 ? '#ffdfdf' :
+    d > 9 ? '#ffffff' :
+    d > 8 ? '#ffffff' :
+    d > null ? '#808080' :
+    '#808080';
+}
+
+function stylemodel(feature) {
+  return {
+    fillColor: getColormodel(parseFloat(feature.properties["result_risk"].split(",").join(""))),
+    weight: 1,
+    opacity: 1,
+    color: 'black',
+    dashArray: '0',
+    fillOpacity: 1
+  };
+}
+
 // // //border districts
 function getColorborder(d) {
   return d > 1 ? '#fd8d3c' :
@@ -264,6 +301,11 @@ let ugandaLayers = {
     [
       [], getColorborder, ""
     ], styleborder
+  ],
+  "Risk Model": [
+    [
+      [9, 1572], getColormodel, "Risk Level"
+    ], stylemodel
   ],
   "GDP": [
     [
