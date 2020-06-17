@@ -304,7 +304,7 @@ let ugandaLayers = {
   ],
   "Risk Model": [
     [
-      [], getColormodel, ""
+      [9, 1572], getColormodel, "Risk Level"
     ], stylemodel
   ],
   "GDP": [

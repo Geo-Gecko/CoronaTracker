@@ -72,7 +72,6 @@ function risk_model_OEF(layer) {
     layer.on('mouseout', function (e) {
         this.closePopup();
     });
-    addLegend2([9, 1572], getColormodel);
 }
 
 function Poverty_Rate_OEF(layer) {

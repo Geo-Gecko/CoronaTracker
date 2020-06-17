@@ -32,7 +32,15 @@ function addLegend(grades, ramp, title = null) {
           (grades[i + 1] ? '' + 'Not Implemented' + '<br>': 'Implemented'
         );
       }
-    } else if (title) {
+    } else if (title === 'Risk Level') {
+      div.innerHTML += '<p><b>' + title + '</b></p>';
+      for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+          '<i style="background:' + ramp(grades[i]) + '"></i> '  +
+          (grades[i + 1] ? '' + 'Low' + '<br>': 'High'
+        );
+      }
+    } else if (title != 'Risk Level') {
       div.innerHTML += '<p><b>' + title + '</b></p>';
       div.innerHTML += '<i style="background:#808080"></i> No data<br>';
       // loop through our density intervals and generate a label with a colored square for each interval
@@ -40,32 +48,6 @@ function addLegend(grades, ramp, title = null) {
         div.innerHTML +=
           '<i style="background:' + ramp(grades[i]) + '"></i> ' +
           thousep2(grades[i]) + (grades[i + 1] ? '&ndash;' + thousep2(grades[i + 1]) + '<br>' : '+');
-      }
-    }
-
-    return div;
-  };
-
-  legend.addTo(map);
-
-}
-
-function addLegend2(grades, ramp, title = null) {
-  if (legend._map) {
-    map.removeControl(legend);
-  }
-
-  legend.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend');
-
-    if (title === null) {
-      div.innerHTML += '<p><b>' + 'Risk Level' + '</b></p>';
-      for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-          '<i style="background:' + ramp(grades[i]) + '"></i> '  +
-          (grades[i + 1] ? '' + 'Low' + '<br>': 'High'
-        );
       }
     }
 
