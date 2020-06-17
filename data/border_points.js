@@ -4,7 +4,7 @@ var border_points = {
     "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
     "features": [
         { "type": "Feature", "properties": { "Name": "Afogi", "Path": "Adjumani-Moyo Road", "District": "Moyo" }, "geometry": { "type": "Point", "coordinates": [31.836160873499388, 3.800042796591598] } },
-        { "type": "Feature", "properties": { "Name": "Elegu-Bibi Atak", "Path": "Nimule Road", "District": "Amuru" }, "geometry": { "type": "Point", "coordinates": [32.206213821217311, 3.483322691129953] } },
+        { "type": "Feature", "properties": { "Name": "Elegu", "Path": "Nimule Road", "District": "Amuru" }, "geometry": { "type": "Point", "coordinates": [32.206213821217311, 3.483322691129953] } },
         { "type": "Feature", "properties": { "Name": "Madi Opei", "Path": "Lokung Road", "District": "Kitgum" }, "geometry": { "type": "Point", "coordinates": [33.045427885065443, 3.525713651149617] } },
         { "type": "Feature", "properties": { "Name": "Saum", "Path": "Suam-Kitale Road", "District": "Bukwo" }, "geometry": { "type": "Point", "coordinates": [34.66820914913788, 1.207255145040937] } },
         { "type": "Feature", "properties": { "Name": "Lwakhaka", "Path": "Manafwa-Kibale Road", "District": "Manafwa" }, "geometry": { "type": "Point", "coordinates": [34.426351334602479, 0.851988446878539] } },
