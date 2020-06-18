@@ -258,7 +258,7 @@ let overlayLayers = {
 let ugandaLayers = {
   "Contacts": [
     [
-      [], , "Hover over district <br> for contact information"
+      [], , "Click on a district <br> for contact information"
     ], {
       weight: 2,
       opacity: 2,
@@ -411,6 +411,26 @@ function add_ug_layer(element) {
     let l = countrylayers[layer_]._layers[element];
     OEF(l, layer_)
   });
+
+  // change sidepanel and enable highlighting of districts in contacts layer
+  if (layer_ === "Contacts") {
+    countrylayers[layer_].on("click", onUgFeatureGroupClick);
+    function onUgFeatureGroupClick(e) {
+      if (!$("#messages").hasClass("sidebar-pane active")) {
+        sidebar.open("messages")
+        show_hamburg_button()
+      }
+      let group = e.target,
+          layer = e.layer;
+
+      group.setStyle({
+        weight: 2, opacity: 2,
+        color: '#000000b8', fillOpacity: 2.5,
+        fillColor: '#AAA583'
+      });
+      layer.setStyle(highlight);
+    }
+  }
 }
 
 let overlays = $('#infrastructure');

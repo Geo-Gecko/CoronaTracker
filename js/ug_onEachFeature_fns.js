@@ -163,24 +163,23 @@ function gdp_OEF(layer) {
 }
 
 function contacts_OEF(layer) {
-    layer.bindPopup(
-        '<strong>District:</strong> ' + layer.feature.properties.DNama2017 +
-        '<br>' + '<strong>Resident District Commissioner(RDC) Name:</strong> ' + layer.feature.properties.districts1_Name_RDC1 +
-        '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_RDC1 +
-        '<br>' + '<br>' + '<strong>Resident District Commissioner 2 (RDC) Name:</strong> ' + layer.feature.properties.districts1_Name_RDC2 +
-        '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_RDC2 +
-        '<br>' + '<br>' + '<strong>District Health Officer(DHO) Name:</strong> ' + layer.feature.properties.districts1_Name_DHO +
-        '<br>' + '<strong>Email:</strong> ' + layer.feature.properties.districts1_Email_DHO +
-        '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_DHO +
-        '<br>' + '<br>' + '<strong>District Surveillance Focal Person(DSFP) Name:</strong> ' + layer.feature.properties.districts1_Name_DSFP +
-        '<br>' + '<strong>Email:</strong> ' + layer.feature.properties.districts1_Email_DSFP +
-        '<br>' + '<strong>Number:</strong> ' + layer.feature.properties.districts1_Number_DSFP
-    );
-    layer.on('mouseover', function (e) {
-        this.openPopup();
-    });
-    layer.on('mouseout', function (e) {
-        this.closePopup();
+    layer.on('click', function(e) {
+        document.getElementById("info").children[0].innerHTML =
+        `<strong>District: </strong>${layer.feature.properties.DNama2017}<br>\
+        <strong>Resident District Commissioner(RDC) Name: \
+        </strong>${layer.feature.properties.districts1_Name_RDC1}<br>\
+        <strong>Number: </strong>${layer.feature.properties.districts1_Number_RDC1}<br>\
+        <strong>Resident District Commissioner 2 (RDC) Name: \
+        </strong>${layer.feature.properties.districts1_Name_RDC2}<br>\
+        <strong>Number: </strong>${layer.feature.properties.districts1_Number_RDC2}<br>\
+        <strong>District Health Officer(DHO) Name: \
+        </strong>${layer.feature.properties.districts1_Name_DHO}<br>\
+        <strong>Email: </strong>${layer.feature.properties.districts1_Email_DHO}<br>\
+        <strong>Number: </strong>${layer.feature.properties.districts1_Number_DHO}<br>\
+        <strong>District Surveillance Focal Person(DSFP) Name: \
+        </strong>${layer.feature.properties.districts1_Name_DSFP}<br>\
+        <strong>Email: </strong>${layer.feature.properties.districts1_Email_DSFP}<br>\
+        <strong>Number: </strong>${layer.feature.properties.districts1_Number_DSFP}`;
     });
 }
 
