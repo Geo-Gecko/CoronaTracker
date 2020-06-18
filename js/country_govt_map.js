@@ -55,7 +55,7 @@ let govt_intervention_layer = (element) => {
     african_data.eachLayer(function(layer) {
       let country_ = layer.feature.properties.COUNTRY;
       layer.on('click', function(e) {
-        document.getElementById("info").innerHTML = `<strong>Country: </strong>\
+        document.getElementById("info").children[0].innerHTML = `<strong>Country: </strong>\
         ${country_}<br><strong>Population: </strong>${govt_intervention_obj[country_][0]}\
         <br><strong>Introduction: </strong>${govt_intervention_obj[country_][1]}<br>\
         <strong>Fiscal Policy: </strong>${govt_intervention_obj[country_][2]}
@@ -115,7 +115,7 @@ let govt_intervention_layer = (element) => {
     african_data.eachLayer(function(layer) {
       let country_ = layer.feature.properties.COUNTRY;
       layer.on('click', function(e) {
-        document.getElementById("info").innerHTML = `<strong>Country: </strong>\
+        document.getElementById("info").children[0].innerHTML = `<strong>Country: </strong>\
         ${country_}<br><strong>Population: </strong>${govt_intervention_obj[country_][0]}\
         <br><strong>Introduction: </strong>${govt_intervention_obj[country_][1]}<br><strong>\
         Monetary and Macro financial: </strong>${govt_intervention_obj[country_][2]}
@@ -178,7 +178,7 @@ let govt_intervention_layer = (element) => {
     african_data.eachLayer(function(layer) {
       let country_ = layer.feature.properties.COUNTRY;
       layer.on('click', function(e) {
-        document.getElementById("info").innerHTML = `<strong>Country: </strong>${country_}\
+        document.getElementById("info").children[0].innerHTML = `<strong>Country: </strong>${country_}\
         <br><strong>Population: </strong>${govt_intervention_obj[country_][0]}<br><strong>\
         Introduction: </strong>${govt_intervention_obj[country_][1]}<br>\
         <strong>Exchange rate and balance of payments: </strong>${govt_intervention_obj[country_][2]}
@@ -249,7 +249,7 @@ let govt_intervention_layer = (element) => {
     african_data.eachLayer(function(layer) {
       let country_ = layer.feature.properties.COUNTRY;
       layer.on('click', function(e) {
-        document.getElementById("info").innerHTML = `<strong>Country: </strong>${country_}\
+        document.getElementById("info").children[0].innerHTML = `<strong>Country: </strong>${country_}\
         <br><strong>Population: </strong>${country_intervention_obj[country_][0]}<br>\
         <strong>Humanitarian Exemption: </strong>${country_intervention_obj[country_][1]}\
         <br><strong>Lock Down: </strong>${country_intervention_obj[country_][2]}<br><strong>\

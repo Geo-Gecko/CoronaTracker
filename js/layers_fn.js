@@ -76,6 +76,11 @@ function switch_map(map) {
       duration: 1.0
     });
     $("#sidebar").attr("class", "sidebar sidebar-left leaflet-touch collapsed")
+    
+    // change info panel text to district level after clearing it of text
+    document.getElementById("info").children[0].innerHTML = 
+    "Select Contacts in Districts Data and click on a District"
+
     setTimeout(function() {
       // open sidebar and add layer after 1 second
       $("#sidebar").attr("class", "sidebar sidebar-left leaflet-touch")
@@ -117,6 +122,11 @@ function switch_map(map) {
       duration: 1.0
     });
     $("#sidebar").attr("class", "sidebar sidebar-left leaflet-touch collapsed")
+
+    // change info panel text to country level
+    document.getElementById("info").children[0].innerHTML = 
+      "Select a category in Government Intervention and click on country to view data"
+
     setTimeout(function() {
       // open sidebar and add layer after 1 second
       $("#sidebar").attr("class", "sidebar sidebar-left leaflet-touch")
