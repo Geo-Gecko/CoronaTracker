@@ -194,35 +194,35 @@ function stylegdp(feature) {
   };
 }
 
-// // //gdp
+// // //model
 function getColormodel(d) {
-  return d > 1572 ? '#e70000' :
-    d > 1571 ? '#e70000' :
-    d > 195 ? '#ff0000' :
-    d > 194 ? '#ff0000' :
-    d > 150 ? '#ff2020' :
-    d > 149 ? '#ff2020' :
-    d > 114 ? '#ff4040' :
-    d > 113 ? '#ff4040' :
-    d > 85 ? '#ff6060' :
-    d > 84 ? '#ff6060' :
-    d > 66 ? '#ff8080' :
-    d > 65 ? '#ff8080' :
-    d > 49 ? '#ff9f9f' :
-    d > 48 ? '#ff9f9f' :
-    d > 34 ? '#ffbfbf' :
-    d > 33 ? '#ffbfbf' :
-    d > 19 ? '#ffdfdf' :
-    d > 18 ? '#ffdfdf' :
-    d > 9 ? '#ffffff' :
-    d > 8 ? '#ffffff' :
+  return d > 6.33 ? '#e70000' :
+    d > 6.32 ? '#e70000' :
+    d > 5.89 ? '#ff0000' :
+    d > 5.88 ? '#ff0000' :
+    d > 5.46 ? '#ff2020' :
+    d > 5.45 ? '#ff2020' :
+    d > 5.02 ? '#ff4040' :
+    d > 5.01 ? '#ff4040' :
+    d > 4.59 ? '#ff6060' :
+    d > 4.58 ? '#ff6060' :
+    d > 4.15 ? '#ff8080' :
+    d > 4.14 ? '#ff8080' :
+    d > 3.72 ? '#ff9f9f' :
+    d > 3.71 ? '#ff9f9f' :
+    d > 3.29 ? '#ffbfbf' :
+    d > 3.28 ? '#ffbfbf' :
+    d > 2.85 ? '#ffdfdf' :
+    d > 2.84 ? '#ffdfdf' :
+    d > 2.42 ? '#ffffff' :
+    d > 2.41 ? '#ffffff' :
     d > null ? '#808080' :
     '#808080';
 }
 
 function stylemodel(feature) {
   return {
-    fillColor: getColormodel(parseFloat(feature.properties["result_risk"].split(",").join(""))),
+    fillColor: getColormodel(feature.properties["result_risk"]),
     weight: 1,
     opacity: 1,
     color: 'black',
@@ -304,7 +304,7 @@ let ugandaLayers = {
   ],
   "Risk Model": [
     [
-      [9, 1572], getColormodel, "Risk Level"
+      [2.42, 6.33], getColormodel, "Risk Level"
     ], stylemodel
   ],
   "GDP": [
