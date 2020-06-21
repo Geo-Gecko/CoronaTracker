@@ -20,16 +20,20 @@ let highlight_button = (element) => {
 }
 
 let show_hamburg_button = () => {
-  let hamburg_ = $("a[href='#layers']")[0]
-  let flashing_hamburg_ = setInterval(() => {
-    hamburg_.setAttribute("style", "background-color: #e15b26;")
-    setTimeout(
-      () => {
-        hamburg_.setAttribute("style", "color: rgb(51, 51, 51);")
-      }, 250
-    )
-  }, 1000)
-  setTimeout(() => { clearInterval(flashing_hamburg_) }, 15000)
+  let hamburg_displayed_bool = localStorage.getItem('hamburgdisplayed');
+  if (hamburg_displayed_bool === null) {
+    let hamburg_ = $("a[href='#layers']")[0]
+    let flashing_hamburg_ = setInterval(() => {
+      hamburg_.setAttribute("style", "background-color: #e15b26;")
+      setTimeout(
+        () => {
+          hamburg_.setAttribute("style", "color: rgb(51, 51, 51);")
+        }, 250
+      )
+    }, 1000)
+    setTimeout(() => { clearInterval(flashing_hamburg_) }, 15000)
+    localStorage.setItem('hamburgdisplayed', true)
+  }
 }
 
 document.getElementById("map").setAttribute("style", `height: ${window.innerHeight}px`)
