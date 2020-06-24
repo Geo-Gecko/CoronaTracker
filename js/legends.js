@@ -14,7 +14,13 @@ function thousep2(n) {
   }
 }
 
+function getRadiusBorder(d) {
+  return d / 3
+}
+
 var legend = L.control({ position: 'bottomright' });
+var pointLegend = L.control({ position: 'bottomright' });
+
 
 function addLegend(grades, ramp, title = null) {
   if (legend._map) {
@@ -55,5 +61,35 @@ function addLegend(grades, ramp, title = null) {
   };
 
   legend.addTo(map);
+
+}
+function addPointLegend(grades, title) {
+  if (pointLegend._map) {
+    map.removeControl(pointLegend);
+  }
+
+  pointLegend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info pointLegend');
+    measure = [1, 41, 82, 163],
+      label = '<strong>'+ title + '</strong>'
+
+    div.innerHTML += '<p><b>' + label + '</b></p><br>';
+    if (grades.length == 0) {
+      div.innerHTML += '<i class="circle" style="width:10px;height:10px;background-color:orange;border-width:1px;border-color:black;"></i> Health Centre locations<br>';
+    } else if (title != "Cases per district") {
+      div.innerHTML += '<i class="circle" style="width:10px;height:10px;background-color:#cccc09;border-width:1px;border-color:black;"></i> No cases<br>';
+    }
+    for (var i = 0; i < grades.length; i++) {
+      for (var i = 0; i < grades.length; i++) {
+        div.innerHTML += '<i class="circle" style="width: ' + getRadiusBorder(measure[i]) + 'px;height: '+ getRadiusBorder(measure[i]) +'px;"></i> ' +
+        thousep2(grades[i]) + (grades[i + 1] ? '&ndash;' + thousep2(grades[i + 1]) + '<br>' : '+');
+    }
+    }
+
+    return div;
+  };
+
+  pointLegend.addTo(map);
 
 }

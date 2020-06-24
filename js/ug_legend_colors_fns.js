@@ -251,6 +251,7 @@ function styleborder(feature) {
 
 let overlayLayers = {
   "Border Points": [border_points, "#cccc09"],
+  "District Cases Points": [districts_data_points, "red"],
   "Health Referral Centers": [health_centers, "red"],
   "ICU Beds Per Health Center": [icu_beds, "orange"],
 };
@@ -384,16 +385,40 @@ function add_overlay(element) {
   Object.keys(layers[layer_]._layers).forEach(element => {
     let l = layers[layer_]._layers[element];
     OEF(l, layer_)
-    border_sheet_data.forEach(element => {
-      if (element.Border_cases != "" && element.Border == l.feature.properties.Name) {
-        l.setStyle({
-          radius: element.Border_cases / 3,
-          color: 'red',
-          fillOpacity: 0,
-          weight: 3,
-        })
-      }
-    });
+    if (layer_ == 'Border Points') {
+            addPointLegend([1, 30, 55, 75], "Cases per border point");
+            border_sheet_data.forEach(element => {
+                if (element.Border_cases != "" && element.Border == l.feature.properties.Name) {
+                    l.setStyle({
+                        radius: element.Border_cases / 3,
+                        color: 'red',
+                        fillOpacity: 0,
+                        weight: 3,
+                    })
+                }
+            });
+        }
+        if (layer_ == 'ICU Beds Per Health Center' && l.feature.properties.beds != undefined) {
+            addPointLegend([], "Health Center");
+        }
+        if (layer_ == "District Cases Points") {
+            addPointLegend([1, 30, 55, 75], "Cases per district");
+            l.setStyle({
+                fillOpacity: 0,
+                opacity: 0,
+            })
+            border_sheet_data.forEach(element => {
+                if (element.Cases != "" && element.Cases != "null" && element.District == l.feature.properties.DNama2017) {
+                    l.setStyle({
+                        radius: element.Cases / 3,
+                        color: "red",
+                        fillOpacity: 0,
+                        weight: 3,
+                        opacity: 1,
+                    })
+                }
+            });
+        }
   });
 }
 

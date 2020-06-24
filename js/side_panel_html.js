@@ -13,7 +13,7 @@ let african_sidepanel_text = {
 
 let ugandan_sidepanel_text = {
     "Infrastructure": [
-        "Border Points", "Health Referral Centers", "ICU Beds Per Health Center",
+        "Border Points", "District Cases Points", "Health Referral Centers", "ICU Beds Per Health Center",
     ],
     "Districts Data": [
         "Border Districts", "Poverty Percentage", "Population Density", "Contacts",

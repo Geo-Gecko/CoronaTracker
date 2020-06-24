@@ -130,6 +130,29 @@ countries_.onAdd = function (map) {
 };
 countries_.addTo(map);
 
+let info = L.control({ position: 'topright' });
+info.onAdd = function (map) {
+  this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+  this.update();
+  return this._div;
+};
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+  this._div.innerHTML = (props ?
+    '<strong>District:</strong> ' + props.DNama2017 +
+    '<br>' + '<strong>Resident District Commissioner(RDC) Name:</strong> ' + props.districts1_Name_RDC1 +
+    '<br>' + '<strong>Number:</strong> ' + props.districts1_Number_RDC1 +
+    '<br>' + '<br>' + '<strong>Resident District Commissioner 2 (RDC) Name:</strong> ' + props.districts1_Name_RDC2 +
+    '<br>' + '<strong>Number:</strong> ' + props.districts1_Number_RDC2 +
+    '<br>' + '<br>' + '<strong>District Health Officer(DHO) Name:</strong> ' + props.districts1_Name_DHO +
+    '<br>' + '<strong>Email:</strong> ' + props.districts1_Email_DHO +
+    '<br>' + '<strong>Number:</strong> ' + props.districts1_Number_DHO +
+    '<br>' + '<br>' + '<strong>District Surveillance Focal Person(DSFP) Name:</strong> ' + props.districts1_Name_DSFP +
+    '<br>' + '<strong>Email:</strong> ' + props.districts1_Email_DSFP +
+    '<br>' + '<strong>Number:</strong> ' + props.districts1_Number_DSFP
+    : 'Hover over a district');
+};
+
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
