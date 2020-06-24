@@ -21,6 +21,11 @@ let ugandan_sidepanel_text = {
     ]
 }
 
+let regional_sidepanel_text = {
+    "COVID 19 cases": ["Cases", "Deaths", "Border Cases"],
+    "Infrastructure": ["Testing", "Population Density"]
+}
+
 function create_sidepanel (sidepanel_text) {
     Object.keys(sidepanel_text).forEach((key, index) => {
 
@@ -46,6 +51,7 @@ function create_sidepanel (sidepanel_text) {
             button_element.setAttribute(
                 "class", "d-flex justify-content-left p-2 button_inner_content"
             )
+            
             if (key === "Infrastructure") {
                 button_element.setAttribute("onclick", "add_overlay(this);")
             } else if (key === "Districts Data") {
@@ -61,7 +67,8 @@ function create_sidepanel (sidepanel_text) {
                 button_element.setAttribute("onclick", "add_layer(this);")
             }
             button_element.text = text_
-
+            
+            
             list_element.appendChild(button_element)
             section_menu_content.appendChild(list_element)
         })
@@ -73,12 +80,14 @@ function create_sidepanel (sidepanel_text) {
             click_text.innerText = "Click on country to view data"
             list_element.appendChild(click_text)
             section_menu_content.appendChild(list_element)
+
         }
 
         let side_bar_list = document.getElementById("create-sidebar-list")
         side_bar_list.appendChild(section_menu_title)
         side_bar_list.appendChild(section_menu_content)
+       
     })
 }
 
-create_sidepanel(ugandan_sidepanel_text);
+create_sidepanel(regional_sidepanel_text);
