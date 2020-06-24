@@ -113,7 +113,6 @@ function switch_map(map) {
       Object.keys(overlayLayers).forEach(element => {
           map.removeLayer(layers[element]);
       });
-
   
     map.options.minZoom = 3;
     map.options.maxZoom = 3;
