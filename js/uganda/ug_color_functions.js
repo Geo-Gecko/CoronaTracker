@@ -143,3 +143,18 @@ function getColorborder(d) {
     '#ffffff';
 }
 
+// // //district cases
+function getDistrictColor(d) {
+  return d > 80 ? '#67000d' :
+    d > 70 ? '#a50f15' :
+    d > 60 ? '#cb181d' :
+    d > 50 ? '#ef3b2c' :
+    d > 40 ? '#fb6a4a' :
+    d > 30 ? '#fc9272' :
+    d > 20 ? '#fcbba1' :
+    d > 10 ? '#fee0d2' :
+    d > 0 ? '#fff5f0' :
+    d > -1 ? '#f7fbff' :
+    d > null ? '#808080' :
+    '#808080';
+}
