@@ -1,10 +1,8 @@
 let long_id = "1tRF8gjyRd0oA2sSpTKmZqambggZzUM0YiED6KqF8H8M"
-let gid = "1502462034"
-govt_intervention_gid = "805631867"
-border_data_gid = "1699741591"
-let url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${gid}`
-let govt_intervention_url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${govt_intervention_gid}`
-let border_data_url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${border_data_gid}`
+let african_sheet = "Filters%20Data"
+govt_intervention_sheet = "Govt%20Intervention"
+border_data_sheet = "uganda_cases"
+let url_ = (sheet=african_sheet) => `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 let google_sheet_data;
 let second_google_sheet_data;
 let border_sheet_data;
@@ -140,19 +138,27 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png
 let african_data;
 
 
+function create_response_array_object(response) {
+  let row_names = response.data.values[0], response_array_object = []
+  response.data.values.splice(start=1).forEach(row_ => {
+    let row_object = {}
+    row_.forEach((cell, index_) => {
+      row_object[row_names[index_]] = cell
+    })
+    response_array_object.push(row_object)
+  })
+  return response_array_object
+}
 
-axios.get("https://storage.googleapis.com/database-data-1/africacorona_static_files/filters_data.csv")
-  .then(responseArrs => {
-    google_sheet_data = $.csv.toObjects(responseArrs.data);
+axios.get(url_()).then(response => {
+    google_sheet_data = create_response_array_object(response)
   })
 
-axios.get("https://storage.googleapis.com/database-data-1/africacorona_static_files/govt_intervention.csv")
-  .then(responseArrs => {
-    second_google_sheet_data = $.csv.toObjects(responseArrs.data);
+axios.get(url_(govt_intervention_sheet)).then(response => {
+    second_google_sheet_data = create_response_array_object(response)
     switch_map(map)
   })
 
-axios.get("https://storage.googleapis.com/database-data-1/africacorona_static_files/border_data.csv")
-  .then(responseArrs => {
-    border_sheet_data = $.csv.toObjects(responseArrs.data);
-  })
+axios.get(url_(border_data_sheet)).then(response => {
+  border_sheet_data = create_response_array_object(response)
+})
