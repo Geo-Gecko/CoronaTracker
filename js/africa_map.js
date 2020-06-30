@@ -121,8 +121,8 @@ let countries_ = L.control({ position: 'topright' });
 
 countries_.onAdd = function (map) {
   let div = L.DomUtil.create('div', 'sources countries_');
-  div.innerHTML = "<select style=' style='color: rgb(248, 183, 57);outline: none;\
-  margin-bottom: 0;'> <option style='background-color:rgb(248, 183, 57);'><a href='#'onclick='switch_map(map);'>REGIONAL</a></option>    <option style='background-color:rgb(248, 183, 57);'><a href='#' onclick=''>AFRICA</a></option> <option style='background-color:rgb(248, 183, 57);'><a href='#' onclick=''>UGANDA</a></option></select>";
+  div.innerHTML = "<select id='mapSelector' style=' style='color: rgb(248, 183, 57);outline: none;\
+  margin-bottom: 0;' onchange='switch_map(map);'>  <option style='background-color:rgb(248, 183, 57);'><a href='#'>UGANDA</a></option> <option style='background-color:rgb(248, 183, 57);'><a href='#'>REGIONAL</a></option><option style='background-color:rgb(248, 183, 57);'><a href='#'>AFRICA</a></option></select>";
   div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
   div.setAttribute("style", "padding-bottom: 5px");
   div.id = "sources countries_"
