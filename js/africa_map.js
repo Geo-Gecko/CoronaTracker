@@ -141,18 +141,18 @@ let african_data;
 
 
 
-axios.get(url)
+axios.get("https://storage.googleapis.com/database-data-1/africacorona_static_files/filters_data.csv")
   .then(responseArrs => {
     google_sheet_data = $.csv.toObjects(responseArrs.data);
   })
 
-axios.get(govt_intervention_url)
+axios.get("https://storage.googleapis.com/database-data-1/africacorona_static_files/govt_intervention.csv")
   .then(responseArrs => {
     second_google_sheet_data = $.csv.toObjects(responseArrs.data);
     switch_map(map)
   })
 
-axios.get(border_data_url)
+axios.get("https://storage.googleapis.com/database-data-1/africacorona_static_files/border_data.csv")
   .then(responseArrs => {
     border_sheet_data = $.csv.toObjects(responseArrs.data);
   })
