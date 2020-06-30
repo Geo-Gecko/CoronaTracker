@@ -1,8 +1,8 @@
 let regional_layers = {
     "Regional Cases": [
         [
-            [0, 20, 40, 60, 80], /*getColorwater*/, "Regional Cases"
-        ], //stylewater
+            [0, 20, 40, 60, 80], getRegionalColorcases, "Regional Cases"
+        ], styleRegionalCases
     ],
 }
 
@@ -23,7 +23,7 @@ function getRegionalColorcases(d) {
 
 function styleRegionalCases(feature) {
     return {
-      fillColor: getColormodel(parseFloat(feature.properties.Book1_Cases)),
+      fillColor: getRegionalColorcases(parseFloat(feature.properties.Book1_Cases)),
       weight: 1,
       opacity: 1,
       color: 'black',
@@ -64,17 +64,16 @@ let regionalLayers = createRegionalLayers();
 
 
 function add_regional_layer(element) {
-    console.log(element)
-    console.log('hello');
     let layer_ = element.text
-    // addLegend(regional_layers[layer_][0][0], regional_layers[layer_][0][1], regional_layers[layer_][0][2]);
+    addLegend(regional_layers[layer_][0][0], regional_layers[layer_][0][1], regional_layers[layer_][0][2]);
     highlight_button(element)
     Object.keys(regionalLayers).forEach(element => {
         if (map.hasLayer(regionalLayers[element])) {
             map.removeLayer(regionalLayers[element]);
         }
     });
-    regionalLayers[layer_].addTo(map)
+    regionalLayers[layer_].addTo(map);
+    /*Not Neccesary until there are multiple regionalLayers"*/
     // Object.keys(regional_layers[layer_]._layers).forEach(element => {
     //     let l = regional_layers[layer_]._layers[element];
     //     OEF(l, layer_)

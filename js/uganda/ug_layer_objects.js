@@ -30,6 +30,16 @@ let overlayLayers = {
         fillColor: '#AAA583'
       }, {}
     ],
+    // "District Cases": [
+    //   [], , "Click on a district <br> for contact information",
+    //   {
+    //     weight: 2,
+    //     opacity: 2,
+    //     color: '#000000b8',
+    //     fillOpacity: 2.5,
+    //     fillColor: '#AAA583'
+    //   }, {}
+    // ],
     "Population Density": [
       [7, 100, 500, 1000, 7500], getColorden, "Population Density<br>(people per sq km)",
       "districts1_density", {

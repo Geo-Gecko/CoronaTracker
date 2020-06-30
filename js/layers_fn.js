@@ -74,6 +74,9 @@ function clean_map() {
   Object.keys(overlayLayers).forEach(element => {
     map.removeLayer(layers[element]);
   });
+  Object.keys(regionalLayers).forEach(element => {
+    map.removeLayer(regionalLayers[element]);
+  });
 
 }
 
@@ -152,6 +155,12 @@ function switch_map(map, index) {
     // $("a[onclick='switch_map(map);']").text('UGANDA')
 
   } else if (document.getElementById("mapSelector").value === 'REGIONAL') {
+    map.options.minZoom = 5.5;
+    map.options.maxZoom = 5.5;
+    map.flyTo([2.8, 28.24], 5.5, {
+      animate: true,
+      duration: 1.0
+    });
     $("#sidebar").attr("class", "sidebar sidebar-left leaflet-touch collapsed")
 
     // change info panel text to country level
@@ -162,7 +171,7 @@ function switch_map(map, index) {
       // open sidebar and add layer after 1 second
       $("#sidebar").attr("class", "sidebar sidebar-left leaflet-touch")
       $("a").filter(function () {
-        return $(this).text() === "Cases";
+        return $(this).text() === "Regional Cases";
       }).click()
     }, 1000)
 
