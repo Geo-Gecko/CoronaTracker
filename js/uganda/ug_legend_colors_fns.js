@@ -71,7 +71,7 @@ function add_overlay(element) {
     let l = layers[layer_]._layers[element];
     OEF(l, layer_)
     border_sheet_data.forEach(element => {
-      if (element.Border_cases != "" && element.Border == l.feature.properties.Name) {
+      if (element.Border_cases && element.Border == l.feature.properties.Name) {
         l.setStyle({
           radius: element.Border_cases / 3,
           color: 'red',
