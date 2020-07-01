@@ -60,4 +60,10 @@ let layers_ = {
         popup_text: ["Population", "Elderly rates", "Elderly percentage"],
         legend_array: [2, 3, 4, 8, 11]
     },
+    "Testing Per Confirmed Case": {
+        gsheet_keys: ["CASES", "tests_per_confirmed_case"],
+        legend_fn: getColortests,
+        popup_text: ["Population", "Cases", "Number of tests per confirmed case"],
+        legend_array: [10, 20, 40, 80, 1000]
+    },
 }

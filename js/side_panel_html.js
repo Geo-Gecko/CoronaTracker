@@ -1,6 +1,6 @@
 let african_sidepanel_text = {
     "COVID 19 cases": [
-        "Cases", "Deaths", "Cases per 100,000 people", "Deaths per 100,000 people"
+        "Cases", "Deaths", "Cases per 100,000 people", "Deaths per 100,000 people", "Testing Per Confirmed Case"
     ],
     "Health": ["Ventilators", "ICU Beds"],
     "Population": [

@@ -148,6 +148,21 @@ function getColorelderly(d) {
         '#808080';
 }
 
+function getColortests(d) {
+    return d > 1000 ? '#253494' :
+        d > 999 ? '#253494' :
+        d > 80 ? '#2c7fb8' :
+        d > 79 ? '#2c7fb8' :
+        d > 40 ? '#41b6c4' :
+        d > 39 ? '#41b6c4' :
+        d > 20 ? '#a1dab4' :
+        d > 19 ? '#a1dab4' :
+        d > 10 ? '#ffffcc' :
+        d > 9 ? '#ffffcc' :
+        d > null ? '#808080' :
+        '#808080';
+}
+
 function getColorfiscal(d) {
     return d > 1 ? '#15841b' :
       d > 0 ? '#15841b' :
