@@ -25,6 +25,17 @@ function OEF(layer, type) {
             popup_lines.push(`<strong>Number of Cases:</strong> ${cases}`)
         }
     }
+    if (type === "Cases per District") {
+        let cases_district;
+        border_sheet_data.forEach(element => {
+            if (element.Cases != "" && element.District == layer.feature.properties.DNama2017) {
+            cases_district = element.Cases
+            }
+        });
+        if (cases_district) {
+            popup_lines.push(`<strong>Number of Cases:</strong> ${cases_district}`)
+        }
+    }
     layer.bindPopup(popup_lines.join(""));
     layer.on('mouseover', function (e) {
         this.openPopup();

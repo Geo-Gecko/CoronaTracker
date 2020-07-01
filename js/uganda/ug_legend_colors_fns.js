@@ -20,7 +20,7 @@ function createOverLayers() {
   Object.keys(overlayLayers).forEach(element => {
 
     layers[element] = L.geoJson(overlayLayers[element][0], {
-      pointToLayer: function(feature, latlng) {
+      pointToLayer: function (feature, latlng) {
         return new L.CircleMarker(latlng, {
           pane: 'overlaysPane',
           radius: 4,
@@ -44,11 +44,11 @@ function createCountryLayers() {
 
   Object.keys(ugandaLayers).forEach(element => {
 
-    let styling_fn = element === "Contacts" ?
-    ugandaLayers[element][3] : styling_function(
-      ugandaLayers[element][3], ugandaLayers[element][1]
-    );
-  
+    let styling_fn = element === ("Contacts" || "Cases per District") ?
+      ugandaLayers[element][3] : styling_function(
+        ugandaLayers[element][3], ugandaLayers[element][1]
+      );
+
     layers[element] = new L.geoJson(districts_data, {
       pane: 'choroplethPane',
       style: styling_fn
@@ -99,6 +99,23 @@ function add_ug_layer(element) {
   } else {
     call_OEF_fn = OEF
   }
+  if (layer_ === "Cases per District") {
+    Object.keys(countrylayers[layer_]._layers).forEach(element => {
+      let l = countrylayers[layer_]._layers[element];
+      border_sheet_data.forEach(element => {
+        if (element.Cases != "" && element.District == l.feature.properties.DNama2017) {
+          l.setStyle({
+            fillColor: getDistrictColor(element.Cases),
+            weight: 1,
+            opacity: 1,
+            color: 'black',
+            dashArray: '0',
+            fillOpacity: 1
+          })
+        }
+      });
+    });
+  }
   Object.keys(countrylayers[layer_]._layers).forEach(element => {
     let l = countrylayers[layer_]._layers[element];
     call_OEF_fn(l, layer_)
@@ -113,7 +130,7 @@ function add_ug_layer(element) {
         show_hamburg_button()
       }
       let group = e.target,
-          layer = e.layer;
+        layer = e.layer;
 
       group.setStyle({
         weight: 2, opacity: 2,

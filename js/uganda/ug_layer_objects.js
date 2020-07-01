@@ -30,6 +30,11 @@ let overlayLayers = {
         fillColor: '#AAA583'
       }, {}
     ],
+    "Cases per District": [
+      [0, 5, 10, 50, 100], getDistrictColor, "Cases per District", getDistrictColor, {
+        "District": "DNama2017", "Total Population": "TotalPopn",
+      }
+    ],
     "Population Density": [
       [7, 100, 500, 1000, 7500], getColorden, "Population Density<br>(people per sq km)",
       "districts1_density", {
