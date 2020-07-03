@@ -44,7 +44,7 @@ function createCountryLayers() {
 
   Object.keys(ugandaLayers).forEach(element => {
 
-    let styling_fn = element === "Contacts" ?
+    let styling_fn = element === ("Contacts" || "Cases per District") ?
     ugandaLayers[element][3] : styling_function(
       ugandaLayers[element][3], ugandaLayers[element][1]
     );
@@ -71,7 +71,10 @@ function add_overlay(element) {
     let l = layers[layer_]._layers[element];
     OEF(l, layer_)
     border_sheet_data.forEach(element => {
-      if (element.Border_cases && element.Border == l.feature.properties.Name) {
+      if (
+        element.Border_cases && element.Border_cases != ""
+        && element.Border == l.feature.properties.Name
+      ) {
         l.setStyle({
           radius: element.Border_cases / 3,
           color: 'red',
@@ -103,6 +106,27 @@ function add_ug_layer(element) {
     let l = countrylayers[layer_]._layers[element];
     call_OEF_fn(l, layer_)
   });
+
+  if (layer_ === "Cases per District") {
+    Object.keys(countrylayers[layer_]._layers).forEach(element => {
+      let l = countrylayers[layer_]._layers[element];
+      border_sheet_data.forEach(element => {
+        if (
+          element.Cases && element.Cases != "" &&
+          element.District == l.feature.properties.DNama2017
+        ) {
+          l.setStyle({
+            fillColor: getDistrictColor(element.Cases),
+            weight: 1,
+            opacity: 1,
+            color: 'black',
+            dashArray: '0',
+            fillOpacity: 1
+          })
+        }
+      });
+    });
+  }
 
   // change sidepanel and enable highlighting of districts in contacts layer
   if (layer_ === "Contacts") {
