@@ -22,7 +22,7 @@ let ugandan_sidepanel_text = {
 }
 
 let regional_sidepanel_text = {
-    "COVID 19 cases": ["Regional Cases", "Population Cases"]
+    "Regional COVID 19 Cases": ["Regional COVID 19 Cases", "Population"]
 }
 
 function create_sidepanel (sidepanel_text) {
@@ -61,10 +61,8 @@ function create_sidepanel (sidepanel_text) {
                     button_element.setAttribute("id", text_.toLowerCase())
                 }
                 button_element.setAttribute("onclick", "govt_intervention_layer(this);")
-            } else if (key === "COVID 19 cases") {
-                if (text_ === "Regional Cases" || text_ === "Population Cases") {
-                    button_element.setAttribute("onclick", "add_regional_layer(this);")
-                } 
+            } else if (key === "Regional COVID 19 Cases") {
+                button_element.setAttribute("onclick", "add_regional_layer(this);") 
             } else {
                 button_element.setAttribute("onclick", "add_layer(this);")
             }
