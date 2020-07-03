@@ -5,6 +5,11 @@ let overlayLayers = {
         "District": "District", "Name": "Name", "Path": "Path"
       }
     ],
+    "Towns": [
+      towns, "blue", , , {
+        "Name": "Name"
+      }
+    ],
     "Health Referral Centers": [
       health_centers, "red", , , {
         "District": "DNama2017", "Region": "Region",
