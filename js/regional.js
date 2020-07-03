@@ -38,7 +38,6 @@ function styleRegionalCases(feature) {
 }
 
 function getRegionalPopulationColorCases(d) {
-    console.log(d)
     return d > 5000000 ? '#016c59' :
         d > 4000000 ? '#016c59' :
             d > 3000000 ? '#1c9099' :
