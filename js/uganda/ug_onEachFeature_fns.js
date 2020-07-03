@@ -17,12 +17,29 @@ function OEF(layer, type) {
     if (type === "Border Points") {
         let cases;
         border_sheet_data.forEach(element => {
-            if (element.Border_cases != "" && element.Border == layer.feature.properties.Name) {
+            if (
+                element.Border_cases && element.Border_cases != ""
+                && element.Border == layer.feature.properties.Name
+            ) {
             cases = element.Border_cases
             }
         });
         if (cases) {
             popup_lines.push(`<strong>Number of Cases:</strong> ${cases}`)
+        }
+    }
+    if (type === "Cases per District") {
+        let cases_district;
+        border_sheet_data.forEach(element => {
+            if (
+                element.Cases && element.Cases != "" &&
+                element.District == layer.feature.properties.DNama2017
+            ) {
+            cases_district = element.Cases
+            }
+        });
+        if (cases_district) {
+            popup_lines.push(`<strong>Number of Cases:</strong> ${cases_district}`)
         }
     }
     layer.bindPopup(popup_lines.join(""));
