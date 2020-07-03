@@ -1,12 +1,12 @@
 let regional_layers = {
-    "Regional Cases": [
+    "Regional COVID 19 Cases": [
         [
-            [0, 20, 40, 60, 80], getRegionalColorCases, "Regional Cases"
+            [0, 20, 40, 60, 80], getRegionalColorCases, "Regional COVID 19 Cases"
         ], styleRegionalCases
     ],
-    "Population Cases": [
+    "Population": [
         [
-            [0, 500000, 1000000, 3000000, 5000000], getRegionalPopulationColorCases, "Population Cases"
+            [0, 500000, 1000000, 3000000, 5000000], getRegionalPopulationColorCases, "Population"
         ], styleRegionalPopulationCases
     ],
 }
@@ -76,8 +76,8 @@ function createRegionalLayers() {
                 layer.bindPopup(
                     '<strong>Country:</strong> ' + layer.feature.properties.layer +
                     '<br>' + '<strong>Admin Unit Name:</strong> ' + layer.feature.properties.Name +
-                    '<br>' + '<strong>Cases:</strong> ' + layer.feature.properties.Book1_Case +
-                    '<br>' + '<strong>Population Cases:</strong> ' + layer.feature.properties.pop_cases_
+                    '<br>' + '<strong>COVID 19 Cases:</strong> ' + layer.feature.properties.Book1_Case +
+                    '<br>' + '<strong>Population:</strong> ' + layer.feature.properties.pop_cases_
                 );
                 layer.on('mouseover', function (e) {
                     this.openPopup();

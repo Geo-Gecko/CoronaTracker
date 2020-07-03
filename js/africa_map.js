@@ -136,7 +136,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png
 }).addTo(map);
 
 let african_data;
-
+create_sidepanel(african_sidepanel_text)
 
 function create_response_array_object(response) {
   let row_names = response.data.values[0], response_array_object = []
