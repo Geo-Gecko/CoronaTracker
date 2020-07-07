@@ -78,8 +78,8 @@ function add_overlay(element) {
         l.setStyle({
           radius: element.Border_cases / 3,
           color: 'red',
-          fillOpacity: 0,
           weight: 3,
+          fill: false
         })
       }
     });
@@ -117,6 +117,27 @@ function add_ug_layer(element) {
         ) {
           l.setStyle({
             fillColor: getDistrictColor(element.Cases),
+            weight: 1,
+            opacity: 1,
+            color: 'black',
+            dashArray: '0',
+            fillOpacity: 1
+          })
+        }
+      });
+    });
+  }
+
+  if (layer_ === "Cases per 100,000 people") {
+    Object.keys(countrylayers[layer_]._layers).forEach(element => {
+      let l = countrylayers[layer_]._layers[element];
+      border_sheet_data.forEach(element => {
+        if (
+          element.cases_per_100000 && element.cases_per_100000 != "" &&
+          element.District == l.feature.properties.DNama2017
+        ) {
+          l.setStyle({
+            fillColor: getColorugcasesratio(element.cases_per_100000),
             weight: 1,
             opacity: 1,
             color: 'black',

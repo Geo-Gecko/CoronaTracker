@@ -28,7 +28,8 @@ function OEF(layer, type) {
             popup_lines.push(`<strong>Number of Cases:</strong> ${cases}`)
         }
     }
-    if (type === "Cases per District") {
+    if (type === "Cases per District", "Border Districts", "Cases per 100,000 people", "Poverty Percentage", "Population Density", "Elderly Percentage(Over 60 in age)", 
+    "HIV/AIDS Percentage", "Prisons Population", "Water Coverage Percentage", "Risk Model", "GDP") {
         let cases_district;
         border_sheet_data.forEach(element => {
             if (
@@ -42,6 +43,21 @@ function OEF(layer, type) {
             popup_lines.push(`<strong>Number of Cases:</strong> ${cases_district}`)
         }
     }
+    if (type === "Cases per 100,000 people") {
+        let cases_ratio;
+        border_sheet_data.forEach(element => {
+            if (
+                element.Cases && element.Cases != "" &&
+                element.District == layer.feature.properties.DNama2017
+            ) {
+            cases_ratio = element.cases_per_100000
+            }
+        });
+        if (cases_ratio) {
+            popup_lines.push(`<br><strong>Number of Cases per 100,000 people:</strong> ${cases_ratio}`)
+        }
+    }
+
     layer.bindPopup(popup_lines.join(""));
     layer.on('mouseover', function (e) {
         this.openPopup();

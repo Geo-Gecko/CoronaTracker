@@ -2,7 +2,7 @@
 let overlayLayers = {
     "Border Points": [
       border_points, "#cccc09", , , {
-        "District": "District", "Name": "Name", "Path": "Path"
+        "District": "District", "Border Name": "Name", "Path": "Path"
       }
     ],
     "Towns": [
@@ -37,7 +37,12 @@ let overlayLayers = {
     ],
 
     "Cases per District": [
-      [0, 5, 10, 50, 100], getDistrictColor, "Cases per District", getDistrictColor, {
+      [0, 1, 5, 10, 50], getDistrictColor, "Cases per District", getDistrictColor, {
+        "District": "DNama2017", "Total Population": "TotalPopn",
+      }
+    ],
+    "Cases per 100,000 people": [
+      [0, 0.1, 0.2, 0.5, 1], getColorugcasesratio, "Cases per 100,000 people", getColorugcasesratio, {
         "District": "DNama2017", "Total Population": "TotalPopn",
       }
     ],
