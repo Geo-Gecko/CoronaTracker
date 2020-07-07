@@ -4,9 +4,9 @@ let regional_layers = {
             [0, 20, 40, 60, 80], getRegionalColorCases, "Regional COVID 19 Cases"
         ], styleRegionalCases
     ],
-    "Population": [
+    "Population Density": [
         [
-            [0, 500000, 1000000, 3000000, 5000000], getRegionalPopulationColorCases, "Population"
+            [0, 500000, 1000000, 3000000, 5000000], getRegionalPopulationColorCases, "Population Density"
         ], styleRegionalPopulationCases
     ],
 }

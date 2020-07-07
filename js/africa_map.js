@@ -42,10 +42,12 @@ let southWest = L.latLng(53.85252660044951, 107.75390625),
   bounds = L.latLngBounds(southWest, northEast);
 
 let map = L.map('map', {
-  maxBounds: bounds,
+  zoomControl: true,
+  maxBounds: bounds,  
   minZoom: 3,
-  maxZoom: 3
-}).setView([2.8, 15.24], 2);
+  maxZoom: 9
+}).setView([2.8, 15.24], 9);
+map.zoomControl.setPosition('topright');
 let sidebar = L.control.sidebar('sidebar').addTo(map);
 
 map.createPane('choroplethPane');
@@ -94,12 +96,6 @@ $(window).resize(() => {
   );
 }
 )
-
-map.dragging.disable();
-map.touchZoom.disable();
-map.doubleClickZoom.disable();
-map.scrollWheelZoom.disable();
-
 let sources_button = L.control({
   position: 'topright'
 });
@@ -120,7 +116,7 @@ let countries_ = L.control({ position: 'topright' });
 countries_.onAdd = function (map) {
   let div = L.DomUtil.create('div', 'sources countries_');
   div.innerHTML = "<select id='mapSelector' style=' style='color: rgb(248, 183, 57);outline: none;\
-  margin-bottom: 0;' onchange='switch_map(map);'>  <option style='background-color:rgb(248, 183, 57);'><a href='#'>UGANDA</a></option> <option style='background-color:rgb(248, 183, 57);'><a href='#'>REGIONAL</a></option><option style='background-color:rgb(248, 183, 57);'><a href='#'>AFRICA</a></option></select>";
+  margin-bottom: 0;' onchange='switch_map(map);'>  <option style='background-color:rgb(248, 183, 57);'>UGANDA</option> <option style='background-color:rgb(248, 183, 57);'>EAST AFRICA</option><option style='background-color:rgb(248, 183, 57);'>AFRICA</option></select>";
   div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
   div.setAttribute("style", "padding-bottom: 5px");
   div.id = "sources countries_"

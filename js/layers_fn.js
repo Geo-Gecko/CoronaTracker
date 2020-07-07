@@ -80,6 +80,10 @@ function switch_map(map) {
   });
 
   if (document.getElementById("mapSelector").value === 'UGANDA') {
+    map.dragging.disable();
+    map.touchZoom.disable();
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
     map.options.minZoom = 7;
     map.options.maxZoom = 7;
     map.flyTo([1.8, 29.24], 7, {
@@ -116,6 +120,10 @@ function switch_map(map) {
   } else if (document.getElementById("mapSelector").value === 'AFRICA') {
 
     // zoom out to Africa
+    map.dragging.disable();
+    map.touchZoom.disable();
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
     map.options.minZoom = 3;
     map.options.maxZoom = 3;
     map.flyTo([2.8, 15.24], 2, {
@@ -145,10 +153,12 @@ function switch_map(map) {
       $("a[onclick='add_layer(this);']")[0].setAttribute("style", "color: #f8b739;")
     }, 500)
 
-  } else if (document.getElementById("mapSelector").value === 'REGIONAL') {
-    map.options.minZoom = 5.5;
-    map.options.maxZoom = 5.5;
-    map.flyTo([2.8, 28.24], 5.5, {
+  } else if (document.getElementById("mapSelector").value === 'EAST AFRICA') {
+   map.dragging.enable();
+   map.touchZoom.enable();
+   map.doubleClickZoom.enable();
+   map.scrollWheelZoom.enable();
+   map.flyTo([2.8, 28.24], 5, {
       animate: true,
       duration: 1.0
     });
