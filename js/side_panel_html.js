@@ -1,6 +1,6 @@
 let african_sidepanel_text = {
     "COVID 19 cases": [
-        "Cases", "Deaths", "Cases per 100,000 people", "Deaths per 100,000 people"
+        "Cases", "Deaths", "Cases per 100,000 people", "Deaths per 100,000 people", "Testing Per Confirmed Case"
     ],
     "Health": ["Ventilators", "ICU Beds"],
     "Population": [
@@ -13,11 +13,11 @@ let african_sidepanel_text = {
 
 let ugandan_sidepanel_text = {
     "Infrastructure": [
-        "Border Points", "Health Referral Centers", "ICU Beds Per Health Center",
+        "Towns", "Border Points", "Health Referral Centers", "ICU Beds Per Health Center",
     ],
     "Districts Data": [
-        "Border Districts", "Poverty Percentage", "Population Density", "Contacts",
-        "Elderly Percentage(Over 60 in age)", "HIV/AIDS Percentage", "Prisons Population", "Water Access Points", "Risk Model", "GDP"
+        "Border Districts", "Cases per District", "Poverty Percentage", "Population Density", "Contacts",
+        "Elderly Percentage(Over 60 in age)", "HIV/AIDS Percentage", "Prisons Population", "Water Coverage Percentage", "Risk Model", "GDP"
     ]
 }
 
