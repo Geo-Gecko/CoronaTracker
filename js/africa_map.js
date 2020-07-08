@@ -49,8 +49,10 @@ let map = L.map('map', {
   zoomControl: false,
   maxBounds: bounds,  
   minZoom: 3,
-  maxZoom: 9
-}).setView([2.8, 15.24], 9);
+  maxZoom: 3,
+  zoomSnap: 0.25,
+  zoomDelta: 0.25
+}).setView([2.8, 15.24], 3);
 let sidebar = L.control.sidebar('sidebar').addTo(map);
 map.createPane('choroplethPane');
 map.getPane('choroplethPane').style.zIndex = 400;

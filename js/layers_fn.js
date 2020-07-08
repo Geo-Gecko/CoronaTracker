@@ -163,6 +163,9 @@ function switch_map(map) {
 
   } else if (document.getElementById("mapSelector").value === 'EAST AFRICA') {
 
+    southWest = L.latLng(-13.88074584202559, -6.50390625),
+    northEast = L.latLng(16.3833911236084, 53.43750000000001),
+    bounds = L.latLngBounds(southWest, northEast);
 
    map.dragging.enable();
    map.touchZoom.enable();
@@ -172,7 +175,7 @@ function switch_map(map) {
    map.options.maxZoom = 7;
    zoom.addTo(map);
    zoom.setPosition('topright');
-   map.flyTo([2.8, 28.24], 5, {
+   map.flyToBounds(bounds, 5, {
       animate: true,
       duration: 1.0
     });
