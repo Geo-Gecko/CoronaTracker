@@ -45,16 +45,13 @@ var zoomOptions = {
 };
 // Creating zoom control
 var zoom = L.control.zoom(zoomOptions);
-
 let map = L.map('map', {
   zoomControl: false,
   maxBounds: bounds,  
   minZoom: 3,
   maxZoom: 9
 }).setView([2.8, 15.24], 9);
-// map.zoomControl.setPosition('topright');
 let sidebar = L.control.sidebar('sidebar').addTo(map);
-
 map.createPane('choroplethPane');
 map.getPane('choroplethPane').style.zIndex = 400;
 map.createPane('overlaysPane');
@@ -150,18 +147,17 @@ function create_response_array_object(response) {
   return response_array_object
 }
 
-
 axios.get(url_()).then(response => {
-    google_sheet_data = create_response_array_object(response)
-  })
+  google_sheet_data = create_response_array_object(response)
+})
 
 axios.get(url_(govt_intervention_sheet)).then(response => {
-    second_google_sheet_data = create_response_array_object(response)
-    switch_map(map)
-  })
+  second_google_sheet_data = create_response_array_object(response)
+  switch_map(map)
+})
 
 axios.get(url_(border_data_sheet)).then(response => {
-  border_sheet_data = create_response_array_object(response)
+border_sheet_data = create_response_array_object(response)
 })
 
 axios.get(url_(regional_sheet)).then(response => {
