@@ -38,13 +38,22 @@ let southWest = L.latLng(53.85252660044951, 107.75390625),
   northEast = L.latLng(-50.28933925329178, -132.01171875000003),
   bounds = L.latLngBounds(southWest, northEast);
 
+// zoom control options
+var zoomOptions = {
+  zoomInText: '+',
+  zoomOutText: '-',
+};
+// Creating zoom control
+var zoom = L.control.zoom(zoomOptions);
 let map = L.map('map', {
-  maxBounds: bounds,
+  zoomControl: false,
+  maxBounds: bounds,  
   minZoom: 3,
-  maxZoom: 3
-}).setView([2.8, 15.24], 2);
+  maxZoom: 3,
+  zoomSnap: 0.25,
+  zoomDelta: 0.25
+}).setView([2.8, 15.24], 3);
 let sidebar = L.control.sidebar('sidebar').addTo(map);
-
 map.createPane('choroplethPane');
 map.getPane('choroplethPane').style.zIndex = 400;
 map.createPane('overlaysPane');
@@ -91,12 +100,6 @@ $(window).resize(() => {
   );
 }
 )
-
-map.dragging.disable();
-map.touchZoom.disable();
-map.doubleClickZoom.disable();
-map.scrollWheelZoom.disable();
-
 let sources_button = L.control({
   position: 'topright'
 });
@@ -117,7 +120,7 @@ let countries_ = L.control({ position: 'topright' });
 countries_.onAdd = function (map) {
   let div = L.DomUtil.create('div', 'sources countries_');
   div.innerHTML = "<select id='mapSelector' style=' style='color: rgb(248, 183, 57);outline: none;\
-  margin-bottom: 0;' onchange='switch_map(map);'>  <option style='background-color:rgb(248, 183, 57);'><a href='#'>UGANDA</a></option> <option style='background-color:rgb(248, 183, 57);'><a href='#'>REGIONAL</a></option><option style='background-color:rgb(248, 183, 57);'><a href='#'>AFRICA</a></option></select>";
+  margin-bottom: 0;' onchange='switch_map(map);'>  <option style='background-color:rgb(248, 183, 57);'>UGANDA</option> <option style='background-color:rgb(248, 183, 57);'>EAST AFRICA</option><option style='background-color:rgb(248, 183, 57);'>AFRICA</option></select>";
   div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
   div.setAttribute("style", "padding-bottom: 5px");
   div.id = "sources countries_"
@@ -146,18 +149,17 @@ function create_response_array_object(response) {
   return response_array_object
 }
 
-
 axios.get(url_()).then(response => {
-    google_sheet_data = create_response_array_object(response)
-  })
+  google_sheet_data = create_response_array_object(response)
+})
 
 axios.get(url_(govt_intervention_sheet)).then(response => {
-    second_google_sheet_data = create_response_array_object(response)
-    switch_map(map)
-  })
+  second_google_sheet_data = create_response_array_object(response)
+  switch_map(map)
+})
 
 axios.get(url_(border_data_sheet)).then(response => {
-  border_sheet_data = create_response_array_object(response)
+border_sheet_data = create_response_array_object(response)
 })
 
 axios.get(url_(regional_sheet)).then(response => {
