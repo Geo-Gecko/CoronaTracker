@@ -75,9 +75,11 @@ function switch_map(map) {
   Object.keys(overlayLayers).forEach(element => {
     map.removeLayer(layers[element]);
   });
-  Object.keys(regionalLayers).forEach(element => {
-    map.removeLayer(regionalLayers[element]);
-  });
+  if (regionalLayers) {
+    Object.keys(regionalLayers).forEach(element => {
+      map.removeLayer(regionalLayers[element]);
+    });
+  }
 
   if (document.getElementById("mapSelector").value === 'UGANDA') {
     map.options.minZoom = 7;

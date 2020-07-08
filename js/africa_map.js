@@ -1,12 +1,9 @@
 let long_id = "1tRF8gjyRd0oA2sSpTKmZqambggZzUM0YiED6KqF8H8M"
-let african_sheet = "Filters%20Data"
-govt_intervention_sheet = "Govt%20Intervention"
-border_data_sheet = "uganda_cases"
+let african_sheet = "Filters%20Data",govt_intervention_sheet = "Govt%20Intervention",
+border_data_sheet = "uganda_cases", regional_sheet = "Regional%20Data"
 let url_ = (sheet=african_sheet) => `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
-let google_sheet_data;
-let second_google_sheet_data;
-let border_sheet_data;
-let prev_highlighted_button;
+let regional_sheet_data, google_sheet_data, second_google_sheet_data,
+  border_sheet_data, prev_highlighted_button, regionalLayers;
 
 // set the hightlighted button to show
 let highlight_button = (element) => {
@@ -161,4 +158,13 @@ axios.get(url_(govt_intervention_sheet)).then(response => {
 
 axios.get(url_(border_data_sheet)).then(response => {
   border_sheet_data = create_response_array_object(response)
+})
+
+axios.get(url_(regional_sheet)).then(response => {
+    let regional_array_data = create_response_array_object(response);
+    regional_sheet_data = {}
+    regional_array_data.forEach(element_ => {
+      regional_sheet_data[element_.Name] = {...element_}
+    })
+    regionalLayers = createRegionalLayers()
 })
