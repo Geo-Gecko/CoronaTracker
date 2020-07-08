@@ -13,12 +13,16 @@ let african_sidepanel_text = {
 
 let ugandan_sidepanel_text = {
     "Infrastructure": [
-        "Border Points", "Health Centers", "ICU Beds Per Health Center", "Market Places",
+        "Border Points","District Cases Points", "Health Referral Centers", "ICU Beds Per Health Center",
     ],
     "Districts Data": [
-        "Border Districts", "Poverty Percentage", "Population Density", "Contacts",
-        "Elderly Percentage(Over 60 in age)", "HIV/AIDS Percentage", "Prisons Population", /*"Water Source Coverage",*/ "GDP"
+        "Border Districts", "District Cases", "Poverty Percentage", "Population Density", "Contacts",
+        "Elderly Percentage(Over 60 in age)", "HIV/AIDS Percentage", "Prisons Population", "Water Access Points", "Risk Model", "GDP"
     ]
+}
+
+let regional_sidepanel_text = {
+    "Regional COVID 19 Cases": ["Regional COVID 19 Cases", "Population Density"]
 }
 
 function create_sidepanel (sidepanel_text) {
@@ -45,7 +49,7 @@ function create_sidepanel (sidepanel_text) {
             button_element.setAttribute("href", "#")
             button_element.setAttribute(
                 "class", "d-flex justify-content-left p-2 button_inner_content"
-            )
+            )            
             if (key === "Infrastructure") {
                 button_element.setAttribute("onclick", "add_overlay(this);")
             } else if (key === "Districts Data") {
@@ -57,11 +61,14 @@ function create_sidepanel (sidepanel_text) {
                     button_element.setAttribute("id", text_.toLowerCase())
                 }
                 button_element.setAttribute("onclick", "govt_intervention_layer(this);")
+            } else if (key === "Regional COVID 19 Cases") {
+                button_element.setAttribute("onclick", "add_regional_layer(this);") 
             } else {
                 button_element.setAttribute("onclick", "add_layer(this);")
             }
             button_element.text = text_
-
+            
+            
             list_element.appendChild(button_element)
             section_menu_content.appendChild(list_element)
         })
@@ -73,12 +80,13 @@ function create_sidepanel (sidepanel_text) {
             click_text.innerText = "Click on country to view data"
             list_element.appendChild(click_text)
             section_menu_content.appendChild(list_element)
+
         }
 
         let side_bar_list = document.getElementById("create-sidebar-list")
         side_bar_list.appendChild(section_menu_title)
         side_bar_list.appendChild(section_menu_content)
+       
     })
 }
 
-create_sidepanel(african_sidepanel_text)

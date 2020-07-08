@@ -32,8 +32,16 @@ function addLegend(grades, ramp, title = null) {
           (grades[i + 1] ? '' + 'Not Implemented' + '<br>': 'Implemented'
         );
       }
-    } else if (title) {
-      div.innerHTML += '<p><b>' + title + '</b></p><br>';
+    } else if (title === 'Risk Level') {
+      div.innerHTML += '<p><b>' + title + '</b></p>';
+      for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+          '<i style="background:' + ramp(grades[i]) + '"></i> '  +
+          (grades[i + 1] ? '' + 'Low' + '<br>': 'High'
+        );
+      }
+    } else if (title != 'Risk Level') {
+      div.innerHTML += '<p><b>' + title + '</b></p>';
       div.innerHTML += '<i style="background:#808080"></i> No data<br>';
       // loop through our density intervals and generate a label with a colored square for each interval
       for (var i = 0; i < grades.length; i++) {
