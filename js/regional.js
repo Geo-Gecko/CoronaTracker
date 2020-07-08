@@ -1,12 +1,12 @@
 let regional_layers = {
     "Regional COVID 19 Cases": [
         [
-            [0, 20, 40, 60, 80], getRegionalColorCases, "Regional COVID 19 Cases"
+            [0, 1, 50, 100, 1000], getRegionalColorCases, "Regional COVID 19 Cases"
         ], styleRegionalCases
     ],
     "Population": [
         [
-            [0, 500000, 1000000, 3000000, 5000000], getRegionalPopulationColorCases, "Population"
+            [1, 50, 100, 500, 1000], getRegionalPopulationColorCases, "Population"
         ], styleRegionalPopulationCases
     ],
 }
@@ -28,10 +28,13 @@ function getRegionalColorCases(d) {
 
 function styleRegionalCases(feature) {
     return {
-        fillColor: getRegionalColorCases(parseFloat(feature.properties.Book1_Case)),
+        fill: feature.properties.COUNTRY ? false : true,
+        fillColor: regional_sheet_data[feature.properties.Name] ? getRegionalColorCases(
+            parseFloat(regional_sheet_data[feature.properties.Name]["Cases"])
+        ) : "#808080",
         weight: 1,
         opacity: 1,
-        color: 'black',
+        color: feature.properties.COUNTRY ? "black" : '#6c757d',
         dashArray: '0',
         fillOpacity: 1
     };
@@ -54,10 +57,13 @@ function getRegionalPopulationColorCases(d) {
 
 function styleRegionalPopulationCases(feature) {
     return {
-        fillColor: getRegionalPopulationColorCases(parseFloat(feature.properties.pop_cases_.replace(',', ""))),
+        fill: feature.properties.COUNTRY ? false : true,
+        fillColor: regional_sheet_data[feature.properties.Name] ? getRegionalPopulationColorCases(
+            parseFloat(regional_sheet_data[feature.properties.Name]["pop_density"].replace(',', ""))
+        ) : "#808080",
         weight: 1,
         opacity: 1,
-        color: 'black',
+        color: feature.properties.COUNTRY ? "black" : '#6c757d',
         dashArray: '0',
         fillOpacity: 1
     };
@@ -73,18 +79,21 @@ function createRegionalLayers() {
             pane: 'choroplethPane',
             style: regional_layers[element][1],
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(
-                    '<strong>Country:</strong> ' + layer.feature.properties.layer +
-                    '<br>' + '<strong>Admin Unit Name:</strong> ' + layer.feature.properties.Name +
-                    '<br>' + '<strong>COVID 19 Cases:</strong> ' + layer.feature.properties.Book1_Case +
-                    '<br>' + '<strong>Population:</strong> ' + layer.feature.properties.pop_cases_
-                );
-                layer.on('mouseover', function (e) {
-                    this.openPopup();
-                });
-                layer.on('mouseout', function (e) {
-                    this.closePopup();
-                });
+                let district_name = layer.feature.properties.Name
+                if (regional_sheet_data[district_name]) {
+                    layer.bindPopup(
+                        '<strong>Country:</strong> ' + layer.feature.properties.layer +
+                        '<br>' + '<strong>Admin Unit Name:</strong> ' + district_name +
+                        '<br>' + '<strong>COVID 19 Cases:</strong> ' + regional_sheet_data[district_name]["Cases"] +
+                        '<br>' + '<strong>Population:</strong> ' + regional_sheet_data[district_name]["pop_density"]
+                    );
+                    layer.on('mouseover', function (e) {
+                        this.openPopup();
+                    });
+                    layer.on('mouseout', function (e) {
+                        this.closePopup();
+                    });
+                }
             }
         });
     });
@@ -92,7 +101,6 @@ function createRegionalLayers() {
     return layers;
 }
 
-let regionalLayers = createRegionalLayers();
 
 
 function add_regional_layer(element) {
