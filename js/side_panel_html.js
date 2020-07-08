@@ -22,7 +22,7 @@ let ugandan_sidepanel_text = {
 }
 
 let regional_sidepanel_text = {
-    "Regional COVID 19 Cases": ["Regional COVID 19 Cases", "Population"]
+    "Regional COVID 19 Cases": ["Regional COVID 19 Cases", "Population Density"]
 }
 
 function create_sidepanel (sidepanel_text) {
