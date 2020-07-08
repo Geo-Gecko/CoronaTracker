@@ -38,13 +38,21 @@ let southWest = L.latLng(53.85252660044951, 107.75390625),
   northEast = L.latLng(-50.28933925329178, -132.01171875000003),
   bounds = L.latLngBounds(southWest, northEast);
 
+// zoom control options
+var zoomOptions = {
+  zoomInText: '+',
+  zoomOutText: '-',
+};
+// Creating zoom control
+var zoom = L.control.zoom(zoomOptions);
+
 let map = L.map('map', {
-  zoomControl: true,
+  zoomControl: false,
   maxBounds: bounds,  
   minZoom: 3,
   maxZoom: 9
 }).setView([2.8, 15.24], 9);
-map.zoomControl.setPosition('topright');
+// map.zoomControl.setPosition('topright');
 let sidebar = L.control.sidebar('sidebar').addTo(map);
 
 map.createPane('choroplethPane');

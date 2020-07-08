@@ -86,6 +86,9 @@ function switch_map(map) {
     map.touchZoom.disable();
     map.doubleClickZoom.disable();
     map.scrollWheelZoom.disable();
+    if (zoom._map) {
+      map.removeControl(zoom);
+    }
     map.options.minZoom = 7;
     map.options.maxZoom = 7;
     map.flyTo([1.8, 29.24], 7, {
@@ -126,6 +129,9 @@ function switch_map(map) {
     map.touchZoom.disable();
     map.doubleClickZoom.disable();
     map.scrollWheelZoom.disable();
+    if (zoom._map) {
+      map.removeControl(zoom);
+    }
     map.options.minZoom = 3;
     map.options.maxZoom = 3;
     map.flyTo([2.8, 15.24], 2, {
@@ -156,10 +162,14 @@ function switch_map(map) {
     }, 500)
 
   } else if (document.getElementById("mapSelector").value === 'EAST AFRICA') {
+
+
    map.dragging.enable();
    map.touchZoom.enable();
    map.doubleClickZoom.enable();
    map.scrollWheelZoom.enable();
+   zoom.addTo(map);
+   zoom.setPosition('topright');
    map.flyTo([2.8, 28.24], 5, {
       animate: true,
       duration: 1.0
