@@ -6,24 +6,22 @@ let regional_layers = {
     ],
     "Population Density": [
         [
-            [1, 50, 100, 500, 1000], getRegionalPopulationColorCases, "Population Density"
+            [1, 10, 50, 100, 500], getRegionalPopulationColorCases, "Population Density"
         ], styleRegionalPopulationCases
     ],
 }
 
 function getRegionalColorCases(d) {
     return d > 1000 ? '#016c59' :
-        d > 999 ? '#016c59' :
-            d > 100 ? '#1c9099' :
-                d > 99 ? '#1c9099' :
-                    d > 50 ? '#67a9cf' :
-                        d > 49 ? '#67a9cf' :
-                            d > 10 ? '#bdc9e1' :
-                                d > 9 ? '#bdc9e1' :
-                                    d > 0 ? '#f6eff7' :
-                                        d > -1 ? '#f6eff7' :
-                                            d > null ? '#808080' :
-                                                '#808080';
+    d > 100 ? '#1c9099' :
+    d > 99 ? '#1c9099' :
+    d > 50 ? '#67a9cf' :
+    d > 49 ? '#67a9cf' :
+    d > 1 ? '#bdc9e1' :
+    d > 0.1 ? '#bdc9e1' :
+    d > 0 ? '#ffffff' :
+    d > -1 ? '#ffffff' :
+    '#808080';
 }
 
 function styleRegionalCases(feature) {
@@ -41,18 +39,17 @@ function styleRegionalCases(feature) {
 }
 
 function getRegionalPopulationColorCases(d) {
-    return d > 5000000 ? '#016c59' :
-        d > 4000000 ? '#016c59' :
-            d > 3000000 ? '#1c9099' :
-                d > 1500000 ? '#1c9099' :
-                    d > 500000 ? '#67a9cf' :
-                        d > 250000 ? '#67a9cf' :
-                            d > 100000 ? '#bdc9e1' :
-                                d > 50000 ? '#bdc9e1' :
-                                    d > 0 ? '#f6eff7' :
-                                        d > -1 ? '#f6eff7' :
-                                            d > null ? '#808080' :
-                                                '#808080';
+    return d > 500 ? '#993404' :
+        d > 499 ? '#993404' :
+        d > 100 ? '#d95f0e' :
+        d > 99 ? '#d95f0e' :
+        d > 50 ? '#fe9929' :
+        d > 49 ? '#fe9929' :
+        d > 10 ? '#fed98e' :
+        d > 9 ? '#fed98e' :
+        d > 1 ? '#ffffd4' :
+        d > 0 ? '#ffffd4' :
+        '#808080';
 }
 
 function styleRegionalPopulationCases(feature) {
