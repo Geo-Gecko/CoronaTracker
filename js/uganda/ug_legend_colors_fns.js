@@ -107,16 +107,27 @@ function add_ug_layer(element) {
     call_OEF_fn(l, layer_)
   });
 
-  if (layer_ === "Cases per District") {
+  let ug_layers_ = {
+    "Cases per District": {
+      element_keyword: "Cases", color_fn: getDistrictColor
+    },
+    "Risk Model": {
+      element_keyword: "Risk", color_fn: getColormodel
+    },
+  }
+  if (Object.keys(ug_layers_).includes(layer_)) {
     Object.keys(countrylayers[layer_]._layers).forEach(element => {
       let l = countrylayers[layer_]._layers[element];
       border_sheet_data.forEach(element => {
         if (
-          element.Cases && element.Cases != "" &&
+          element[ug_layers_[layer_]["element_keyword"]] &&
+          element[ug_layers_[layer_]["element_keyword"]] != "" &&
           element.District == l.feature.properties.DNama2017
         ) {
           l.setStyle({
-            fillColor: getDistrictColor(element.Cases),
+            fillColor: ug_layers_[layer_]["color_fn"](
+              element[ug_layers_[layer_]["element_keyword"]]
+            ),
             weight: 1,
             opacity: 1,
             color: 'black',

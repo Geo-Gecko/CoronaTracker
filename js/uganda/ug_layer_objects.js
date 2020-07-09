@@ -91,7 +91,7 @@ let overlayLayers = {
       }
     ],
     "Risk Model": [
-      [2.42, 6.33], getColormodel, "Risk Level", "result_risk", {
+      [2.42, 6.33], getColormodel, "Risk Level", "getColormodel", {
         "District": "DNama2017", "Total Population": "TotalPopn",
         "Population Density": "districts1_density",
         "Elderly Percentage": "districts1_elderly_percentage"
