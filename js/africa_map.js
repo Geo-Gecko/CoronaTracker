@@ -1,12 +1,9 @@
 let long_id = "1tRF8gjyRd0oA2sSpTKmZqambggZzUM0YiED6KqF8H8M"
-let african_sheet = "Filters%20Data"
-govt_intervention_sheet = "Govt%20Intervention"
-border_data_sheet = "uganda_cases"
+let african_sheet = "Filters%20Data",govt_intervention_sheet = "Govt%20Intervention",
+border_data_sheet = "uganda_cases", regional_sheet = "Regional%20Data"
 let url_ = (sheet=african_sheet) => `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
-let google_sheet_data;
-let second_google_sheet_data;
-let border_sheet_data;
-let prev_highlighted_button;
+let regional_sheet_data, google_sheet_data, second_google_sheet_data,
+  border_sheet_data, prev_highlighted_button, regionalLayers;
 
 // set the hightlighted button to show
 let highlight_button = (element) => {
@@ -41,13 +38,22 @@ let southWest = L.latLng(53.85252660044951, 107.75390625),
   northEast = L.latLng(-50.28933925329178, -132.01171875000003),
   bounds = L.latLngBounds(southWest, northEast);
 
+// zoom control options
+var zoomOptions = {
+  zoomInText: '+',
+  zoomOutText: '-',
+};
+// Creating zoom control
+var zoom = L.control.zoom(zoomOptions);
 let map = L.map('map', {
-  maxBounds: bounds,
+  zoomControl: false,
+  maxBounds: bounds,  
   minZoom: 3,
-  maxZoom: 3
-}).setView([2.8, 15.24], 2);
+  maxZoom: 3,
+  zoomSnap: 0.25,
+  zoomDelta: 0.25
+}).setView([2.8, 15.24], 3);
 let sidebar = L.control.sidebar('sidebar').addTo(map);
-
 map.createPane('choroplethPane');
 map.getPane('choroplethPane').style.zIndex = 400;
 map.createPane('overlaysPane');
@@ -94,12 +100,6 @@ $(window).resize(() => {
   );
 }
 )
-
-map.dragging.disable();
-map.touchZoom.disable();
-map.doubleClickZoom.disable();
-map.scrollWheelZoom.disable();
-
 let sources_button = L.control({
   position: 'topright'
 });
@@ -119,9 +119,9 @@ let countries_ = L.control({ position: 'topright' });
 
 countries_.onAdd = function (map) {
   let div = L.DomUtil.create('div', 'sources countries_');
-  div.innerHTML = "<h6 style='color: rgb(248, 183, 57); outline: none;\
-    margin-bottom: 0;'><a href='#' onclick='switch_map(map);'\
-    style='color: rgb(248, 183, 57);'>UGANDA</a></h6>";
+  div.innerHTML = "<select id='mapSelector' style=' style='color: rgb(248, 183, 57);outline: none;\
+  margin-bottom: 0;' onchange='switch_map(map);'>  <option style='background-color:rgb(248, 183, 57);'>UGANDA</option> <option style='background-color:rgb(248, 183, 57);'>EAST AFRICA</option><option style='background-color:rgb(248, 183, 57);'>AFRICA</option></select>";
+  div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
   div.setAttribute("style", "padding-bottom: 5px");
   div.id = "sources countries_"
   return div;
@@ -136,7 +136,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png
 }).addTo(map);
 
 let african_data;
-
+create_sidepanel(african_sidepanel_text)
 
 function create_response_array_object(response) {
   let row_names = response.data.values[0], response_array_object = []
@@ -151,14 +151,23 @@ function create_response_array_object(response) {
 }
 
 axios.get(url_()).then(response => {
-    google_sheet_data = create_response_array_object(response)
-  })
+  google_sheet_data = create_response_array_object(response)
+})
 
 axios.get(url_(govt_intervention_sheet)).then(response => {
-    second_google_sheet_data = create_response_array_object(response)
-    switch_map(map)
-  })
+  second_google_sheet_data = create_response_array_object(response)
+  switch_map(map)
+})
 
 axios.get(url_(border_data_sheet)).then(response => {
-  border_sheet_data = create_response_array_object(response)
+border_sheet_data = create_response_array_object(response)
+})
+
+axios.get(url_(regional_sheet)).then(response => {
+    let regional_array_data = create_response_array_object(response);
+    regional_sheet_data = {}
+    regional_array_data.forEach(element_ => {
+      regional_sheet_data[element_.Name] = {...element_}
+    })
+    regionalLayers = createRegionalLayers()
 })
