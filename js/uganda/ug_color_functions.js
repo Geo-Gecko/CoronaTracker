@@ -145,16 +145,32 @@ function getColorborder(d) {
 
 // // //district cases
 function getDistrictColor(d) {
-  return d > 100 ? '#67000d' :
-    d > 99 ? '#67000d' :
-    d > 50 ? '#cb181d' :
-    d > 49 ? '#cb181d' :
-    d > 10 ? '#fb6a4a' :
-    d > 9 ? '#fb6a4a' :
-    d > 5 ? '#fcbba1' :
-    d > 4 ? '#fcbba1' :
-    d > 0 ? '#fff5f0' :
-    d > -1 ? '#fff5f0' :
+  return d > 50 ? '#67000d' :
+    d > 49 ? '#67000d' :
+    d > 10 ? '#cb181d' :
+    d > 9 ? '#cb181d' :
+    d > 5 ? '#fb6a4a' :
+    d > 4 ? '#fb6a4a' :
+    d > 1 ? '#fcbba1' :
+    d > 0.5 ? '#fcbba1' :
+    d > 0 ? '#ffffff' :
+    d > -1 ? '#ffffff' :
     d > null ? '#808080' :
     '#808080';
+}
+
+// // //cases per 100000
+function getColorugcasesratio(d) {
+  return d > 1.0 ? '#bd0026' :
+      d > 0.9 ? '#bd0026' :
+      d > 0.5 ? '#f03b20' :
+      d > 0.49 ? '#f03b20' :
+      d > 0.2 ? '#fd8d3c' :
+      d > 0.19 ? '#fd8d3c' :
+      d > 0.1 ? '#fecc5c' :
+      d > 0.09 ? '#fecc5c' :
+      d > 0 ? '#ffffff' :
+      d > -1 ? '#ffffff' :
+      d > null ? '#808080' :
+      '#808080';
 }

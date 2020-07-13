@@ -78,7 +78,7 @@ function add_overlay(element) {
         l.setStyle({
           radius: element.Border_cases / 3,
           color: 'red',
-          fillOpacity: 0,
+          fill: false,
           weight: 3,
         })
       }
@@ -113,6 +113,9 @@ function add_ug_layer(element) {
     },
     "Risk Model": {
       element_keyword: "Risk", color_fn: getColormodel
+    },
+    "Cases per 100,000 people": {
+      element_keyword: "cases_per_100000", color_fn: getColorugcasesratio
     },
   }
   if (Object.keys(ug_layers_).includes(layer_)) {
