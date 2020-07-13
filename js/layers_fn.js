@@ -185,7 +185,7 @@ function switch_map(map) {
       // open sidebar and add layer after 1 second
       $("#sidebar").attr("class", "sidebar sidebar-left leaflet-touch")
       $("a").filter(function () {
-        return $(this).text() === "Regional COVID 19 Cases";
+        return $(this).text() === "COVID 19 Cases";
       }).click()
     }, 1000)
 
@@ -195,6 +195,7 @@ function switch_map(map) {
       create_sidepanel(regional_sidepanel_text)
 
       $("#homeSubmenu0").attr("class", "list-unstyled collapse show")
+      $("#homeSubmenu1").attr("class", "list-unstyled collapse show")
       $("a[onclick='add_regional_layer(this);']")[0].setAttribute("style", "color: #f8b739;")
     }, 500)
 
