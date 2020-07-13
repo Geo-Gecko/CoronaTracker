@@ -176,7 +176,7 @@ function switch_map(map) {
    map.touchZoom.enable();
    map.doubleClickZoom.enable();
    map.scrollWheelZoom.enable(); 
-   map.options.minZoom = 3;
+   map.options.minZoom = 4;
    map.options.maxZoom = 7;
    zoom.addTo(map);
    zoom.setPosition('topright');
