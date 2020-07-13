@@ -75,6 +75,11 @@ function switch_map(map) {
   Object.keys(overlayLayers).forEach(element => {
     map.removeLayer(layers[element]);
   });
+  Object.keys(regional_overlay_layers).forEach(element => {
+      if (map.hasLayer(regional_overlay_layers[element])) {
+          map.removeLayer(regional_overlay_layers[element]);
+      }
+  });
   if (regionalLayers) {
     Object.keys(regionalLayers).forEach(element => {
       map.removeLayer(regionalLayers[element]);

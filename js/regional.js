@@ -61,7 +61,7 @@ function styleRegionalPopulationDensity(feature) {
 
 function createRegionalLayers() {
 
-    let layers = [];
+    let layers = {};
 
     Object.keys(regional_layers).forEach(element => {
 
@@ -72,10 +72,10 @@ function createRegionalLayers() {
                 let district_name = layer.feature.properties.Name
                 let country_ = layer.feature.properties.layer
                 country_ = country_ ?
-                    country_[0].toUpperCase() + country_.slice(start=1) : country_;
+                    country_[0].toUpperCase() + country_.slice(start = 1) : country_;
 
                 if (regional_sheet_data[district_name]) {
-                    let popup_lines = 
+                    let popup_lines =
                         `<strong>Country:</strong> ${country_}
                         <br><strong>Admin Unit Name:</strong> ${district_name}
                         <br><strong>COVID 19 Cases:</strong>
@@ -100,20 +100,75 @@ function createRegionalLayers() {
 }
 
 
+let regional_overlays = {
+    "Border Cases": [
+        border_points, "#cccc09", , , {
+            "District": "District", "Name": "Name", "Path": "Path"
+        }
+    ]
+}
+
+let regional_overlay_layers = {};
+
+Object.keys(regional_overlays).forEach(element => {
+    regional_overlay_layers[element] = L.geoJson(regional_overlays[element][0], {
+        pointToLayer: function (feature, latlng) {
+            return new L.CircleMarker(latlng, {
+                pane: 'overlaysPane',
+                fill: false,
+                radius: 4,
+                fillOpacity: 1,
+                color: 'black',
+                fillColor: regional_overlays[element][1],
+                weight: 0.6,
+            });
+        }
+    });
+});
 
 function add_regional_layer(element) {
     let layer_ = element.text
-    addLegend(
-        regional_layers[layer_][0][0], regional_layers[layer_][0][1],
-        regional_layers[layer_][0][2]
-    );
     highlight_button(element)
-    Object.keys(regionalLayers).forEach(element => {
-        if (map.hasLayer(regionalLayers[element])) {
-            map.removeLayer(regionalLayers[element]);
+    Object.keys(regional_overlay_layers).forEach(element => {
+        if (map.hasLayer(regional_overlay_layers[element])) {
+            map.removeLayer(regional_overlay_layers[element]);
         }
     });
-    regionalLayers[layer_].addTo(map);
+    if (layer_ !== "Border Cases") {
+        Object.keys(regionalLayers).forEach(element => {
+            if (map.hasLayer(regionalLayers[element])) {
+                map.removeLayer(regionalLayers[element]);
+            }
+        });
+        addLegend(
+            regional_layers[layer_][0][0], regional_layers[layer_][0][1],
+            regional_layers[layer_][0][2]
+        );
+        regionalLayers[layer_].addTo(map);
+    } else {
+
+        regional_overlay_layers[layer_].addTo(map)
+
+        Object.keys(regional_overlay_layers[layer_]._layers).forEach(element => {
+            let l = regional_overlay_layers[layer_]._layers[element];
+
+            OEF(l, layer_)
+            Object.keys(regional_sheet_data).forEach(element => {
+                if (
+                    regional_sheet_data[element]["border_cases"] &&
+                    regional_sheet_data[element]["border_cases"] != "" &&
+                    regional_sheet_data[element]["border"] == l.feature.properties.Name
+                ) {
+                    l.setStyle({
+                        radius: regional_sheet_data[element]["border_cases"] / 5,
+                        color: 'red',
+                        fillOpacity: 0,
+                        weight: 3,
+                    })
+                }
+            });
+        });
+    }
     /*Not Neccesary until there are multiple regionalLayers"*/
     // Object.keys(regional_layers[layer_]._layers).forEach(element => {
     //     let l = regional_layers[layer_]._layers[element];
