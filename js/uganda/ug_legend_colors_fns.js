@@ -15,7 +15,7 @@ function styling_function(key_, color_fn) {
 
 function createOverLayers() {
 
-  let layers = [];
+  let layers = {};
 
   Object.keys(overlayLayers).forEach(element => {
 
@@ -40,7 +40,7 @@ let layers = createOverLayers();
 
 function createCountryLayers() {
 
-  let layers = [];
+  let layers = {};
 
   Object.keys(ugandaLayers).forEach(element => {
 
