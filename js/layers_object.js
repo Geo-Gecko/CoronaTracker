@@ -64,6 +64,6 @@ let layers_ = {
         gsheet_keys: ["CASES", "tests_per_confirmed_case"],
         legend_fn: getColortests,
         popup_text: ["Population", "Cases", "Number of tests per confirmed case"],
-        legend_array: [10, 20, 40, 80, 1000]
+        legend_array: [1, 10, 20, 40, 80]
     },
 }

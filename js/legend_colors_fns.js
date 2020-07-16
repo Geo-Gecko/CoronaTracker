@@ -149,16 +149,16 @@ function getColorelderly(d) {
 }
 
 function getColortests(d) {
-    return d > 1000 ? '#253494' :
-        d > 999 ? '#253494' :
-        d > 80 ? '#2c7fb8' :
-        d > 79 ? '#2c7fb8' :
-        d > 40 ? '#41b6c4' :
-        d > 39 ? '#41b6c4' :
-        d > 20 ? '#a1dab4' :
-        d > 19 ? '#a1dab4' :
-        d > 10 ? '#ffffcc' :
-        d > 9 ? '#ffffcc' :
+    return d > 80 ? '#253494' :
+        d > 79 ? '#253494' :
+        d > 40 ? '#2c7fb8' :
+        d > 39 ? '#2c7fb8' :
+        d > 20 ? '#41b6c4' :
+        d > 19 ? '#41b6c4' :
+        d > 10 ? '#a1dab4' :
+        d > 9 ? '#a1dab4' :
+        d > 1 ? '#ffffcc' :
+        d > 0 ? '#ffffcc' :
         d > null ? '#808080' :
         '#808080';
 }
