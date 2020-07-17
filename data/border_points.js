@@ -42,6 +42,7 @@ var border_points = {
         { "type": "Feature", "properties": { "Name": "Lolwe", "Path": "Lake Victoria", "District": "Buvuma" }, "geometry": { "type": "Point", "coordinates": [33.514445058327709, -0.092172626753387] } },
         { "type": "Feature", "properties": { "Name": "Sigulu", "Path": "Lake Victoria", "District": "Buvuma" }, "geometry": { "type": "Point", "coordinates": [33.505311864719125, -0.272224308892781] } },
         { "type": "Feature", "properties": { "Name": "Wayasi", "Path": "Lake Victoria", "District": "Namayingo" }, "geometry": { "type": "Point", "coordinates": [33.675015726065645, -0.194677969907349] } },
-        { "type": "Feature", "properties": { "Name": "Kanyapirpirir", "Path": null, "District": "Moroto" }, "geometry": { "type": "Point", "coordinates": [34.748644904378757, 2.797945890831711] } }
+        { "type": "Feature", "properties": { "Name": "Kanyapirpirir", "Path": null, "District": "Moroto" }, "geometry": { "type": "Point", "coordinates": [34.748644904378757, 2.797945890831711] } },
+        { "type": "Feature", "properties": { "Name": "Kerwa", "Path": null, "District": "Yumbe" }, "geometry": { "type": "Point", "coordinates": [ 31.335332219679408, 3.750756487028831 ] } }
     ]
 };

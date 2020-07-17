@@ -65,9 +65,34 @@ function add_layer(element) {
 
 function switch_map(map) {
 
-  if (map.options.minZoom === 3) {
-    if (african_data){
-      map.removeLayer(african_data)
+  // clean map
+  if (african_data) {
+    map.removeLayer(african_data)
+  }
+  Object.keys(countrylayers).forEach(element => {
+    map.removeLayer(countrylayers[element]);
+  });
+  Object.keys(overlayLayers).forEach(element => {
+    map.removeLayer(layers[element]);
+  });
+  Object.keys(regional_overlay_layers).forEach(element => {
+      if (map.hasLayer(regional_overlay_layers[element])) {
+          map.removeLayer(regional_overlay_layers[element]);
+      }
+  });
+  if (regionalLayers) {
+    Object.keys(regionalLayers).forEach(element => {
+      map.removeLayer(regionalLayers[element]);
+    });
+  }
+
+  if (document.getElementById("mapSelector").value === 'UGANDA') {
+    map.dragging.disable();
+    map.touchZoom.disable();
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
+    if (zoom._map) {
+      map.removeControl(zoom);
     }
     map.options.minZoom = 7;
     map.options.maxZoom = 7;
@@ -101,20 +126,17 @@ function switch_map(map) {
       $("#homeSubmenu1").attr("class", "list-unstyled collapse show")
       $("a[onclick='add_ug_layer(this);']")[0].setAttribute("style", "color: #f8b739;")
     }, 500)
-
-
-    $("a[onclick='switch_map(map);']").text('AFRICA')
   
-  } else if (map.options.minZoom === 7) {
+  } else if (document.getElementById("mapSelector").value === 'AFRICA') {
+
     // zoom out to Africa
-      Object.keys(countrylayers).forEach(element => {
-          map.removeLayer(countrylayers[element]);
-      });
-      Object.keys(overlayLayers).forEach(element => {
-          map.removeLayer(layers[element]);
-      });
-
-  
+    map.dragging.disable();
+    map.touchZoom.disable();
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
+    if (zoom._map) {
+      map.removeControl(zoom);
+    }
     map.options.minZoom = 3;
     map.options.maxZoom = 3;
     map.flyTo([2.8, 15.24], 2, {
@@ -144,8 +166,43 @@ function switch_map(map) {
       $("a[onclick='add_layer(this);']")[0].setAttribute("style", "color: #f8b739;")
     }, 500)
 
+  } else if (document.getElementById("mapSelector").value === 'EAST AFRICA') {
 
-    $("a[onclick='switch_map(map);']").text('UGANDA')
+    southWest = L.latLng(-13.88074584202559, -6.50390625),
+    northEast = L.latLng(16.3833911236084, 53.43750000000001),
+    bounds = L.latLngBounds(southWest, northEast);
+
+   map.dragging.enable();
+   map.touchZoom.enable();
+   map.doubleClickZoom.enable();
+   map.scrollWheelZoom.enable(); 
+   map.options.minZoom = 4;
+   map.options.maxZoom = 7;
+   zoom.addTo(map);
+   zoom.setPosition('topright');
+   map.flyToBounds(bounds, 5, {
+      animate: true,
+      duration: 1.0
+    });
+    $("#sidebar").attr("class", "sidebar sidebar-left leaflet-touch collapsed")
+
+    setTimeout(function () {
+      // open sidebar and add layer after 1 second
+      $("#sidebar").attr("class", "sidebar sidebar-left leaflet-touch")
+      $("a").filter(function () {
+        return $(this).text() === "COVID 19 Cases";
+      }).click()
+    }, 1000)
+
+    setTimeout(function () {
+      // replace text just before reopening sidepanel
+      $("#create-sidebar-list").empty()
+      create_sidepanel(regional_sidepanel_text)
+
+      $("#homeSubmenu0").attr("class", "list-unstyled collapse show")
+      $("#homeSubmenu1").attr("class", "list-unstyled collapse show")
+      $("a[onclick='add_regional_layer(this);']")[0].setAttribute("style", "color: #f8b739;")
+    }, 500)
 
   }
 }

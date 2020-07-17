@@ -2,7 +2,12 @@
 let overlayLayers = {
     "Border Points": [
       border_points, "#cccc09", , , {
-        "District": "District", "Name": "Name", "Path": "Path"
+        "District": "District", "Border Name": "Name", "Path": "Path"
+      }
+    ],
+    "Towns": [
+      towns, "blue", , , {
+        "Name": "Name"
       }
     ],
     "Health Referral Centers": [
@@ -29,6 +34,18 @@ let overlayLayers = {
         fillOpacity: 2.5,
         fillColor: '#AAA583'
       }, {}
+    ],
+
+    "Cases per District": [
+      [0, 1, 5, 10, 50], getDistrictColor, "Cases per District", getDistrictColor, {
+        "District": "DNama2017", "Total Population": "TotalPopn",
+      }
+    ],
+    "Cases per 100,000 people": [
+      [0, 0.1, 0.2, 0.5, 1], getColorugcasesratio, "Cases per 100,000 people",
+      getColorugcasesratio, {
+        "District": "DNama2017", "Total Population": "TotalPopn",
+      }
     ],
     "Population Density": [
       [7, 100, 500, 1000, 7500], getColorden, "Population Density<br>(people per sq km)",
@@ -80,7 +97,7 @@ let overlayLayers = {
       }
     ],
     "Risk Model": [
-      [2.42, 6.33], getColormodel, "Risk Level", "result_risk", {
+      [2.42, 6.33], getColormodel, "Risk Level", "getColormodel", {
         "District": "DNama2017", "Total Population": "TotalPopn",
         "Population Density": "districts1_density",
         "Elderly Percentage": "districts1_elderly_percentage"

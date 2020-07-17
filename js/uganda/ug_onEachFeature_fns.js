@@ -3,6 +3,8 @@ function OEF(layer, type) {
     let popup_lines = [], layer_object;
     if (Object.keys(ugandaLayers).includes(type)) {
         layer_object = ugandaLayers
+    } else if (Object.keys(regional_overlays).includes(type)) {
+        layer_object = regional_overlays
     } else {
         layer_object = overlayLayers
     }
@@ -17,8 +19,36 @@ function OEF(layer, type) {
     if (type === "Border Points") {
         let cases;
         border_sheet_data.forEach(element => {
-            if (element.Border_cases != "" && element.Border == layer.feature.properties.Name) {
+            if (
+                element.Border_cases && element.Border_cases != ""
+                && element.Border == layer.feature.properties.Name
+            ) {
             cases = element.Border_cases
+            }
+        });
+        if (cases) {
+            popup_lines.push(`<strong>Number of Cases:</strong> ${cases}`)
+        }
+    }
+    if (type === "Cases per District") {
+        border_sheet_data.forEach(element => {
+            if (
+                element.Cases && element.Cases != "" &&
+                element.District == layer.feature.properties.DNama2017
+            ) {
+                popup_lines.push(`<strong>Number of Cases:</strong> ${element.Cases}`)
+            }
+        });
+    }
+    if (type === "Border Cases") {
+        let cases;
+        Object.keys(regional_sheet_data).forEach(element => {
+            if (
+                regional_sheet_data[element]["border_cases"] &&
+                regional_sheet_data[element]["border_cases"] != "" &&
+                regional_sheet_data[element]["border"] == layer.feature.properties.Name
+            ) {
+                cases = regional_sheet_data[element]["border_cases"]
             }
         });
         if (cases) {
