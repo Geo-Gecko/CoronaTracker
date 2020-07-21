@@ -168,7 +168,3 @@ function getColorfiscal(d) {
       d > 0 ? '#15841b' :
       '#adadad';
   }
-
-  function getRadiusBorder(d) {
-    return d / 3
-  }

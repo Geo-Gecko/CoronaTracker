@@ -50,35 +50,28 @@ function addLegend(grades, ramp, title = null) {
           '<i style="background:' + ramp(grades[i]) + '"></i> ' +
           thousep2(grades[i]) + (grades[i + 1] ? '&ndash;' + thousep2(grades[i + 1]) + '<br>' : '+');
       }
-    }
+     }  else if(title === 'Border Points') {
+       div.innerHTML += '<p><br>' + title + '</b></p>';
+       for (let i = 0; i < grades.length; i++) {
+         div.innerHTML +=
+         '<i class="circle" style="width:10px;height:10px;background-color:orange;border-width:1px;border-color:black;"></i> Border Points<br>'; +
+         (grades[i + 1] ? '' + 'Yellow' + '<br>' : 'Red'
+         );
+       }
+        } else if (title != 'Border Points') {
+          div.innerHTML += '<p><b>' + title + '</b></p>';
+          div.innerHTML += '<i style="background:#808080"></i> No data<br>';
+          // loop through our density intervals and generate a label with a colored square for each interval
+          for (var i = 0; i < grades.length; i++) {
+            div.innerHTML +=
+              '<i style="background:' + ramp(grades[i]) + '"></i> ' +
+              thousep2(grades[i]) + (grades[i + 1] ? '&ndash;' + thousep2(grades[i + 1]) + '<br>' : '+');
+          }
+        }
 
     return div;
   };
 
   legend.addTo(map);
 
-}
-function addPointLegend(grades, title) {
-  if(pointLegend._map) {
-    map.removeControl(pointLegend);
-  }
-  pointLegend.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info pointLegend');
-    measure = [1, 41, 82, 168],
-    label = '<strong>'+ title + '</strong>'
-    div.innerHTML += '<p><b>' + label + '</b></p><br>';
-    if (grades.length == 0) {
-      div.innerHTML += '<i class="circle" style="width:10px;height:10px;background-color:orange;border-width:1px;border-color:black;"></i> Health Centre locations<br>';
-    } else if (title != "Cases per district") {
-      div.innerHTML += '<i class="circle" style="width:10px;height:10px;background-color:#cccc09;border-width:1px;border-color:black;"></i> No cases<br>';
-    }
-    for (let i = 0; i < grades.length; i++) {
-      for (let i = 0; i < grades.length; i++) {
-        div.innerHTML += '<i class="circle" style="width: ' + getRadiusBorder(measure[i]) + 'px;height: '+ getRadiusBorder(measure[i]) +'px;"></i> ' +
-        thousep2(grades[i]) + (grades[i + 1] ? '&ndash;' + thousep2(grades[i + 1]) + '<br>' : '+');
-    }
-    }
-    return div;
-  };
-  pointLegend.addTo(map);
 }

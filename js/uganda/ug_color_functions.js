@@ -174,3 +174,7 @@ function getColorugcasesratio(d) {
       d > null ? '#808080' :
       '#808080';
 }
+//border points
+function getRadiusBorder(d) {
+  return d / 3
+}
