@@ -6,7 +6,7 @@ let regional_layers = {
     ],
     "COVID 19 Deaths": [
         [
-            [0, 10, 20, 30, 50], getRegionalColordeaths, "Regional COVID 19 Deaths"
+            [0, 1, 10, 50, 100], getRegionalColordeaths, "Regional COVID 19 Deaths"
         ], styleRegionalDeaths
     ],
     "Population Density": [
@@ -102,8 +102,8 @@ function createRegionalLayers() {
 
 let regional_overlays = {
     "Border Cases": [
-        border_points, "#cccc09", , , {
-            "District": "District", "Name": "Name", "Path": "Path"
+        region_border_points, "#cccc09", , , {
+            "Border Name": "Name"
         }
     ]
 }
