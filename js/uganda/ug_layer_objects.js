@@ -42,9 +42,9 @@ let overlayLayers = {
       }
     ],
     "Cases per 100,000 people": [
-      [0, 0.1, 0.2, 0.5, 1], getColorugcasesratio, "Cases per 100,000 people",
+      [0, 0.5, 1.0, 5.0, 10.0], getColorugcasesratio, "Cases per 100,000 people",
       getColorugcasesratio, {
-        "District": "DNama2017", "Total Population": "TotalPopn",
+        "District": "DNama2017", "Total Population": "TotalPopn", 
       }
     ],
     "Population Density": [
