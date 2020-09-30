@@ -4,13 +4,13 @@ let layers_ = {
         gsheet_keys: ["CASES"],
         legend_fn: getColorcases,
         popup_text: ["Population", "Cases"],
-        legend_array: [0, 100, 1000, 3000, 6000]
+        legend_array: [0, 1000, 5000, 10000, 50000]
     },
     "Deaths": {
         gsheet_keys: ["CASES", "DEATHS",],
         legend_fn: getColordeaths,
         popup_text: ["Population", "Cases", "Deaths"],
-        legend_array: [0, 1, 50, 100, 500]
+        legend_array: [0, 50, 100, 500, 1000]
     },
     "Cases per 100,000 people": {
         gsheet_keys: ["CASES", "CASES_PER_100,000"],
@@ -22,7 +22,7 @@ let layers_ = {
         gsheet_keys: ["CASES", "DEATHS", "DEATHS_PER_100,000"],
         legend_fn: getColordeathsratio,
         popup_text: ["Population", "Cases", "Deaths", "Deaths per 100,000 people"],
-        legend_array: [0, 0.1, 0.2, 0.5, 1.0]
+        legend_array: [0, 0.5, 1.0, 2.0, 5.0]
     },
     "Ventilators": {
         gsheet_keys: ["CASES", "VENTILATORS", "PEOPLE_PER_VENT"],

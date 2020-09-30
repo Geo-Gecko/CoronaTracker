@@ -1,7 +1,7 @@
 let regional_layers = {
     "COVID 19 Cases": [
         [
-            [0, 1, 50, 100, 1000], getRegionalColorCases, "Regional COVID 19 Cases"
+            [0, 1, 50, 100, 500], getRegionalColorCases, "Regional COVID 19 Cases"
         ], styleRegionalCases
     ],
     "COVID 19 Deaths": [

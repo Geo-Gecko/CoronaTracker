@@ -1,14 +1,14 @@
 
 
 function getColorcases(d) {
-    return  d > 6000 ? '#016c59' :
-        d > 5999 ? '#016c59' :
-        d > 3000 ? '#1c9099' :
-        d > 2999 ? '#1c9099' :
-        d > 1000 ? '#67a9cf' :
-        d > 999 ? '#67a9cf' :
-        d > 100 ? '#bdc9e1' :
-        d > 99 ? '#bdc9e1' :
+    return  d > 50000 ? '#016c59' :
+        d > 49999 ? '#016c59' :
+        d > 10000 ? '#1c9099' :
+        d > 9999 ? '#1c9099' :
+        d > 5000 ? '#67a9cf' :
+        d > 4999 ? '#67a9cf' :
+        d > 1000 ? '#bdc9e1' :
+        d > 999 ? '#bdc9e1' :
         d > 0 ? '#f6eff7' :
         d > -1 ? '#f6eff7' :
         d > null ? '#808080' :
@@ -16,14 +16,14 @@ function getColorcases(d) {
   }
 
 function getColordeaths(d) {
-    return d > 500 ? '#006837' :
-        d > 499 ? '#006837' :
-        d > 100 ? '#31a354' :
-        d > 99 ? '#31a354' :
-        d > 50 ? '#78c679' :
-        d > 49 ? '#78c679' :
-        d > 1 ? '#c2e699' :
-        d > 0.5 ? '#c2e699' :
+    return d > 1000 ? '#006837' :
+        d > 999 ? '#006837' :
+        d > 500 ? '#31a354' :
+        d > 499 ? '#31a354' :
+        d > 100 ? '#78c679' :
+        d > 99 ? '#78c679' :
+        d > 50 ? '#c2e699' :
+        d > 49 ? '#c2e699' :
         d > 0 ? '#ffffcc' :
         d > -1 ? '#ffffcc' :
         d > null ? '#808080' :
@@ -46,14 +46,14 @@ function getColorcasesratio(d) {
 }
 
 function getColordeathsratio(d) {
-    return d > 1.0 ? '#bd0026' :
-        d > 0.9 ? '#bd0026' :
-        d > 0.5 ? '#f03b20' :
-        d > 0.49 ? '#f03b20' :
-        d > 0.2 ? '#fd8d3c' :
-        d > 0.19 ? '#fd8d3c' :
-        d > 0.1 ? '#fecc5c' :
-        d > 0.09 ? '#fecc5c' :
+    return d > 5.0 ? '#bd0026' :
+        d > 4.0 ? '#bd0026' :
+        d > 2.0 ? '#f03b20' :
+        d > 1.9 ? '#f03b20' :
+        d > 1.0 ? '#fd8d3c' :
+        d > 0.9 ? '#fd8d3c' :
+        d > 0.5 ? '#fecc5c' :
+        d > 0.4 ? '#fecc5c' :
         d > 0 ? '#ffffb2' :
         d > -1 ? '#ffffb2' :
         d > null ? '#808080' :

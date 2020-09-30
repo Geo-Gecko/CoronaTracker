@@ -161,14 +161,14 @@ function getDistrictColor(d) {
 
 // // //cases per 100000
 function getColorugcasesratio(d) {
-  return d > 1.0 ? '#bd0026' :
-      d > 0.9 ? '#bd0026' :
-      d > 0.5 ? '#f03b20' :
-      d > 0.49 ? '#f03b20' :
-      d > 0.2 ? '#fd8d3c' :
-      d > 0.19 ? '#fd8d3c' :
-      d > 0.1 ? '#fecc5c' :
-      d > 0.09 ? '#fecc5c' :
+  return d > 10.0 ? '#bd0026' :
+      d > 9.0 ? '#bd0026' :
+      d > 5.0 ? '#f03b20' :
+      d > 4.0 ? '#f03b20' :
+      d > 1.0 ? '#fd8d3c' :
+      d > 0.9 ? '#fd8d3c' :
+      d > 0.5 ? '#fecc5c' :
+      d > 0.4 ? '#fecc5c' :
       d > 0 ? '#ffffff' :
       d > -1 ? '#ffffff' :
       d > null ? '#808080' :

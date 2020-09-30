@@ -1,12 +1,13 @@
 
 function getRegionalColorCases(d) {
-    return d > 1000 ? '#016c59' :
+    return d > 500 ? '#016c59' :
+    d > 499 ? '#016c59' :
     d > 100 ? '#1c9099' :
     d > 99 ? '#1c9099' :
     d > 50 ? '#67a9cf' :
     d > 49 ? '#67a9cf' :
     d > 1 ? '#bdc9e1' :
-    d > 0.1 ? '#bdc9e1' :
+    d > 0.9 ? '#bdc9e1' :
     d > 0 ? '#ffffff' :
     d > -1 ? '#ffffff' :
     '#808080';
@@ -37,7 +38,6 @@ function getRegionalColordeaths(d) {
         d > 0.5 ? '#c2e699' :
         d > 0 ? '#ffffcc' :
         d > -1 ? '#ffffcc' :
-        d > null ? '#808080' :
         '#808080';
 }
 
