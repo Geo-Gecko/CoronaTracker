@@ -76,7 +76,7 @@ function add_overlay(element) {
         && element.Border == l.feature.properties.Name
       ) {
         l.setStyle({
-          radius: element.Border_cases / 3,
+          radius: element.Border_cases / 5,
           color: 'red',
           fill: false,
           weight: 3,
